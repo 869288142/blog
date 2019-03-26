@@ -1,0 +1,1 @@
+padding和content属于同一块，会被背景颜色渲染
