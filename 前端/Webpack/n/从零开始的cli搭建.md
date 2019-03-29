@@ -1,4 +1,4 @@
-webpack  将所有资源视为JS,从入口开始寻找依赖并打包整个依赖
+webpack  将所有资源视为JS,从入口开始寻找依赖并打包整个依赖,我们需要是对如何把webpack不认识的资源转换为认识的(loader),以及一些额外处理(plugins)
 
 安装webpack
 npm i -D  webpack
