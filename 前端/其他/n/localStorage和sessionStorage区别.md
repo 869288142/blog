@@ -1,0 +1,4 @@
+localStorage
+永久保存
+sessionStorage
+页面关闭和浏览器关闭就清除
