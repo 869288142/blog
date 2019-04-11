@@ -1,39 +1,160 @@
 1.行内元素或者内联元素
 
-  1.垂直居中
+1.垂直居中
 
-  设置行高和高度一致，如果没必要设置高度的话，可以直接利用line-height垂直性，直接设置需要的高度为line-height的高度亦可居中
+单行文本
+设置行高和高度一致，如果没必要设置高度的话，可以直接利用 line-height 垂直性，直接设置需要的高度为 line-height 的高度亦可居中
+
+line-height 是产生 height 的来源,一下代码可以看出
+
+```html
+<div class="test1">测试</div>
+<div class="test2">测试</div>
+```
+
 ```css
-  .center-single-text {
-    height: 100px;
-    line-height: 100px;
-  }
-```    
-  利用内联元素的vertical-align基线参考这一行的其他元素内联元素基线，设置一个伪元素来指定其基线为航中间，设置伪元素高度为100%,然后inline-block,vertical-align: middle
-  接着设置需要被垂直居中的元素 vertical-align: middle 
+.test1 {
+  font-size: 20px;
+  line-height: 0;
+  border: 1px solid #cccccc;
+  background: #eeeeee;
+}
+.test2 {
+  font-size: 0;
+  line-height: 20px;
+  border: 1px solid #cccccc;
+  background: #eeeeee;
+}
+```
+
+文字大小不为 0，但是行高为 0，显示的 div 高度为 0
+文字大小为 0， 但是行高为 20，显示的高度为 20
+
 ```css
-  .ghost-center:before {
-    content: " ";
-    display: inline-block;
-    height: 100%;
-    vertical-algin: middle;
-  }
-  .ghost-center center-element {
-    display: inline-block;
-    vertical-align: middle;
-  }
-```  
-  2.水平居中
+.center-single-text {
+  height: 100px;
+  line-height: 100px;
+}
+
+/* 或者这样 */
+.center-single-text {
+  line-height: 100px;
+}
+```
+
+还可以使用padding居中，有时候padding可能在设计稿上不能调整成一致，这种方法就不行了
+```css
+.link {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+```
+
+多行文本 垂直居中
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .mulit_line {
+        line-height: 300px;
+        border: 1px dashed #cccccc;
+        padding-left: 5px;
+      }
+      .mulit_line span {
+        display: -moz-inline-stack;
+        display: inline-block;
+        line-height: 1.4em;
+        vertical-align: middle;
+      }
+      .mulit_line i {
+        width: 0;
+        display: -moz-inline-stack;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="mulit_line">
+      <span style="font-size:12px;"
+        >这里是高度为150像素的标签内的多行文字，文字大小为12像素。<br />这里是第二行，用来测试多行的显示效果。</span
+      ><i>&nbsp;</i>
+    </p>
+  </body>
+</html>
+```
+
+容器自身居中
+
+近似垂直居中
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 200px;
+        height: 200px;
+        vertical-align: middle;
+      }
+      div {
+        line-height: 210px;
+        background-color: aqua;
+        font-size: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="./login.jpg" alt="" />
+    </div>
+  </body>
+</html>
+```
+
+完全垂直居中
+利用内联元素的 vertical-align 基线参考这一行的其他元素内联元素基线，设置一个伪元素来指定其基线为航中间，设置伪元素高度为 100%,然后 inline-block,vertical-align: middle
+接着设置需要被垂直居中的元素 vertical-align: middle
+
+```css
+.ghost-center:before {
+  content: ' ';
+  display: inline-block;
+  height: 100%;
+  vertical-algin: middle;
+}
+.ghost-center center-element {
+  display: inline-block;
+  vertical-align: middle;
+}
+```
+
+2.水平居中
+
 ```css
 /* 在父级元素设置 */
 .center-chlidren {
   text-align: center;
 }
-```  
+```
+
 2.块级元素
 
-  1.垂直居中
+1.垂直居中
 利用绝对定位将元素左上角移至父元素中心，然后将元素中心移至父元素中心即可。
+
 ```css
 .parent {
   position: relative;
@@ -41,25 +162,45 @@
 .child {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
+}
+
+/* 降级写法 但是需要知道元素的大小 */ 这里的负边距应该设置成真实宽度的一半
+.child {
+  width: 600px;
+  position: absolute;
+  margin-left: -300px;
+}
+
+
+/* margin写法 */
+.child {
+   position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+    margin:  auto 0;    /* 有了这个就自动居中了 */ 
+    /* 如果是margin: auto  就会水平垂直居中*/
 }
 ```
-  2.水平居中
+
+
+2.水平居中
+
 ```css
 /* 在居中元素设置 */
 .center-me {
   margin: 0 auto;
 }
 ```
+
 居中神器 flex
 
 无需区分元素类型，一致地行为完成居中，需要注意兼容性
+
 ```css
 .parent {
   display: flex;
   /* 水平居中 */
-  justify-content: center; 
+  justify-content: center;
   /* 垂直居中 */
   align-items: center;
-}  
+}
 ```

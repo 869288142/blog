@@ -1,11 +1,7 @@
-####水平垂直居中 1.一个 200\*200 的 div 在不同分辨率屏幕上下左右居中，用 css 实现
+各种花里花俏的水平、垂直居中方案 *
 
-```html
-div { position:absolute; width:200px; height:200px; top:50%; left:50%;
-margin-left:-100px; height:-100px; z-index:1000; }
-```
 
-####三栏布局 两边固定 2.写一个左中右布局占满屏幕，其中左右两块是固定宽度 200 ，中间自适应宽，要求先加载中间块，请写出结构及样式：
+常见三栏布局
 
 ```html
 <body>
@@ -31,7 +27,11 @@ html,body{ margin: 0px;width: 100%; }   h3{height: 100px;margin:20px 0 
 优雅降级、渐进增强
 
 定位
-清除浮动
+
+浮动、清除浮动
+.fix{zoom:1;}
+.fix:after{display:block; content:'clear'; clear:both; line-height:0; visibility:hidden;}
+
 
 flex
 
@@ -50,7 +50,7 @@ flex，左右设置 flex-basis，中间设置 flex-gro
 利用网格布局
 
 
-BFC
+BFC等原理
 
 BFC 的原理
 其实也就是 BFC 的渲染规则（能说出以下四点就够了）。包括：
