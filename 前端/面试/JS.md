@@ -61,7 +61,6 @@ promise async、await 错误除以 优化
 
 递增数组
 
-解析parseQueryString
 
 遍历对象属性
 
@@ -73,7 +72,6 @@ IIFE
 
 异步解决方案
 
-== ===
 
 词法作用域 this(类似动态作用域)
 
@@ -82,3 +80,6 @@ IIFE
 https://github.com/yygmind/blog/issues/4
 
 call apply bind
+
+js学习进度
+变量

@@ -20,13 +20,21 @@
  
 * [css](https://github.com/869288142/blog/tree/master/前端/CSS/n/css.md)   更新于2019.3.29
  
+* [css世界学习笔记](https://github.com/869288142/blog/tree/master/前端/CSS/n/css世界学习笔记.md)   更新于2019.4.13
+ 
 * [CSS盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/n/CSS盒模型.md)   更新于2019.3.29
  
 * [flex](https://github.com/869288142/blog/tree/master/前端/CSS/n/flex.md)   更新于2019.3.29
  
 * [footer置底](https://github.com/869288142/blog/tree/master/前端/CSS/n/footer置底.md)   更新于2019.4.10
  
-* [两栏布局](https://github.com/869288142/blog/tree/master/前端/CSS/n/两栏布局.md)   更新于2019.4.10
+* [两栏布局](https://github.com/869288142/blog/tree/master/前端/CSS/n/两栏布局.md)   更新于2019.4.12
+ 
+* [单栏布局](https://github.com/869288142/blog/tree/master/前端/CSS/n/单栏布局.md)   更新于2019.4.12
+ 
+* [重新认识bolck和inline-block](https://github.com/869288142/blog/tree/master/前端/CSS/n/重新认识bolck和inline-block.md)   更新于2019.4.13
+ 
+* [重新认识盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/n/重新认识盒模型.md)   更新于2019.4.13
  
 **Http** 
  
@@ -115,6 +123,8 @@
 * [关于异常机制带来的思考](https://github.com/869288142/blog/tree/master/前端/JS/n/关于异常机制带来的思考.md)   更新于2019.1.18
  
 * [函数AO对象](https://github.com/869288142/blog/tree/master/前端/JS/n/函数AO对象.md)   更新于2018.8.2
+ 
+* [原型](https://github.com/869288142/blog/tree/master/前端/JS/n/原型.md)   更新于2019.4.13
  
 * [变量提升](https://github.com/869288142/blog/tree/master/前端/JS/n/变量提升.md)   更新于2019.2.23
  
@@ -356,7 +366,7 @@
  
 **面试** 
  
-* [CSS](https://github.com/869288142/blog/tree/master/前端/面试/CSS.md)   更新于2019.4.10
+* [CSS](https://github.com/869288142/blog/tree/master/前端/面试/CSS.md)   更新于2019.4.13
  
 * [frame](https://github.com/869288142/blog/tree/master/前端/面试/frame.md)   更新于2019.4.7
  
@@ -364,9 +374,9 @@
  
 * [http](https://github.com/869288142/blog/tree/master/前端/面试/http.md)   更新于2019.4.7
  
-* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.7
+* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.13
  
-* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.7
+* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.13
  
 * [安全](https://github.com/869288142/blog/tree/master/前端/面试/安全.md)   更新于2019.4.7
  
@@ -376,5 +386,5 @@
  
 * [测试目录](https://github.com/869288142/blog/tree/master/前端/面试/测试目录.md)   更新于2019.4.11
  
-* [浏览器](https://github.com/869288142/blog/tree/master/前端/面试/浏览器.md)   更新于2019.4.7
+* [浏览器](https://github.com/869288142/blog/tree/master/前端/面试/浏览器.md)   更新于2019.4.13
  
