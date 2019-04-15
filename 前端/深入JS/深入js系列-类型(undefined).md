@@ -10,7 +10,18 @@ let a = 1 //定义：可以为变量分配存储空间，并且可以给变量�
 let b //声明：告诉编译器这个变量的名字和类型
 ```
 
-#####js无法区分未定义变量和未声明变量
+##### js无法在程序内安全识别区分未定义变量和未声明变量
+```js
+// let a 声明
+// 未声明
+try {
+  a
+} catch (error) {
+  error && console.log("变量未定义");
+}
+```
+##### typeof对未定义变量和未声明变量处理一视同仁
+
 ```js
 let a = 1
 b //没有声明的变量
@@ -18,7 +29,7 @@ typeof a //undefined
 typeof b  //undefined
 ```
 
-不过我们这样做, typeof不会区分undefined和undeclared,但是给了我们应对的方法
+在这种机制，typeof提供了一种对未定义变量和未声明变量100%安全的检测方法
 ```js
 //DEBUG 是一个开发环境下定义的全局变量，生产环境下没有这个变量
 // 这样会抛出错误，ReferenceError: DEBUG is not defined
@@ -31,10 +42,9 @@ console.log( "Debugging is starting" );
 }
 ```
 
-也许你不知道,undefined并不是一个关键字，这意味着我们可以定义它或者给它赋值,但是永远不要这样子做
+也许你不知道,**undefined并不是一个关键字**，这意味着我们可以**定义**它或者给它**赋值**,但是永远不要这样子做
 ```js
-// 非严格
-undefined = 2 //可以
+undefined = 2 //可以,但是没效果
 
 // 可以定义一个变量叫undefined,但是永远不要这样做
 
@@ -46,7 +56,16 @@ console.log( undefined ); // 2
 foo();
 ```
 
-#####undefined小结
+#####使用void 0获取安全的undefined
+
+```js
+void 0 // undefined
+```
+
+#####undefined用途
+undefined只是作为系统给未定义变量的初始值，我们最好不要手动把它赋值给变量
+
+#####undefined检测
 
 undefined在规范下，只出现在变量未定义或者未声明情况下，我们使用下面100%安全的检测方法
 ```js

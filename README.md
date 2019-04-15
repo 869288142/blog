@@ -90,6 +90,8 @@
  
 **撰写中** 
  
+* [apply](https://github.com/869288142/blog/tree/master/前端/JS/n/apply.md)   更新于2019.4.14
+ 
 * [import导入细节](https://github.com/869288142/blog/tree/master/前端/JS/n/import导入细节.md)   更新于2019.2.27
  
 * [js原型链](https://github.com/869288142/blog/tree/master/前端/JS/n/js原型链.md)   更新于2019.2.23
@@ -276,13 +278,19 @@
  
 * [深入js系列-环境](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-环境.md)   更新于2019.4.11
  
-* [深入js系列-类型(null)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(null).md)   更新于2019.4.11
+* [深入js系列-类型(boolean)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(boolean).md)   更新于2019.4.15
  
-* [深入js系列-类型(对象)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(对象).md)   更新于2019.4.11
+* [深入js系列-类型(null)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(null).md)   更新于2019.4.15
  
-* [深入js系列-类型(开篇)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(开篇).md)   更新于2019.4.11
+* [深入js系列-类型(undefined)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(undefined).md)   更新于2019.4.15
  
-* [深入js系列-类型(数字)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(数字).md)   更新于2019.4.11
+* [深入js系列-类型(字符串)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(字符串).md)   更新于2019.4.15
+ 
+* [深入js系列-类型(对象)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(对象).md)   更新于2019.4.15
+ 
+* [深入js系列-类型(开篇)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(开篇).md)   更新于2019.4.15
+ 
+* [深入js系列-类型(数字)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(数字).md)   更新于2019.4.15
  
 * [深入js系列-类型(显式强制转换)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(显式强制转换).md)   更新于2019.4.11
  
@@ -295,6 +303,10 @@
 **撰写中** 
  
 * [深入js系列-作用域](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-作用域.md)   更新于2019.3.27
+ 
+* [深入js系列-原型链](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-原型链.md)   更新于2019.4.15
+ 
+* [深入js系列-类型(symbol)](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-类型(symbol).md)   更新于2019.4.15
  
 * [深入js系列-错误](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-错误.md)   更新于2019.3.27
  
@@ -374,9 +386,9 @@
  
 * [http](https://github.com/869288142/blog/tree/master/前端/面试/http.md)   更新于2019.4.7
  
-* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.13
+* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.15
  
-* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.13
+* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.14
  
 * [安全](https://github.com/869288142/blog/tree/master/前端/面试/安全.md)   更新于2019.4.7
  

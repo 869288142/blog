@@ -81,5 +81,29 @@ https://github.com/yygmind/blog/issues/4
 
 call apply bind
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+js深入系列进度
+
+
 js学习进度
-变量
+undefined  完成
+null 完成
+true 完成
+数字 完成
+字符串 完成
+对象 完成
+符号 完成
+
+类型操作
