@@ -2,7 +2,6 @@
 setTimeout 只执行一次
 setInterval 会一直重复执行
 
-数据类型
 
 内存泄漏
 
@@ -24,7 +23,7 @@ this及其操作
 
 模块化
 
-内置对象
+
 
 变量提升
 var a = 10;
@@ -55,11 +54,11 @@ promise async、await 错误除以 优化
 
 
 
-排序
+
 
 继承函数extend
 
-递增数组
+
 
 
 遍历对象属性
@@ -81,6 +80,7 @@ https://github.com/yygmind/blog/issues/4
 
 call apply bind
 
+eventEmitter
 
 
 
@@ -106,4 +106,6 @@ true 完成
 对象 完成
 符号 完成
 
-类型操作
+类型上的操作
+
+

@@ -2,36 +2,37 @@
 这里的显式和隐式是以普遍的标准来进行讨论的，你能看出来是怎么回事，那么它对你是“显式”，相反你不知道的话，对你就是“隐式”
 
 ####抽象操作 
-字符串、数字、布尔值之间类型转换的基本规则 ES5定义了一些操作，诸如ToString、ToNumber、ToBoolean、ToPrimitive抽象操作
+字符串、数字、布尔值之间类型转换的基本规则 ，ES5定义了一些操作，诸如ToString、ToNumber、ToBoolean、ToPrimitive抽象操作
 
-1.ToString 负责处理非字符到字符串的强制类型转换
+##### ToString 负责处理非字符到字符串的强制类型转换
 
-    undefined => "undefined"
-    null => "null"
-    number => "number"  极大数和极小数用指数表示
-    boolean => "boolean"
-    Symbol => "Symbol"
-    Object => instance.toString || Object.prototype.toString //规则由抽象操作ToPrimitive抽象操作里完成  
+undefined => "undefined"
+null => "null"
+number => "number"  极大数和极小数用指数表示
+boolean => "boolean"
+Symbol => "symbol"
+Object => instance.toString ||Object.prototype.toString //规则由抽象操作ToPrimitive抽象操作里完成  
 
-2.ToNumber 非数字到数字的强制类型转换
+##### ToNumber 非数字到数字的强制类型转换
 
-    undefined => NaN
-    null => 0
-    boolean => true 1 false 0
-    Symbol => 无法转换，本身用途是为了解决命令冲突
-    string => 数字常量规则，失败为NaN，且0开头的十六进制按照十进制处理
-    Object => 由抽象操作ToPrimitive抽象操作，检查该值是否有valueof方法并且返回基本类型，有就对返回值进行强制转换，没有就使用toString的返回值来强制转换，两者都没有得到基本值，会产生TypeError错误，更详细的转换规则会在ToPrimitive抽象操作详解
+undefined => NaN
+null => 0
+boolean => true 1 false 0
+Symbol => 无法转换，本身用途是为了解决命名冲突
+string => 数字常量规则，失败为NaN，且0开头的十六进制按照十进制处理
+Object => 由抽象操作ToPrimitive抽象操作，检查该值是否有valueof方法并且返回基本类型，有就对返回值进行强制转换，没有就使用toString的返回值来强制转换，两者都没有得到基本值，会产生TypeError错误，更详细的转换规则会在ToPrimitive抽象操作详解
 
-3.ToBoolean
+##### ToBoolean
 
-3.1 假值(falsy value)
+###### 假值(falsy value)列表
 
-    undefined
-    null
-    false
-    +0、-0、NaN
-    ""
-    假值对象 document.all
+undefined
+null
+false
++0、-0、NaN
+""
+
+**假值对象 document.all**
 
 假值对象是游览器废弃对象之后，为了分辨版本将其修改为假值对象，document.all就是其中一个例子
 ![](https://img2018.cnblogs.com/blog/1361028/201903/1361028-20190320100042359-1445921439.png)
@@ -46,11 +47,11 @@ if (document.all) { .. }。
 “那我们应该怎么办？”
 “也许可以修改JavaScript 的类型机制，将document.all 作为假值来处理！”
 
-3.2 真值 除假值列表之外的值
+###### 真值 除假值列表之外的值
 
-####显式强制类型转换
+#### 显式强制类型转换
 
-1.1字符串和数字之间的显式转换
+##### 字符串和数字之间的显式转换
 ```js
 var a = 42;
 var b = String( a );
@@ -68,7 +69,7 @@ var d = +c; // +作为一元运算符来将操作数强制转换为数字
 b; // "42"
 d; // 3.14
 ```
-1.2.显式解析数字字符串 这里要注意的是，解析和转换还是有明显区别,转换不允许出现非数字字符串，看下面例子
+#####  显式解析数字字符串 这里要注意的是，解析和转换还是有明显区别,转换不允许出现非数字字符串，看下面例子
 ```js
 var a = "42";
 var b = "42px";
@@ -78,7 +79,7 @@ Number( b ); // NaN
 parseInt( b ); // 42
 ```
      
-2显式转换为布尔值 非布尔值转换到布尔值的情况
+##### 显式转换为布尔值 非布尔值转换到布尔值的情况
 ```js
 // 使用Boolean(),不过不常用
 var a = "0";
