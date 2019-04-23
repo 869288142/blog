@@ -36,6 +36,28 @@
  
 * [重新认识盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/n/重新认识盒模型.md)   更新于2019.4.13
  
+**FP** 
+ 
+* [第一章-传入参数技术](https://github.com/869288142/blog/tree/master/前端/FP/第一章-传入参数技术.md)   更新于2019.4.21
+ 
+* [第三章-理解副作用](https://github.com/869288142/blog/tree/master/前端/FP/第三章-理解副作用.md)   更新于2019.4.21
+ 
+* [第二章-函数复用技术](https://github.com/869288142/blog/tree/master/前端/FP/第二章-函数复用技术.md)   更新于2019.4.21
+ 
+* [第五章-列表操作](https://github.com/869288142/blog/tree/master/前端/FP/第五章-列表操作.md)   更新于2019.4.21
+ 
+* [第四章-值的不可变性](https://github.com/869288142/blog/tree/master/前端/FP/第四章-值的不可变性.md)   更新于2019.4.21
+ 
+   
+ 
+**撰写中** 
+ 
+* [函数柯里化](https://github.com/869288142/blog/tree/master/前端/FP/n/函数柯里化.md)   更新于2019.3.29
+ 
+* [函数编程范](https://github.com/869288142/blog/tree/master/前端/FP/n/函数编程范.md)   更新于2019.3.29
+ 
+* [轻量级函数式编程](https://github.com/869288142/blog/tree/master/前端/FP/n/轻量级函数式编程.md)   更新于2019.4.21
+ 
 **Http** 
  
 * [http协议](https://github.com/869288142/blog/tree/master/前端/Http/http协议.md)   更新于2019.3.2
@@ -56,7 +78,7 @@
  
 * [ES6解构赋值常见用法](https://github.com/869288142/blog/tree/master/前端/JS/ES6解构赋值常见用法.md)   更新于2019.3.27
  
-* [js中new操作符解析](https://github.com/869288142/blog/tree/master/前端/JS/js中new操作符解析.md)   更新于2019.3.27
+* [js中new操作符解析](https://github.com/869288142/blog/tree/master/前端/JS/js中new操作符解析.md)   更新于2019.4.22
  
 * [js中的自动包装机制](https://github.com/869288142/blog/tree/master/前端/JS/js中的自动包装机制.md)   更新于2019.3.27
  
@@ -81,6 +103,8 @@
 * [数组遍历小结](https://github.com/869288142/blog/tree/master/前端/JS/数组遍历小结.md)   更新于2019.3.27
  
 * [深拷贝与浅拷贝](https://github.com/869288142/blog/tree/master/前端/JS/深拷贝与浅拷贝.md)   更新于2019.3.27
+ 
+* [类数组转数组](https://github.com/869288142/blog/tree/master/前端/JS/类数组转数组.md)   更新于2019.4.22
  
 * [迭代器Iterator](https://github.com/869288142/blog/tree/master/前端/JS/迭代器Iterator.md)   更新于2019.3.27
  
@@ -124,7 +148,7 @@
  
 * [关于异常机制带来的思考](https://github.com/869288142/blog/tree/master/前端/JS/n/关于异常机制带来的思考.md)   更新于2019.1.18
  
-* [函数AO对象](https://github.com/869288142/blog/tree/master/前端/JS/n/函数AO对象.md)   更新于2018.8.2
+* [函数AO对象](https://github.com/869288142/blog/tree/master/前端/JS/n/函数AO对象.md)   更新于2019.4.18
  
 * [原型](https://github.com/869288142/blog/tree/master/前端/JS/n/原型.md)   更新于2019.4.13
  
@@ -212,6 +236,8 @@
  
 * [分页思路](https://github.com/869288142/blog/tree/master/前端/Vue/n/分页思路.md)   更新于2019.3.31
  
+* [对Vue的个人理解](https://github.com/869288142/blog/tree/master/前端/Vue/n/对Vue的个人理解.md)   更新于2019.4.18
+ 
 * [浅谈Vue性能优化](https://github.com/869288142/blog/tree/master/前端/Vue/n/浅谈Vue性能优化.md)   更新于2018.8.1
  
 * [组件通信](https://github.com/869288142/blog/tree/master/前端/Vue/n/组件通信.md)   更新于2018.8.18
@@ -276,11 +302,13 @@
  
 **深入JS** 
  
-* [深入js系列-环境](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-环境.md)   更新于2019.4.11
+* [深入js系列-环境](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-环境.md)   更新于2019.4.15
  
 * [深入js系列-类型(boolean)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(boolean).md)   更新于2019.4.15
  
 * [深入js系列-类型(null)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(null).md)   更新于2019.4.15
+ 
+* [深入js系列-类型(symbol)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(symbol).md)   更新于2019.4.15
  
 * [深入js系列-类型(undefined)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(undefined).md)   更新于2019.4.15
  
@@ -292,11 +320,11 @@
  
 * [深入js系列-类型(数字)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(数字).md)   更新于2019.4.15
  
-* [深入js系列-类型(显式强制转换)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(显式强制转换).md)   更新于2019.4.11
+* [深入js系列-类型(显式强制转换)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(显式强制转换).md)   更新于2019.4.15
  
-* [深入js系列-类型(隐式强制转换)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(隐式强制转换).md)   更新于2019.4.11
+* [深入js系列-类型(隐式强制转换)](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-类型(隐式强制转换).md)   更新于2019.4.15
  
-* [深入js系列-语法](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-语法.md)   更新于2019.4.11
+* [深入js系列-语法](https://github.com/869288142/blog/tree/master/前端/深入JS/深入js系列-语法.md)   更新于2019.4.16
  
    
  
@@ -306,9 +334,9 @@
  
 * [深入js系列-原型链](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-原型链.md)   更新于2019.4.15
  
-* [深入js系列-类型(symbol)](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-类型(symbol).md)   更新于2019.4.15
- 
 * [深入js系列-错误](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-错误.md)   更新于2019.3.27
+ 
+* [聊聊this](https://github.com/869288142/blog/tree/master/前端/深入JS/n/聊聊this.md)   更新于2019.4.21
  
 **设计模式** 
  
@@ -356,6 +384,8 @@
  
 **撰写中** 
  
+* [MVVM](https://github.com/869288142/blog/tree/master/前端/设计模式/n/MVVM.md)   更新于2019.4.18
+ 
 * [代理](https://github.com/869288142/blog/tree/master/前端/设计模式/n/代理.md)   更新于2018.10.2
  
 * [命令模式](https://github.com/869288142/blog/tree/master/前端/设计模式/n/命令模式.md)   更新于2018.10.26
@@ -380,19 +410,23 @@
  
 * [CSS](https://github.com/869288142/blog/tree/master/前端/面试/CSS.md)   更新于2019.4.13
  
-* [frame](https://github.com/869288142/blog/tree/master/前端/面试/frame.md)   更新于2019.4.7
+* [frame](https://github.com/869288142/blog/tree/master/前端/面试/frame.md)   更新于2019.4.20
  
-* [HTML](https://github.com/869288142/blog/tree/master/前端/面试/HTML.md)   更新于2019.4.7
+* [HTML](https://github.com/869288142/blog/tree/master/前端/面试/HTML.md)   更新于2019.4.22
  
 * [http](https://github.com/869288142/blog/tree/master/前端/面试/http.md)   更新于2019.4.7
  
-* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.15
+* [JS](https://github.com/869288142/blog/tree/master/前端/面试/JS.md)   更新于2019.4.22
  
-* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.14
+* [一言以蔽之](https://github.com/869288142/blog/tree/master/前端/面试/一言以蔽之.md)   更新于2019.4.22
+ 
+* [基础算法](https://github.com/869288142/blog/tree/master/前端/面试/基础算法.md)   更新于2019.4.17
  
 * [安全](https://github.com/869288142/blog/tree/master/前端/面试/安全.md)   更新于2019.4.7
  
 * [工程化](https://github.com/869288142/blog/tree/master/前端/面试/工程化.md)   更新于2019.4.7
+ 
+* [待分析面试题](https://github.com/869288142/blog/tree/master/前端/面试/待分析面试题.md)   更新于2019.4.18
  
 * [性能优化](https://github.com/869288142/blog/tree/master/前端/面试/性能优化.md)   更新于2019.4.7
  

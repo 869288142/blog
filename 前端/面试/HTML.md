@@ -28,3 +28,5 @@ function hello2(){
 }
 
 DOM操作
+
+事件模型和事件代理

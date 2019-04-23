@@ -1,31 +1,32 @@
-####定时器区别
-setTimeout 只执行一次
-setInterval 会一直重复执行
-
-
-内存泄漏
-
-
-事件模型和事件代理
-
-闭包
-
-new 操作符
-
-类型检测
-
-原型链
-
-this及其操作
-
-
-作用域链
-
-模块化
 
 
 
-变量提升
+作用域链(变量声明、变量提升、AO) 作用域链
+函数 函数声明 函数表达式    调用方式(call apply bind)
+闭包(内存泄漏)(IIFE) 模块化
+原型链(相关检测 instanceof)  this  类(创建、继承、ES6变化、深拷贝和浅拷贝)
+异步解决方案 promise async、await 错误处理 优化
+语法糖(箭头函数)，以及一些新的扩展（数组，字符串，对象，方法等），以及异步编程的解决方案（promise，async，await）、解构赋值的出现
+
+
+
+
+
+
+注意不要太泛太深   先薄弱
+
+
+
+
+
+
+
+
+
+
+
+
+
 var a = 10;
 (function () {
     console.log(a)
@@ -43,44 +44,23 @@ var b = 10;
 
 
 
-ES6-10
-语法糖(箭头函数，类的定义，继承)，以及一些新的扩展（数组，字符串，对象，方法等），对作用域的重新定义，以及异步编程的解决方案（promise，async，await）、解构赋值的出现
-
-promise async、await 错误除以 优化
-
-类
-
-深拷贝和浅拷贝
 
 
 
 
 
-继承函数extend
 
 
 
 
-遍历对象属性
-
-IIFE
-
-原型式继承
-
-怎么实现this对象的深拷贝
-
-异步解决方案
 
 
-词法作用域 this(类似动态作用域)
 
-类数组转数组
 
-https://github.com/yygmind/blog/issues/4
 
-call apply bind
 
-eventEmitter
+
+
 
 
 
