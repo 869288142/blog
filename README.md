@@ -80,6 +80,8 @@
  
 * [js中new操作符解析](https://github.com/869288142/blog/tree/master/前端/JS/js中new操作符解析.md)   更新于2019.4.22
  
+* [js中VO解析](https://github.com/869288142/blog/tree/master/前端/JS/js中VO解析.md)   更新于2019.4.22
+ 
 * [js中的自动包装机制](https://github.com/869288142/blog/tree/master/前端/JS/js中的自动包装机制.md)   更新于2019.3.27
  
 * [js空对象判断](https://github.com/869288142/blog/tree/master/前端/JS/js空对象判断.md)   更新于2019.3.27
@@ -99,6 +101,12 @@
 * [sort多重排序](https://github.com/869288142/blog/tree/master/前端/JS/sort多重排序.md)   更新于2019.3.27
  
 * [table相关问题](https://github.com/869288142/blog/tree/master/前端/JS/table相关问题.md)   更新于2019.3.27
+ 
+* [作用域](https://github.com/869288142/blog/tree/master/前端/JS/作用域.md)   更新于2019.4.23
+ 
+* [变量声明](https://github.com/869288142/blog/tree/master/前端/JS/变量声明.md)   更新于2019.4.23
+ 
+* [变量提升](https://github.com/869288142/blog/tree/master/前端/JS/变量提升.md)   更新于2019.4.23
  
 * [数组遍历小结](https://github.com/869288142/blog/tree/master/前端/JS/数组遍历小结.md)   更新于2019.3.27
  
@@ -142,17 +150,11 @@
  
 * [不使用分号带来的ASI问题](https://github.com/869288142/blog/tree/master/前端/JS/n/不使用分号带来的ASI问题.md)   更新于2019.1.28
  
-* [作用域](https://github.com/869288142/blog/tree/master/前端/JS/n/作用域.md)   更新于2019.3.26
- 
 * [关于前端规范化](https://github.com/869288142/blog/tree/master/前端/JS/n/关于前端规范化.md)   更新于2019.1.31
  
 * [关于异常机制带来的思考](https://github.com/869288142/blog/tree/master/前端/JS/n/关于异常机制带来的思考.md)   更新于2019.1.18
  
-* [函数AO对象](https://github.com/869288142/blog/tree/master/前端/JS/n/函数AO对象.md)   更新于2019.4.18
- 
 * [原型](https://github.com/869288142/blog/tree/master/前端/JS/n/原型.md)   更新于2019.4.13
- 
-* [变量提升](https://github.com/869288142/blog/tree/master/前端/JS/n/变量提升.md)   更新于2019.2.23
  
 * [如何在ES6类中写一个函数函数表达式属性](https://github.com/869288142/blog/tree/master/前端/JS/n/如何在ES6类中写一个函数函数表达式属性.md)   更新于2019.4.8
  
@@ -330,7 +332,7 @@
  
 **撰写中** 
  
-* [深入js系列-作用域](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-作用域.md)   更新于2019.3.27
+* [深入js系列-作用域](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-作用域.md)   更新于2019.4.23
  
 * [深入js系列-原型链](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-原型链.md)   更新于2019.4.15
  
