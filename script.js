@@ -22,8 +22,6 @@ class generateDir {
         let fpath = path.split(sep) //以路径分割符将路径分割成数组
         // 获取文件名
         let fileName = fpath[fpath.length - 1]
-        // 文件更新时间
-        let updateTime = this.formatDate(stat.mtime)
         // 将内容追加到README.md
         let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
         // 文件输出内容
@@ -33,7 +31,6 @@ class generateDir {
           // URL
           `(${this.repPath}/${fpath.join('/')})   ` +
           // 更新时间
-          `更新于${updateTime}` +
           // 空行
           `\r\n \r\n`
         fs.appendFileSync(this.outputFile, content)

@@ -19,7 +19,6 @@ let readDir = function(path) {
       // 获取文件名
       let fileName = fpath[fpath.length - 1]
       // 文件更新时间
-      let updateTime = formatDate(stat.mtime)
       // 将内容追加到README.md
       let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
       // 文件输出内容
@@ -28,8 +27,6 @@ let readDir = function(path) {
         `* [${fileNameWithoutSuffix}]` +
         // URL
         `(${repPath}/${fpath.join('/')})` +
-        // 更新时间
-        `更新于${updateTime}` +
         // 空行
         `\r\n \r\n`
       fs.appendFileSync(outputFile, content)
