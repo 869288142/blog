@@ -17,6 +17,10 @@
 
 防抖和节流
 
+sleep函数
+
+实现Node EventEmitter
+
 
 
 

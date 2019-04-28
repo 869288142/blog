@@ -34,17 +34,21 @@ Function.prototype.apply2 = function (context, arr) {
 ```
 bind
 ```js
-Function.prototype.bind2 = function (context) {
-
-  var self = this;
+Function.prototype.bind2 = function(context) {
+  var self = this
   // 获取bind2函数从第二个参数到最后一个参数
-  var args = Array.prototype.slice.call(arguments, 1);
-
-  return function () {
-      // 这个时候的arguments是指bind返回的函数传入的参数
-      var bindArgs = Array.prototype.slice.call(arguments);
-      return self.apply(context, args.concat(bindArgs));
+  var args = Array.prototype.slice.call(arguments, 1)
+  var fNOP = function() {}
+  var fBound = function() {
+    // 这个时候的arguments是指bind返回的函数传入的参数
+    var bindArgs = Array.prototype.slice.call(arguments)
+    return self.apply(
+      this instanceof fBound ? this : context,
+      args.concat(bindArgs)
+    )
   }
-
+  fNOP.prototype = this.prototype
+  fBound.prototype = new fNOP()
+  return fBound
 }
 ```
