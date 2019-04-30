@@ -1,36 +1,15 @@
 
 
 
-作用域链(变量声明、变量提升、AO)  
 
-类(创建、继承、ES6变化、深拷贝和浅拷贝) 原型链(属性屏蔽、类族检测 原型检测)  this 
-
-
-
-函数 函数声明 函数表达式    调用方式(call apply bind)
+深拷贝 浅拷贝
 异步解决方案 promise async、await 错误处理 优化
-语法糖(箭头函数)，以及一些新的扩展（数组，字符串，对象，方法等），以及异步编程的解决方案（promise，async，await）、解构赋值的出现
 闭包(内存泄漏)(IIFE) 模块化
-
-
-实现call apply bind instanceof
-
+instanceof
 防抖和节流
-
 sleep函数
-
 实现Node EventEmitter
-
-
-
-
-
-
-
-
-
-
-
+常见设计模式
 
 
 var a = 10;
@@ -47,6 +26,15 @@ var b = 10;
     b = 20;
     console.log(b); 
 })();
+
+
+
+
+
+
+
+
+
 
 
 
