@@ -4,7 +4,7 @@
 
 深拷贝 浅拷贝
 异步解决方案 promise async、await 错误处理 优化
-闭包(内存泄漏)(IIFE) 模块化
+闭包(内存泄漏)(IIFE) 模块化(了解发展史及常见模块使用)
 instanceof
 防抖和节流
 sleep函数
