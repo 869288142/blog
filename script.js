@@ -28,8 +28,8 @@ class generateDir {
         // 获取文件名
         let fileName = fpath[fpath.length - 1]
         fileName = this.formatOrderName(fileName)
-        // 获取输出文件名
         let content = this.formatFileContent(fileName, fpath)
+        // 获取输出文件名
         fs.appendFileSync(this.outputFile, content)
       } else if (stat.isDirectory()) {
         //如果是文件夹

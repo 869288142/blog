@@ -1,77 +1,140 @@
-**CSS世界读书笔记**
-
-**CSS世界观**
-
-* [抽象CSS](https://github.com/869288142/blog/tree/master/%E5%89%8D%E7%AB%AF/CSS/CSS%E4%B8%96%E7%95%8C)
-* [流](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/CSS%E4%B8%96%E7%95%8C/%E6%B5%81.md)
-
-**盒模型**
-* [重新认识盒模型](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86%E7%9B%92%E6%A8%A1%E5%9E%8B.md)
-* [width](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/width.md)
-* [height](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/height.md)
-* [content](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/content.md)
-* [padding](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/padding.md)
-* [border](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/border.md)
-* [margin](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/CSS/%E7%9B%92%E6%A8%A1%E5%9E%8B/margin.md)
-
-
-**深入JS系列** 
+**前端** 
+ 
+**CSS** 
+ 
+**CSS世界** 
+ 
+* [CSS世界观](https://github.com/869288142/blog/tree/master/前端/CSS/1CSS世界/CSS世界观.md)   
+ 
+* [流](https://github.com/869288142/blog/tree/master/前端/CSS/1CSS世界/流.md)   
+ 
+**盒模型** 
+ 
+* [重新认识盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/1重新认识盒模型.md)   
+ 
+* [width](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/2width.md)   
+ 
+* [height](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/3height.md)   
+ 
+* [content](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/4content.md)   
+ 
+* [padding](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/5padding.md)   
+ 
+* [border](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/6border.md)   
+ 
+* [margin](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/7margin.md)   
+ 
+**流** 
+ 
+* [内联元素](https://github.com/869288142/blog/tree/master/前端/CSS/3流/内联元素.md)   
+ 
+* [重新认识bolck和inline-block](https://github.com/869288142/blog/tree/master/前端/CSS/3流/重新认识bolck和inline-block.md)   
+ 
+**选择器** 
+ 
+* [first-child、last-child误解](https://github.com/869288142/blog/tree/master/前端/CSS/4选择器/first-child、last-child误解.md)   
+ 
+* [选择器整理](https://github.com/869288142/blog/tree/master/前端/CSS/4选择器/选择器整理.md)   
+ 
+**常见布局** 
+ 
+* [flex](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/flex.md)   
+ 
+* [footer置底](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/footer置底.md)   
+ 
+* [三栏布局常见方案](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/三栏布局常见方案.md)   
+ 
+* [两栏布局](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/两栏布局.md)   
+ 
+* [单栏布局](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/单栏布局.md)   
+ 
+   
+ 
+**撰写中** 
+ 
+* [box-sizing](https://github.com/869288142/blog/tree/master/前端/CSS/n/box-sizing.md)   
+ 
+* [css](https://github.com/869288142/blog/tree/master/前端/CSS/n/css.md)   
+ 
+* [css世界学习笔记](https://github.com/869288142/blog/tree/master/前端/CSS/n/css世界学习笔记.md)   
+ 
+* [CSS居中方案](https://github.com/869288142/blog/tree/master/前端/CSS/n/CSS居中方案.md)   
+ 
+* [CSS盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/n/CSS盒模型.md)   
+ 
+* [first-child、last-child误解](https://github.com/869288142/blog/tree/master/前端/CSS/n/first-child、last-child误解.md)   
+ 
+* [flex](https://github.com/869288142/blog/tree/master/前端/CSS/n/flex.md)   
+ 
+**深入JS** 
  
 **类型** 
-* [开篇](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/%E5%BC%80%E7%AF%87.md) 
-
-* [null](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/null.md) 
-
-* [boolean](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/boolean.md)   
-* [数字](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/%E6%95%B0%E5%AD%97.md)  
-
-* [symbol](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/symbol.md)   
  
-* [字符串](https://github.com/869288142/blog/blob/master/前端/深入JS/类型/字符串.md)   
+* [开篇](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/1开篇.md)   
  
-* [对象](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B/%E5%AF%B9%E8%B1%A1.md)   
+* [undefined](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/2undefined.md)   
  
+* [null](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/3null.md)   
  
-
-**类型转换**
-* [显式强制转换](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E6%98%BE%E5%BC%8F%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2.md)   
-
-* [隐式强制转换](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E9%9A%90%E5%BC%8F%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2.md)
-
-**环境**
-
-* [环境](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%8E%AF%E5%A2%83/%E7%8E%AF%E5%A2%83.md)  
-
-**语法**
+* [boolean](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/4boolean.md)   
  
-* [语法](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E8%AF%AD%E6%B3%95/%E8%AF%AD%E6%B3%95.md) 
-
-
-**变量**
-
-* [变量声明](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E5%8F%98%E9%87%8F/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E.md) 
-
-* [变量提升](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E5%8F%98%E9%87%8F/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md) 
-
-**作用域**
-
-* [作用域链分析](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E4%BD%9C%E7%94%A8%E5%9F%9F.md) 
-
-**类**
-
-
-* [ES5-类](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA.md) 
-
-* [ES6-类](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB/ES6%E7%B1%BB%E5%8E%9F%E7%90%86.md) 
-
-* 类检测
-
-* [原型链及属性屏蔽](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/n/%E6%B7%B1%E5%85%A5js%E7%B3%BB%E5%88%97-%E5%8E%9F%E5%9E%8B%E9%93%BE.md) 
-
-* [ES5-继承](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB/%E7%B1%BB%E7%BB%A7%E6%89%BF.md) 
-
-* [ES6-继承](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB/ES6%E7%B1%BB%E7%BB%A7%E6%89%BF.md) 
-
-* [类族检测](https://github.com/869288142/blog/blob/master/%E5%89%8D%E7%AB%AF/%E6%B7%B1%E5%85%A5JS/%E7%B1%BB/%E7%B1%BB%E6%97%8F%E6%A3%80%E6%B5%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E6%A3%80%E6%B5%8B.md) 
-
-
+* [数字](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/5数字.md)   
+ 
+* [symbol](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/6symbol.md)   
+ 
+* [对象](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/7对象.md)   
+ 
+* [字符串](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/8字符串.md)   
+ 
+**类型转换** 
+ 
+* [显式强制转换](https://github.com/869288142/blog/tree/master/前端/深入JS/2类型转换/显式强制转换.md)   
+ 
+* [隐式强制转换](https://github.com/869288142/blog/tree/master/前端/深入JS/2类型转换/隐式强制转换.md)   
+ 
+**环境** 
+ 
+* [环境](https://github.com/869288142/blog/tree/master/前端/深入JS/3环境/环境.md)   
+ 
+**语法** 
+ 
+* [语法](https://github.com/869288142/blog/tree/master/前端/深入JS/4语法/语法.md)   
+ 
+**变量** 
+ 
+* [变量声明](https://github.com/869288142/blog/tree/master/前端/深入JS/5变量/变量声明.md)   
+ 
+* [变量提升](https://github.com/869288142/blog/tree/master/前端/深入JS/5变量/变量提升.md)   
+ 
+**作用域** 
+ 
+* [VO](https://github.com/869288142/blog/tree/master/前端/深入JS/6作用域/VO.md)   
+ 
+* [作用域](https://github.com/869288142/blog/tree/master/前端/深入JS/6作用域/作用域.md)   
+ 
+**类** 
+ 
+* [对象创建](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/1对象创建.md)   
+ 
+* [ES6类原理](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/2ES6类原理.md)   
+ 
+* [类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/3类继承.md)   
+ 
+* [ES6类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/4ES6类继承.md)   
+ 
+* [类族检测、原型检测](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/5类族检测、原型检测.md)   
+ 
+   
+ 
+**撰写中** 
+ 
+* [深入js系列-作用域](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-作用域.md)   
+ 
+* [深入js系列-原型链](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-原型链.md)   
+ 
+* [深入js系列-错误](https://github.com/869288142/blog/tree/master/前端/深入JS/n/深入js系列-错误.md)   
+ 
+* [聊聊this](https://github.com/869288142/blog/tree/master/前端/深入JS/n/聊聊this.md)   
+ 
+* [目前看过的书单](https://github.com/869288142/blog/tree/master/前端/目前看过的书单.md)   
+ 
