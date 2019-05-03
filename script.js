@@ -1,11 +1,16 @@
 let fs = require('fs') //读写文件就需要引入fs--文件系统模块
 let path = require('path')
 let { sep } = path
+function illegalArgs() {
+  throw new Error('缺失参数')
+}
 class generateDir {
-  constructor(repPath, outputFile, path) {
+  constructor({ repPath, outputFile, path, include } = illegalArgs()) {
     this.repPath = repPath
     this.outputFile = outputFile
     this.path = path
+    this.include = include
+    console.log(this.include)
   }
   run() {
     this.unLinkOutput(this.outputFile)
@@ -22,6 +27,7 @@ class generateDir {
         let fpath = path.split(sep) //以路径分割符将路径分割成数组
         // 获取文件名
         let fileName = fpath[fpath.length - 1]
+        fileName = this.formatOrderName(fileName)
         // 将内容追加到README.md
         let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
         // 文件输出内容
@@ -41,13 +47,19 @@ class generateDir {
         let fileName = fpath[fpath.length - 1]
         let files = fs.readdirSync(path) //返回 指定目录下所有文件名称
         // 过滤掉只有n下属文件夹和空n文件夹
-        let normalContent = `**${fileName}**`
-        let nContent = '   \r\n \r\n**撰写中**'
-        let totalContent = `${
-          fileName === 'n' ? nContent : normalContent
-        } \r\n \r\n`
-
-        if (files.length !== 1 && files.length !== 0) {
+        if (
+          // files.length !== 1 &&
+          // files.length !== 0 &&
+          !this.include.includes(fileName)
+        ) {
+          // 将用于排序的数字从目录中删除
+          fileName = this.formatOrderName(fileName)
+          console.log(fileName);
+          let normalContent = `**${fileName}**`
+          let nContent = '   \r\n \r\n**撰写中**'
+          let totalContent = `${
+            fileName === 'n' ? nContent : normalContent
+          } \r\n \r\n`
           // n 文件夹名替换成撰写中
           fs.appendFileSync(this.outputFile, totalContent)
           // 遍历文件夹下属文件
@@ -69,6 +81,12 @@ class generateDir {
   formatDate(date) {
     return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
   }
+  formatOrderName(fileName) {
+    let [firstChar, ...realName] = fileName
+    let reg = /^[0-9]{1}$/
+    reg.test(firstChar) && (realName.join(""))
+    return reg.test(firstChar) ? (realName.join("")) : fileName
+  }
   unLinkOutput(outputFile) {
     let unlinkPath = `${path.resolve('.')}/${outputFile}`
     if (fs.existsSync(unlinkPath)) {
@@ -78,4 +96,3 @@ class generateDir {
 }
 
 module.exports = exports = generateDir
-
