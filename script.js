@@ -10,10 +10,10 @@ class generateDir {
     this.outputFile = outputFile
     this.path = path
     this.include = include
-    console.log(this.include)
   }
   run() {
     this.unLinkOutput(this.outputFile)
+    this.include = this.getIncludeList(this.include ,this.path)
     this.readDir(this.path)
   }
   readDir(path) {
@@ -28,17 +28,8 @@ class generateDir {
         // 获取文件名
         let fileName = fpath[fpath.length - 1]
         fileName = this.formatOrderName(fileName)
-        // 将内容追加到README.md
-        let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
-        // 文件输出内容
-        let content =
-          // 文件名
-          `* [${fileNameWithoutSuffix}]` +
-          // URL
-          `(${this.repPath}/${fpath.join('/')})   ` +
-          // 更新时间
-          // 空行
-          `\r\n \r\n`
+        // 获取输出文件名
+        let content = this.formatFileContent(fileName, fpath)
         fs.appendFileSync(this.outputFile, content)
       } else if (stat.isDirectory()) {
         //如果是文件夹
@@ -46,20 +37,10 @@ class generateDir {
         // 获取文件名
         let fileName = fpath[fpath.length - 1]
         let files = fs.readdirSync(path) //返回 指定目录下所有文件名称
-        // 过滤掉只有n下属文件夹和空n文件夹
-        if (
-          // files.length !== 1 &&
-          // files.length !== 0 &&
-          !this.include.includes(fileName)
-        ) {
+        if (!this.include.includes(fileName)) {
           // 将用于排序的数字从目录中删除
           fileName = this.formatOrderName(fileName)
-          console.log(fileName);
-          let normalContent = `**${fileName}**`
-          let nContent = '   \r\n \r\n**撰写中**'
-          let totalContent = `${
-            fileName === 'n' ? nContent : normalContent
-          } \r\n \r\n`
+          let totalContent = this.formatDirContent(fileName)
           // n 文件夹名替换成撰写中
           fs.appendFileSync(this.outputFile, totalContent)
           // 遍历文件夹下属文件
@@ -78,15 +59,41 @@ class generateDir {
       console.info('根目录不存在.')
     }
   }
-  formatDate(date) {
-    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
+  getIncludeList(include, path) {
+    let files = fs.readdirSync(path)
+    files = files.filter(e => !include.includes(e))
+    return files
   }
+  // 输出文件夹内容
+  formatDirContent(fileName) {
+    let normalContent = `**${fileName}**`
+    let nContent = '   \r\n \r\n**撰写中**'
+    let totalContent = `${
+      fileName === 'n' ? nContent : normalContent
+    } \r\n \r\n`
+    return totalContent
+  }
+  // 生成文件内容
+  formatFileContent(fileName, fpath) {
+    // 将内容追加到README.md
+    let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
+    // 文件输出内容
+    let content =
+      // 文件名
+      `* [${fileNameWithoutSuffix}]` +
+      // URL
+      `(${this.repPath}/${fpath.join('/')})   ` +
+      // 更新时间
+      // 空行
+      `\r\n \r\n`
+    return content
+  }
+  // 去除字符串开头的数字
   formatOrderName(fileName) {
-    let [firstChar, ...realName] = fileName
-    let reg = /^[0-9]{1}$/
-    reg.test(firstChar) && (realName.join(""))
-    return reg.test(firstChar) ? (realName.join("")) : fileName
+    let reg = /^[0-9]*(.*)$/
+    return fileName.replace(reg, '$1')
   }
+  // 删除目录
   unLinkOutput(outputFile) {
     let unlinkPath = `${path.resolve('.')}/${outputFile}`
     if (fs.existsSync(unlinkPath)) {

@@ -10,19 +10,19 @@
  
 **盒模型** 
  
-* [border](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/border.md)   
+* [重新认识盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/1重新认识盒模型.md)   
  
-* [content](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/content.md)   
+* [width](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/2width.md)   
  
-* [height](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/height.md)   
+* [height](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/3height.md)   
  
-* [margin](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/margin.md)   
+* [content](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/4content.md)   
  
-* [padding](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/padding.md)   
+* [padding](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/5padding.md)   
  
-* [width](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/width.md)   
+* [border](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/6border.md)   
  
-* [重新认识盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/重新认识盒模型.md)   
+* [margin](https://github.com/869288142/blog/tree/master/前端/CSS/2盒模型/7margin.md)   
  
 **流** 
  
@@ -84,7 +84,7 @@
  
 * [对象](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/7对象.md)   
  
-* [字符串](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/字符串.md)   
+* [字符串](https://github.com/869288142/blog/tree/master/前端/深入JS/1类型/8字符串.md)   
  
 **类型转换** 
  
@@ -114,15 +114,15 @@
  
 **类** 
  
-* [ES6类原理](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/ES6类原理.md)   
+* [对象创建](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/1对象创建.md)   
  
-* [ES6类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/ES6类继承.md)   
+* [ES6类原理](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/2ES6类原理.md)   
  
-* [对象创建](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/对象创建.md)   
+* [类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/3类继承.md)   
  
-* [类族检测、原型检测](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/类族检测、原型检测.md)   
+* [ES6类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/4ES6类继承.md)   
  
-* [类继承](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/类继承.md)   
+* [类族检测、原型检测](https://github.com/869288142/blog/tree/master/前端/深入JS/7类/5类族检测、原型检测.md)   
  
    
  
