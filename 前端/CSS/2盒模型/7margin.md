@@ -110,9 +110,9 @@ margin: auto是为了填充失去流动性元素的闲置尺寸设计的,本质�
 3. 负负最负值
 
 #### margin无效情况
-1. inline 非替换元素的垂直margin无效
-2. margin出现合并时，可能出现无效
-3. 绝对定位的非定位方位margin无效，实质上是不影响周围元素。
-4. 定高 margin-bottom 定宽margin-right 失效
+1. inline 非替换元素的垂直margin无效 1
+2. margin出现合并时，可能出现无效 1
+3. 绝对定位的非定位方位margin无效，实质上是不影响周围元素。 1
+4. 定高 margin-bottom 定宽margin-right 失效 1
 5. float和 overflow 特殊情况
-6. 内联特性导致margin失效
+6. 内联特性导致margin失效 1

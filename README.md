@@ -28,6 +28,8 @@
  
 * [内联元素](https://github.com/869288142/blog/tree/master/前端/CSS/3流/内联元素.md)   
  
+* [破坏流](https://github.com/869288142/blog/tree/master/前端/CSS/3流/破坏流.md)   
+ 
 * [重新认识bolck和inline-block](https://github.com/869288142/blog/tree/master/前端/CSS/3流/重新认识bolck和inline-block.md)   
  
 **选择器** 
@@ -37,6 +39,8 @@
 * [选择器整理](https://github.com/869288142/blog/tree/master/前端/CSS/4选择器/选择器整理.md)   
  
 **常见布局** 
+ 
+* [CSS居中方案](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/CSS居中方案.md)   
  
 * [flex](https://github.com/869288142/blog/tree/master/前端/CSS/5常见布局/flex.md)   
  
@@ -57,8 +61,6 @@
 * [css](https://github.com/869288142/blog/tree/master/前端/CSS/n/css.md)   
  
 * [css世界学习笔记](https://github.com/869288142/blog/tree/master/前端/CSS/n/css世界学习笔记.md)   
- 
-* [CSS居中方案](https://github.com/869288142/blog/tree/master/前端/CSS/n/CSS居中方案.md)   
  
 * [CSS盒模型](https://github.com/869288142/blog/tree/master/前端/CSS/n/CSS盒模型.md)   
  
