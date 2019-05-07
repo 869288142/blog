@@ -116,6 +116,8 @@
  
 * [语法](https://github.com/869288142/blog/tree/master/前端/深入JS/4语法/语法.md)   
  
+* [赋值表达式](https://github.com/869288142/blog/tree/master/前端/深入JS/4语法/赋值表达式.md)   
+ 
 **变量** 
  
 * [变量声明](https://github.com/869288142/blog/tree/master/前端/深入JS/5变量/变量声明.md)   
