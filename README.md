@@ -66,6 +66,10 @@
  
 * [装饰与美化](https://github.com/869288142/blog/tree/master/前端/CSS/7装饰与美化/装饰与美化.md)   
  
+**遇到的问题** 
+ 
+* [内联元素并列](https://github.com/869288142/blog/tree/master/前端/CSS/遇到的问题/内联元素并列.md)   
+ 
    
  
 **撰写中** 
@@ -73,6 +77,8 @@
 * [box-sizing](https://github.com/869288142/blog/tree/master/前端/CSS/n/box-sizing.md)   
  
 * [css](https://github.com/869288142/blog/tree/master/前端/CSS/n/css.md)   
+ 
+* [css3特性概览](https://github.com/869288142/blog/tree/master/前端/CSS/n/css3特性概览.md)   
  
 * [css世界学习笔记](https://github.com/869288142/blog/tree/master/前端/CSS/n/css世界学习笔记.md)   
  
@@ -145,6 +151,10 @@
    
  
 **撰写中** 
+ 
+* [instanceof](https://github.com/869288142/blog/tree/master/前端/深入JS/n/instanceof.md)   
+ 
+* [promise](https://github.com/869288142/blog/tree/master/前端/深入JS/n/promise.md)   
  
 * [拷贝](https://github.com/869288142/blog/tree/master/前端/深入JS/n/拷贝.md)   
  
