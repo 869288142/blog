@@ -8,7 +8,7 @@ JSONP
 
 TCP UDP
 
-get post区别
+get post区别 完成
 
 
 请求头
