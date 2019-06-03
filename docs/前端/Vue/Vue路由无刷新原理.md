@@ -1,0 +1,119 @@
+### 路由原理
+#### 实现前端路由的核心
+1. 如何改变 URL 却不引起页面刷新？
+2. 如何检测 URL 变化了？
+3. 对应变化的URL切换对应视图
+
+**hash实现**
+1. hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进行导航，改变 URL 中的 hash 部分不会引起页面刷新
+2. 通过 hashchange 事件监听 URL 的变化，改变URL 的方式只有这几种：通过浏览器前进后退改变 URL、通过\<a>标签改变 URL、通过window.location改变URL，这几种情况改变 URL 都会触发 hashchange 事件
+```html
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+    <title>Jquery test web page</title>
+  </head>
+  <body>
+    <body>
+      <ul>
+        <!-- 定义路由 -->
+        <li><a href="#/home">home</a></li>
+        <li><a href="#/about">about</a></li>
+        <!-- 渲染路由对应的 UI -->
+        <div id="routeView"></div>
+      </ul>
+    </body>
+  </body>
+  <script>
+    // 页面加载完不会触发 hashchange，这里主动触发一次 hashchange 事件
+    window.addEventListener('DOMContentLoaded', onLoad)
+    // 监听路由变化
+    window.addEventListener('hashchange', onHashChange)
+
+    // 路由视图
+    var routerView = null
+
+    function onLoad() {
+      routerView = document.querySelector('#routeView')
+      onHashChange()
+    }
+
+    // 路由变化时，根据路由渲染对应 UI
+    function onHashChange() {
+      switch (location.hash) {
+        case '#/home':
+          routerView.innerHTML = 'Home'
+          return
+        case '#/about':
+          routerView.innerHTML = 'About'
+          return
+        default:
+          return
+      }
+    }
+  </script>
+</html>
+```
+
+![avatar](https://user-gold-cdn.xitu.io/2018/7/11/164888109d57995f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+**history实现**
+1. history 提供了 pushState 和 replaceState 两个方法，这两个方法改变 URL 的 path 部分不会引起页面刷新。
+2. history 提供类似 hashchange 事件的 popstate 事件，但 popstate 事件有些不同：通过浏览器前进后退改变 URL 时会触发 popstate 事件，通过pushState/replaceState或\<a>标签改变 URL 不会触发 popstate 事件。好在我们可以拦截 pushState/replaceState的调用和\<a>标签的点击事件来检测 URL 变化，所以监听 URL 变化可以实现，只是没有 hashchange 那么方便。
+```html
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+    <title>Jquery test web page</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/home">home</a></li>
+      <li><a href="/about">about</a></li>
+
+      <div id="routeView"></div>
+    </ul>
+  </body>
+
+  <script>
+    // 页面加载完不会触发 hashchange，这里主动触发一次 hashchange 事件
+    window.addEventListener('DOMContentLoaded', onLoad)
+    // 监听路由变化
+    window.addEventListener('popstate', onPopState)
+
+    // 路由视图
+    var routerView = null
+
+    function onLoad() {
+      routerView = document.querySelector('#routeView')
+      onPopState()
+
+      // 拦截 <a> 标签点击事件默认行为， 点击时使用 pushState 修改 URL并更新手动 UI，从而实现点击链接更新 URL 和 UI 的效果。
+      var linkList = document.querySelectorAll('a[href]')
+      linkList.forEach(el =>
+        el.addEventListener('click', function(e) {
+          e.preventDefault()
+          history.pushState(null, '', el.getAttribute('href'))
+          onPopState()
+        })
+      )
+    }
+
+    // 路由变化时，根据路由渲染对应 UI
+    function onPopState() {
+      console.log(location.pathname);
+      switch (location.pathname) {
+        case '/home':
+          routerView.innerHTML = 'Home'
+          return
+        case '/about':
+          routerView.innerHTML = 'About'
+          return
+        default:
+          return
+      }
+    }
+  </script>
+</html>
+
+```
+![history](https://user-gold-cdn.xitu.io/2018/7/11/164888478584a217?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
