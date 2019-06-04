@@ -3,6 +3,16 @@
   "author": "Re",
   "language": "zh-hans",
   "plugins": [
+    "expandable-chapters",
+    "prism",
+    "-highlight"
+  ],
+  "pluginsConfig": {
+    "prism": {
+      "css": [
+        "prismjs/themes/prism-solarizedlight.css"
+      ]
+    }
+  }
 
-  ]
 }
