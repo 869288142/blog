@@ -53,6 +53,6 @@ module.exports = {
     }
   },
   sidebarDepth: 2,
-  base: "/knowledge-structure/",
+  base: "/blog/",
   dest: "./docs"
 }
