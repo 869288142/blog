@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>scoped分析</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/knowledge-structure/assets/css/0.styles.71d6d626.css" as="style"><link rel="preload" href="/knowledge-structure/assets/js/app.4b2130d8.js" as="script"><link rel="preload" href="/knowledge-structure/assets/js/97.63a06a3e.js" as="script"><link rel="prefetch" href="/knowledge-structure/assets/js/10.7f161f5b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/100.6d47efb0.js"><link rel="prefetch" href="/knowledge-structure/assets/js/101.ebdb8e4c.js"><link rel="prefetch" href="/knowledge-structure/assets/js/102.54eaa358.js"><link rel="prefetch" href="/knowledge-structure/assets/js/103.7bcc69d9.js"><link rel="prefetch" href="/knowledge-structure/assets/js/104.7477e5e0.js"><link rel="prefetch" href="/knowledge-structure/assets/js/105.eea5a497.js"><link rel="prefetch" href="/knowledge-structure/assets/js/106.4d47c726.js"><link rel="prefetch" href="/knowledge-structure/assets/js/107.60f5c149.js"><link rel="prefetch" href="/knowledge-structure/assets/js/108.f32a5ab7.js"><link rel="prefetch" href="/knowledge-structure/assets/js/109.fcd4f6a6.js"><link rel="prefetch" href="/knowledge-structure/assets/js/11.26b90d7f.js"><link rel="prefetch" href="/knowledge-structure/assets/js/110.fe119a92.js"><link rel="prefetch" href="/knowledge-structure/assets/js/12.0a4541bd.js"><link rel="prefetch" href="/knowledge-structure/assets/js/13.9cf55a1c.js"><link rel="prefetch" href="/knowledge-structure/assets/js/14.2fc51f88.js"><link rel="prefetch" href="/knowledge-structure/assets/js/15.28fb6b1f.js"><link rel="prefetch" href="/knowledge-structure/assets/js/16.1e7bfd00.js"><link rel="prefetch" href="/knowledge-structure/assets/js/17.fec58d82.js"><link rel="prefetch" href="/knowledge-structure/assets/js/18.42e85660.js"><link rel="prefetch" href="/knowledge-structure/assets/js/19.f57ceefb.js"><link rel="prefetch" href="/knowledge-structure/assets/js/2.aac8a8b3.js"><link rel="prefetch" href="/knowledge-structure/assets/js/20.11ee5013.js"><link rel="prefetch" href="/knowledge-structure/assets/js/21.65faa122.js"><link rel="prefetch" href="/knowledge-structure/assets/js/22.722dd339.js"><link rel="prefetch" href="/knowledge-structure/assets/js/23.a0e413df.js"><link rel="prefetch" href="/knowledge-structure/assets/js/24.428f45e4.js"><link rel="prefetch" href="/knowledge-structure/assets/js/25.b437b0a5.js"><link rel="prefetch" href="/knowledge-structure/assets/js/26.f16cb666.js"><link rel="prefetch" href="/knowledge-structure/assets/js/27.d02609ae.js"><link rel="prefetch" href="/knowledge-structure/assets/js/28.339b223d.js"><link rel="prefetch" href="/knowledge-structure/assets/js/29.63a29059.js"><link rel="prefetch" href="/knowledge-structure/assets/js/3.27e1a324.js"><link rel="prefetch" href="/knowledge-structure/assets/js/30.b919bada.js"><link rel="prefetch" href="/knowledge-structure/assets/js/31.1ec66301.js"><link rel="prefetch" href="/knowledge-structure/assets/js/32.f67782f4.js"><link rel="prefetch" href="/knowledge-structure/assets/js/33.897f04ba.js"><link rel="prefetch" href="/knowledge-structure/assets/js/34.c6ba6973.js"><link rel="prefetch" href="/knowledge-structure/assets/js/35.f036bb44.js"><link rel="prefetch" href="/knowledge-structure/assets/js/36.f1ba9a35.js"><link rel="prefetch" href="/knowledge-structure/assets/js/37.278ef401.js"><link rel="prefetch" href="/knowledge-structure/assets/js/38.249c5bf9.js"><link rel="prefetch" href="/knowledge-structure/assets/js/39.16085fe7.js"><link rel="prefetch" href="/knowledge-structure/assets/js/4.8e3c0542.js"><link rel="prefetch" href="/knowledge-structure/assets/js/40.be11c88d.js"><link rel="prefetch" href="/knowledge-structure/assets/js/41.ca1bc82c.js"><link rel="prefetch" href="/knowledge-structure/assets/js/42.14239910.js"><link rel="prefetch" href="/knowledge-structure/assets/js/43.6ccb756d.js"><link rel="prefetch" href="/knowledge-structure/assets/js/44.58feacb1.js"><link rel="prefetch" href="/knowledge-structure/assets/js/45.ca2d9670.js"><link rel="prefetch" href="/knowledge-structure/assets/js/46.53e5fd08.js"><link rel="prefetch" href="/knowledge-structure/assets/js/47.bca8d29a.js"><link rel="prefetch" href="/knowledge-structure/assets/js/48.71196910.js"><link rel="prefetch" href="/knowledge-structure/assets/js/49.e5374bff.js"><link rel="prefetch" href="/knowledge-structure/assets/js/5.f0eaf542.js"><link rel="prefetch" href="/knowledge-structure/assets/js/50.abf1fc8a.js"><link rel="prefetch" href="/knowledge-structure/assets/js/51.40edab6b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/52.a1de2f97.js"><link rel="prefetch" href="/knowledge-structure/assets/js/53.4781d531.js"><link rel="prefetch" href="/knowledge-structure/assets/js/54.9cecb7d1.js"><link rel="prefetch" href="/knowledge-structure/assets/js/55.cc7ad624.js"><link rel="prefetch" href="/knowledge-structure/assets/js/56.a5c99486.js"><link rel="prefetch" href="/knowledge-structure/assets/js/57.c9b37a61.js"><link rel="prefetch" href="/knowledge-structure/assets/js/58.5a5297e9.js"><link rel="prefetch" href="/knowledge-structure/assets/js/59.fb6771db.js"><link rel="prefetch" href="/knowledge-structure/assets/js/6.760fd5f1.js"><link rel="prefetch" href="/knowledge-structure/assets/js/60.c020718b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/61.88612bf1.js"><link rel="prefetch" href="/knowledge-structure/assets/js/62.558e21d4.js"><link rel="prefetch" href="/knowledge-structure/assets/js/63.8b044032.js"><link rel="prefetch" href="/knowledge-structure/assets/js/64.225c400a.js"><link rel="prefetch" href="/knowledge-structure/assets/js/65.1b75c03b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/66.25c0c232.js"><link rel="prefetch" href="/knowledge-structure/assets/js/67.79c2bcd5.js"><link rel="prefetch" href="/knowledge-structure/assets/js/68.2635d060.js"><link rel="prefetch" href="/knowledge-structure/assets/js/69.5154a63b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/7.0f3e00b3.js"><link rel="prefetch" href="/knowledge-structure/assets/js/70.6ca79c8c.js"><link rel="prefetch" href="/knowledge-structure/assets/js/71.265601c3.js"><link rel="prefetch" href="/knowledge-structure/assets/js/72.882e64df.js"><link rel="prefetch" href="/knowledge-structure/assets/js/73.211bcfb5.js"><link rel="prefetch" href="/knowledge-structure/assets/js/74.a4bd8335.js"><link rel="prefetch" href="/knowledge-structure/assets/js/75.2e4847a4.js"><link rel="prefetch" href="/knowledge-structure/assets/js/76.ef0fdddc.js"><link rel="prefetch" href="/knowledge-structure/assets/js/77.bceb81fc.js"><link rel="prefetch" href="/knowledge-structure/assets/js/78.0f4ec860.js"><link rel="prefetch" href="/knowledge-structure/assets/js/79.e4fba625.js"><link rel="prefetch" href="/knowledge-structure/assets/js/8.d4889a22.js"><link rel="prefetch" href="/knowledge-structure/assets/js/80.359fb08b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/81.389ff9e4.js"><link rel="prefetch" href="/knowledge-structure/assets/js/82.e3e4588b.js"><link rel="prefetch" href="/knowledge-structure/assets/js/83.1d111b2a.js"><link rel="prefetch" href="/knowledge-structure/assets/js/84.2d5a7830.js"><link rel="prefetch" href="/knowledge-structure/assets/js/85.8a830be0.js"><link rel="prefetch" href="/knowledge-structure/assets/js/86.46227bfa.js"><link rel="prefetch" href="/knowledge-structure/assets/js/87.d4e817d2.js"><link rel="prefetch" href="/knowledge-structure/assets/js/88.ba8837f5.js"><link rel="prefetch" href="/knowledge-structure/assets/js/89.03773d73.js"><link rel="prefetch" href="/knowledge-structure/assets/js/9.10839a46.js"><link rel="prefetch" href="/knowledge-structure/assets/js/90.2cf91e02.js"><link rel="prefetch" href="/knowledge-structure/assets/js/91.fe3cae69.js"><link rel="prefetch" href="/knowledge-structure/assets/js/92.4f008da8.js"><link rel="prefetch" href="/knowledge-structure/assets/js/93.5826ea12.js"><link rel="prefetch" href="/knowledge-structure/assets/js/94.ab8dbf4e.js"><link rel="prefetch" href="/knowledge-structure/assets/js/95.c251cdc2.js"><link rel="prefetch" href="/knowledge-structure/assets/js/96.5c39d0e8.js"><link rel="prefetch" href="/knowledge-structure/assets/js/98.e2df2bfc.js"><link rel="prefetch" href="/knowledge-structure/assets/js/99.456acdf4.js">
+    <link rel="stylesheet" href="/knowledge-structure/assets/css/0.styles.71d6d626.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge-structure/" class="home-link router-link-active"></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-structure/browser/" class="nav-link">browser</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/HTTP/" class="nav-link">HTTP</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/HTML/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/CSS/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/JS/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/Vue/" class="nav-link router-link-active">Vue</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-structure/browser/" class="nav-link">browser</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/HTTP/" class="nav-link">HTTP</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/HTML/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/CSS/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/JS/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/knowledge-structure/Vue/" class="nav-link router-link-active">Vue</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>思想</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>原理</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>组件</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/knowledge-structure/Vue/组件/scoped.html" class="active sidebar-link">scoped分析</a></li><li><a href="/knowledge-structure/Vue/组件/v-bind.html" class="sidebar-link">v-bind</a></li><li><a href="/knowledge-structure/Vue/组件/native修饰符.html" class="sidebar-link">native修饰符</a></li><li><a href="/knowledge-structure/Vue/组件/组件通信.html" class="sidebar-link">Vue组件通信</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>生命周期</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>状态树</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>路由</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>脚手架</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="scoped分析"><a href="#scoped分析" aria-hidden="true" class="header-anchor">#</a> scoped分析</h1> <p>vue使用了单文件组件方式来解耦视图即.vue后缀文件名</p> <p>单文件组件组成部分：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre></div><p>其中template、script以及实现了私有化</p> <p>那么style如何实现私有化？</p> <pre><code>为此vue为style提供了一个scoped属性用于实现样式私有化
+</code></pre> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token operator">&lt;</span>style scoped<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre></div><p>实现样式私有化的原理：</p> <pre><code>先看一个例子
+</code></pre> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>style scoped<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span>example <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;example&quot;</span><span class="token operator">&gt;</span>hi<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre></div><p>显示结果</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span>example<span class="token punctuation">[</span>data<span class="token operator">-</span>v<span class="token operator">-</span>f3f3eg9<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;example&quot;</span> data<span class="token operator">-</span>v<span class="token operator">-</span>f3f3eg9<span class="token operator">&gt;</span>hi<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre></div><p>从上面两段代码对比可以得知scoped为组件设置一个data-v-id这个全局唯一属性，在对应的样式后面追加了一个属性选择器来唯一确定样式作用对象</p> <p>属性选择器是一个容易被人遗忘点属性呢</p> <pre><code>看个简单例子
+</code></pre> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>X-UA-Compatible<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>ie=edge<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+        <span class="token selector">.main[data-a]</span><span class="token punctuation">{</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span>black<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span> <span class="token attr-name">data-a</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>大家会看到背景有300px高度被渲染成黑色的</p> <p>我们分析一下不同类型组件组合引用的情况的渲染情况</p> <p>1.一般组件引用私有组件
+文件</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token comment">//content.vue</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;content&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;title&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> v<span class="token operator">-</span>button假设是上面定义的组件 <span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>v<span class="token operator">-</span>button<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>v<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">...</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+    <span class="token punctuation">.</span>content<span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> <span class="token number">1200</span>px<span class="token punctuation">;</span>
+        margin<span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>content <span class="token punctuation">.</span>button<span class="token punctuation">{</span>
+        border<span class="token operator">-</span>raduis<span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre></div><p>渲染结果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- v-button假设是上面定义的组件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-v-2311c06a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button-warp<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-v-2311c06a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">*button.vue渲染出来的css*/
+.button-warp[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span>inline-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.button[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">border-radus</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*content.vue渲染出来的css*/</span>
+<span class="token selector">.content</span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content .button</span><span class="token punctuation">{</span>
+    <span class="token property">border-raduis</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以看到，虽然在content组件修改了button的border-radius属性，但是内部组件的样式权重比外部的高，如果想要生效，就需要增加权重</p> <p>2.私有组件引用私有组件</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-v-57bc25a0</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">data-v-57bc25a0</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- v-button假设是上面定义的组件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-v-57bc25a0</span> <span class="token attr-name">data-v-2311c06a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button-warp<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-v-2311c06a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-css extra-class"><pre class="language-css"><code>    <span class="token comment">/*button.vue渲染出来的css*/</span>
+<span class="token selector">.button-warp[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span>inline-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.button[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">border-radus</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*content.vue渲染出来的css*/</span>
+<span class="token selector">.content[data-v-57bc25a0]</span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content .button[data-v-57bc25a0]</span><span class="token punctuation">{</span>
+    <span class="token property">border-raduis</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以看出.content .button后面属性选择器里面的自定义属性是content的data-v-id，这样就无法影响到button.vue</p> <ol start="3"><li></li></ol> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-v-57bc25a0</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">data-v-57bc25a0</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- v-button假设是上面定义的组件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-v-57bc25a0</span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button-warp<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-css extra-class"><pre class="language-css"><code>    <span class="token comment">/*button.vue渲染出来的css*/</span>
+<span class="token selector">.button-warp</span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span>inline-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.button</span><span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">border-radus</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*content.vue渲染出来的css*/</span>
+<span class="token selector">.content[data-v-57bc25a0]</span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content .button[data-v-57bc25a0]</span><span class="token punctuation">{</span>
+    <span class="token property">border-raduis</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这种情况与私有组件引用私有组件类似，出现了属性选择器出现正在选择器表达式点末尾，导致样式无法对子组件内部元素生效</p> <p>这里可以增加一个不带scoped的style和scoped的style共存，来在普通的style中去全局样式来改变,但是这样也不优雅，为了避免全局污染需要定义好全局样式名称</p> <p>总结：</p> <pre><code>1.组件的style加入了scoped后，组件的所有元素都会加一个唯一的data-v-id属性，属性选择会被加入到表达式末尾，同时这个自定义属性会作用到子组件的根元素上
+
+2.因为私有组件会把属性选择器加到CSS表达式末端，导致CSS无法选择到子组件内部元素，所以一个猜想是把属性选择器移至父级选择器末端，而不是表达式末端来实现css样式私有化与样式作用到子元素的效果
+</code></pre> <p>第二点总结的vue-loader语法支持</p> <p>深度选择器：</p> <pre><code>&gt;&gt;&gt;
+</code></pre> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token comment">//content.vue</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;content&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;title&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> v<span class="token operator">-</span>button假设是上面定义的组件 <span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>v<span class="token operator">-</span>button<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>v<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">...</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+    <span class="token punctuation">.</span>content<span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> <span class="token number">1200</span>px<span class="token punctuation">;</span>
+        margin<span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>content <span class="token operator">&gt;&gt;&gt;</span> <span class="token punctuation">.</span>button<span class="token punctuation">{</span>
+        border<span class="token operator">-</span>raduis<span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre></div><p>上述css渲染结果：</p> <div class="language-css extra-class"><pre class="language-css"><code>    <span class="token comment">/*button.vue渲染出来的css*/</span>
+<span class="token selector">.button-warp[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span>inline-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.button[data-v-2311c06a]</span><span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">border-radus</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*content.vue渲染出来的css*/</span>
+<span class="token selector">.content[data-v-57bc25a0]</span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content[data-v-57bc25a0] .button</span><span class="token punctuation">{</span>
+    <span class="token property">border-raduis</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以看到在表达式中父级结束选择器.content这里使用了深度选择器来实现了属性选择器的移动，达到了修改子组件样式的效果，当然，实际项目中我记得vue-loader 10.x好像是不完全支持&gt;&gt;&gt;，这里就要大家升级一下项目的vue-loader了。</p> <p>以下附上本人在项目中使用element-UI和vux这两个分别在pc端和手机端受宠的vue框架，我查看了这两者的组件源码，他们都没使用scoped这种方法私有化样式，所以可以采用下面的方法：</p> <pre><code>1.样式少：
+
+直接在组件上写一个style内联标签
+
+2.样式多
+
+组件上写一个class进行style的集合配置
+
+3.scoped的style修改子组件样式
+
+在子class和父class之间插入一个&gt;&gt;&gt;深度选择器来实现属性选择器的移位
+</code></pre></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/knowledge-structure/assets/js/app.4b2130d8.js" defer></script><script src="/knowledge-structure/assets/js/97.63a06a3e.js" defer></script>
+  </body>
+</html>

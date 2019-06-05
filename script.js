@@ -45,6 +45,9 @@ class generateDir {
           // n 文件夹名替换成撰写中
           fs.appendFileSync(this.outputFile, totalContent)
           // 遍历文件夹下属文件
+          // 对文件夹下的文件读取顺序进行排序
+          files.sort((a, b) => Number.parseInt(a) - Number.parseInt(b))
+          console.log(files)
           if (files && files.length > 0) {
             // 确保n文件夹的下属文件在第一级文件夹后面输出
             let nIndex = files.findIndex(f => f === 'n')
@@ -70,7 +73,6 @@ class generateDir {
   formatDirContent(fileName, nth) {
     let normalContent = `* [${fileName}]()`
     nth = ''.padStart(nth, "  ")
-    console.log("Dirnth", nth.length);
     let nContent = '* [撰写中]()'
     let totalContent = `${nth}${
       fileName === 'n' ? nContent : normalContent
@@ -82,7 +84,6 @@ class generateDir {
   formatFileContent(fileName, fpath, nth) {
     // 将内容追加到README.md
     nth = ''.padStart(nth, "  ")
-    console.log("Filenth", nth.length);
     let fileNameWithoutSuffix = fileName.replace(/(.*)\.md/, '$1')
     // 文件输出内容
     let content =

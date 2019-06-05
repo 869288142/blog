@@ -1,1 +1,0 @@
-默认情况下，会将CommonJS的module.exports作为默认导出，但是现在有一个字段module,这是基于ESM模块构建的，npm会优先找到这个字段来导入ESM版本，否则回退到main，也就是CommonJS版本

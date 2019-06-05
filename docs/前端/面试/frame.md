@@ -1,5 +1,0 @@
-MVVM
-
-Vue 
-
-React

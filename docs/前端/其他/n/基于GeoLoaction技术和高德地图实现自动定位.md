@@ -1,9 +1,0 @@
-GeoLocation是HTML5提供的API，相比以往PC端基于IP地址进行定位，它可以探测此IP附近的无线设备提高准度
-
-利用百度的Geolocation获取对象
-
-结合sessionStorage可以做到打开定位，刷新保存城市
-
-如何实现Geoloaction结合后端显示城市
-1.citycode 判断
-2.直接判断
