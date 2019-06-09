@@ -4,7 +4,7 @@ module.exports =  {
     {
       title: '思想', // 侧边栏名称
       collapsable,
-      children: ['/Vue/思想/复用', '/Vue/思想/DOM异步更新队列']
+      children: ['/Vue/思想/复用', '/Vue/思想/DOM异步更新队列','/Vue/思想/遐想',]
     },
     {
       title: '原理', // 侧边栏名称

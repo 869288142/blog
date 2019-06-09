@@ -4,7 +4,7 @@ module.exports = {
     {
       title: '协议', // 侧边栏名称
       collapsable,
-      children: ['/HTTP/http协议','/HTTP/get和post区别','/HTTP/状态码',]
+      children: ['/HTTP/http协议','/HTTP/get和post区别']
     },
   ]
 }

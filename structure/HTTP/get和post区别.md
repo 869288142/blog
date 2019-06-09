@@ -1,17 +1,15 @@
 # get post 区别
 一直以来很好奇为什么 get 一般是传简单值，而且后台接受到后，类型全为，而 post 可以传对象，取得的会保留原有类型。然而事情并没那么简单
 
-get、post 网上常见的区别
+## 常见的区别
 
-1.get 参数走 url，而 post 走 body,这句话其实呢，http 规范并没有明确表明 get 参数不能走 body，在一些服务器测试中，比如 node 的 http 模块，是允许 get 参数走 body 的，而 post 当然也可以走 url，当然我们不推荐使用这些骚操作
+1. get 参数走 url，而 post 走 body,这句话其实呢，**http 规范并没有明确表明 get 参数不能走 body**，在一些服务器测试中，比如 node 的 http 模块，是允许 get 参数走 body 的，而 post 当然也可以走 url，**当然我们不推荐使用这些骚操作**
 
-2.因为 url 所以不安全，post 走的是 body 所以安全点，其实呢，见仁见智，打开游览器控制台就能看到
+2. 因为 url 所以不安全，post 走的是 body 所以安全点，其实呢，见仁见智，打开游览器控制台就能看到
 
-3.get 参数长度限制，post 参数长度无限制，get 本身是没有限制的，只是游览器 url 有长度限制导致的
+3. **get 参数长度限制，post 参数长度无限制，get 本身是没有限制的，只是游览器 url 有长度限制导致的**
 
-今天我们看看 url 参数和 body 参数的解析，其实这里已经暗示了一些东西，这里以我仅仅会的 Node 作为示例，
-
-get 参数处理(url 参数处理)
+## get 参数处理(url 参数处理)
 
 ```js
 let http = require('http')
@@ -34,7 +32,7 @@ http
 
 从这里代码可以看到，后台解析是解析 url 中的字符，是不区分 http 请求类型的，只要你在 url 参数加入参数，那么就能通过对应的封装函数拿到 params
 
-post 参数处理(body 参数处理)
+## post 参数处理(body 参数处理)
 
 ```js
 let http = require('http')

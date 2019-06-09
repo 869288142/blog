@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev structure",
-    "docs:build": "vuepress build structure targetDir = ./docs"
+    "docs:build": "vuepress build structure"
   },
   "author": "",
   "license": "ISC",

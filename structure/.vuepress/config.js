@@ -28,7 +28,7 @@ let browserSidebar = {
     },
   ]
 }
-module.exports = {
+let config = {
   themeConfig: {
     nav: [
       {
@@ -56,3 +56,5 @@ module.exports = {
   base: "/blog/",
   dest: "./docs"
 }
+
+module.exports = config
