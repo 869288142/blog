@@ -15,10 +15,12 @@ module.exports =  {
       title: '组件', // 侧边栏名称
       collapsable,
       children: [
+        '/Vue/组件/模板',
+        '/Vue/组件/事件',
         '/Vue/组件/scoped',
         '/Vue/组件/v-bind',
         '/Vue/组件/native修饰符',
-        '/Vue/组件/组件通信'
+        '/Vue/组件/组件通信',
       ]
     },
     {
