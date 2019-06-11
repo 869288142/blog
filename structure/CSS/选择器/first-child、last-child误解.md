@@ -18,5 +18,5 @@ W3C解释
 
 E:first-child含义
 
-    父元素中第一个元素且第一个元素是E才是所谓的first-child,
-    last-child也类似 
+**父元素中第一个元素且第一个元素是E才是所谓的first-child,
+last-child也类似** 

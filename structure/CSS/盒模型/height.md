@@ -1,20 +1,25 @@
 # height
 
-## auto
+## height值
+
+### auto
 
 
-## 100%
+### 100%
 对于height属性，如果父元素height为auto，只要子元素在文档流中，其百分比值完全被忽略了。
 文档规范
-`CSS2.1中如果包含块的高度没有显式指定，并且该元素不是绝对定位，则计算值为auto`
+
+CSS2.1中如果包含块的高度没有显式指定，并且该元素不是绝对定位，则计算值为auto
+
 **解决方案**
 1. 设置显式的高度 具体值或者html、body100%
 2. 使用绝对定位
 
+## 最值
 
-## max-height
+### max-height
 默认值 none
-## min-height
+### min-height
 默认值 auto
 
 

@@ -1,7 +1,7 @@
 # sort
 js的sort方法，我们一般传入一个回调用于单排序，也就根据某一个条件排序，那么一个场景需要多条件排序(多重排序)，我们怎么处理呢？
 
-    如下例子，我们按学生的总分排序，如果总分相等，我们再按照语文成绩排序。
+如下例子，我们按学生的总分排序，如果总分相等，我们再按照语文成绩排序。
 ```javascript
 var jsonStudents = [
     { name: "Dawson", totalScore: "197", Chinese: "100", math: "97" },
@@ -27,4 +27,4 @@ jsonStudents.sort(function(a, b) {
 console.log("jsonStudents :", jsonStudents);
 ```
 
-<font color="#F00">关键点在于sort回调如何定义排序规则</font>
+**关键点在于sort回调如何定义排序规则**

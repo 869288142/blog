@@ -1,21 +1,26 @@
 # await async
-async、await相比原生promise的有优势：
 
-1.更加简洁,await一个promise即可,那么会自动返回这个promise的resolve值，无需在then函数的回调中手动取值，彻底解决了回调
+
+## async、await优势：
+
+1. 更加简洁,await一个promise即可,那么会自动返回这个promise的resolve值，无需在then函数的回调中手动取值，**promise使用控制反转将回调函数从事件本身中分离，而async、await将promise彻底转换为一种信号值**
+
+**Promise方式**
 ```javascript
 //Promise方式
- function f() {
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve('done!'), 1000)
-    })
-    promise.then((res) => {
-        console.log('object :', res);
-    })
+function f() {
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('done!'), 1000)
+})
+promise.then((res) => {
+    console.log('object :', res);
+})
 }
 f()
 ```
+**async、await方式**
+
 ```javascript
-//async、await
 async function f() {
     let promise = new Promise((resolve, reject) => {
         setTimeout(() => resolve('done!'), 1000)
@@ -25,7 +30,8 @@ async function f() {
 }
 f()
 ```
-2.避免了then链式调用的，没有设置失败回调而导致异常被抛出到then链的末端，而导致被忽略,向下面代码一样，如果then没有设置失败回调，那么默认的失败回调会将异常抛给下一个then函数的失败回调，如果末端没有一个catch函数。那么异常就会丢失，问题是如果catch代码中的异常处理代码又有异常抛出呢，那么这个异常只能在下一个then中捕获，这是容易被忽略的错误
+
+2.**避免了then链式调用的，没有设置失败回调而导致异常被抛出到then链的末端，而导致被忽略**,向下面代码一样，如果then没有设置失败回调，那么默认的失败回调会将异常抛给下一个then函数的失败回调，如果末端没有一个catch函数。那么异常就会丢失，问题是如果catch代码中的异常处理代码又有异常抛出呢，那么这个异常只能在下一个then中捕获，这是容易被忽略的错误
 ```javascript
 //promise
 let p = new Promise((resolve, reject) => {
@@ -48,7 +54,7 @@ async function f() {
 }
 f()
 ```
-3.then链式流中，数据访问不能很自然的跨层访问
+3.**then链式流中，数据访问不能很自然的跨层访问，async、await很自然取值**
 ```javascript
 MongoClient.connect(url + db_name).then(db=> {
     return db.collection('blogs');
@@ -79,7 +85,8 @@ MongoClient.connect(url + db_name).then(db=> {
     console.log(err);
 ```
 问题:
-这会打断Promise链，导致then的回调地狱,而且导致在每一个then中都需要手动捕获异常，因为then没成链，不能自然传递异常
+
+**这会打断Promise链，导致then的回调地狱,而且导致在每一个then中都需要手动捕获异常，因为then没成链，不能自然传递异常**
 
 2.每个then()方法里都将db传过来
 ```javascript
@@ -99,6 +106,7 @@ MongoClient.connect(url + db_name).then(db=> {
 
 ```
 问题:
+
 我们在then方法中，都将db和其他结果合并成一个对象，特别需要注意的是，如果传递的值含有promise，那么还需要多做一层解析，也就是需要单独给予一个then函数进行处理，况且每次都要传递一个多余的对象(对于到达实际使用地方这段路径，这个对象是不需要使用的)
 
 async、await方案:
@@ -116,9 +124,9 @@ getBlogs().then(result=> {
 }).catch(err=> {
     console.log(err);
 ```
-这里await解决了then链的问题，使得then跨层访问的问题从根本上被解决了，因为await的promise的resolve值被置于同一个作用域，可以随意访问
+**这里await解决了then链的问题，使得then跨层访问的问题从根本上被解决了，因为await的promise的resolve值被置于同一个作用域，可以随意访问**
 
-4.使得原本异步非阻塞的表达方式，变成了更加同步阻塞的代码，这得益于ES6中生成器和迭代器，赋予js函数的魔力，本质上，async、await是生成器和迭代器以及Promise结合的语法糖，它使得promise之前设计缺陷被更好地修正，目前看来，async、await，是异步的终极解决方案之一
+4.**使得原本异步非阻塞的表达方式，变成了更加同步阻塞的代码**，这得益于ES6中生成器和迭代器，赋予js函数的魔力，本质上，async、await是生成器和迭代器以及Promise结合的语法糖，它使得promise之前设计缺陷被更好地修正，目前看来，async、await，是异步的终极解决方案之一
 ```javascript
 async function basicDemo() {
     let result = await Math.random();
@@ -127,11 +135,8 @@ async function basicDemo() {
 
 basicDemo();
 ```
-await由于自动返回了resolve的值，无需then，我们甚至没有感知到异步的存在，他将异步从语法层面上进行了同步化
 
-
-
-async、await使用注意事项:
+## async、await使用注意事项:
 
 1.await虽然可以像Promise.resolve作用域很多类型的数据，但它的主要意图是用来等待Promise对象被resolved，如果await是非promise值，那么会被立即执行
 
@@ -156,7 +161,7 @@ async function forBugDemo() {
 }
 forBugDemo();// Uncaught SyntaxError: Unexpected identifier
 ```
-4.小心自己的并行处理，也许不小心就将ajax的并发请求发成了阻塞式同步的操作，理解这句话的核心是: await若等待的是promise,那么程序就会在此处等到promise的resolved，然后继续往下,看下面例子,这里第一个sleep会等待自身resolved完成才会往下，如果我们可以让这些函数并行，同时保持await的特性，那么效率会大大提高
+4.小心自己的并行处理，也许**不小心就将ajax的并发请求发成了阻塞式同步的操作**，理解这句话的核心是: await若等待的是promise,那么程序就会在此处等到promise的resolved，然后继续往下,看下面例子,这里第一个sleep会等待自身resolved完成才会往下，如果我们可以让这些函数并行，同时保持await的特性，那么效率会大大提高
 
 ```javascript
 function sleep(second) {

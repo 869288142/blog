@@ -41,15 +41,32 @@
 
 ### 设置宽度带来的问题
 1. 流动性丢失
+
 2. 与现实世界不一致的困扰
     新手容易在CSS属性值变化时，空间不足，导致页面布局错位的问题。
 
-解决方案
-宽度分离原则，即width不与padding、border、margin共存，包裹多一层来使用width
+**解决方案**
 
-更加好的方案 box-sizing
+* 宽度分离原则
+
+width不与padding、border、margin共存，包裹多一层来使用width
+
+```html
+.wrap {
+  width: 300px;
+}
+<div class="wrap">
+  <div class="content"></div>
+</div>
+<!-- 将width作用于包裹容器上 -->
+```
+* box-sizing
+
+**box-sizing初衷**
 
 box-sizing发明的初衷是为了解决原生普通文本框\<input>和文本域\<textarea>100%自适应父容器的宽度
+
+## 最值
 
 ### max-width
 默认值 none

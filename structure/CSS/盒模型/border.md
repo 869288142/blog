@@ -10,12 +10,18 @@ medium 3px
 thick 4px
 
 ## border-style
+
 默认值 none
+
 solid
+
 dashed 虚框
+
 dotted IE8实现原点
+
 double
-实现三道杠
+
+**实现三道杠**
 ```css
 width: 120px;
 height: 20px;
@@ -27,9 +33,13 @@ border-bottom: 20px solid;
 默认值 color
 
 ## border技巧
+
 1.增加点击区域大小，使用透明border
+
 2.三角形绘制
+
 3.等高布局
+
 ```css
   .box {
     border-left: 150px solid #333;

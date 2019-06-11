@@ -1,8 +1,8 @@
-##对象关系
+# 对象关系
 
-### 检测类关系
+## 检测类关系
 
-#### instanceof 检测对象和构造函数的关系
+### instanceof 检测对象和构造函数的关系
 instanceof 操作符的左操作数是一个普通的对象，右操作数是一个函数。
 ```js
 a instanceof Foo
@@ -21,7 +21,7 @@ function instanceOf(obj, constructorPrototype) {
 }
 ```
 
-#### isPrototypeOf 检测对象和对象的关系
+### isPrototypeOf 检测对象和对象的关系
 ```js
 let o = {}
 let b = Object.create(o)

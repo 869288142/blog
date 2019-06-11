@@ -1,17 +1,17 @@
 # 迭代器
 ## 遍历器（Iterator)设计目的
 
-    一是为各种数据结构，提供一个统一的、简便的访问接口
+* 一是为各种数据结构，提供一个统一的、简便的访问接口
 
-    二是使得数据结构的成员能够按某种次序排列
+* 二是使得数据结构的成员能够按某种次序排列
 
-    三是 ES6 创造了一种新的遍历命令for...of循环，Iterator 接口主要供for...of消费
+* 三是 ES6 创造了一种新的遍历命令for...of循环，Iterator 接口主要供for...of消费
 
 实例 
 Map下的Symbol(Symbol.iterator)属性
 ![](https://img2018.cnblogs.com/blog/1361028/201902/1361028-20190221171952489-1544170293.png)
 
-迭代协议(规范)
+## 迭代协议(规范)
 ```js
 [Symbol.iterator]: function() {
     return {
@@ -50,20 +50,26 @@ for (let e of obj) {
 
 ##  用到迭代器的场合
 
-    for of
-    
-    ... spread运算符 涉及到数组
+for of
 
-    对数组和Set结构赋值
+... spread运算符 涉及到数组
 
-    其他涉及到数组参数的，比如Array.form Promise.all() Promise.race
+对数组和Set结构赋值
+
+其他涉及到数组参数的，比如Array.form Promise.all() Promise.race
 
 ##  默认实现Iterator接口对象
 
-    String
-    Array
-    Map
-    Set
-    TypedArray
-    函数的 arguments 对象
-    NodeList 对象
+String Array  Map Set TypedArray 函数的 arguments 对象 NodeList 对象
+
+
+
+
+
+
+
+
+
+
+
+
