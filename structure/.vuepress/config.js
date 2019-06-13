@@ -19,12 +19,17 @@ let browserSidebar = {
     {
       title: 'dom', // 侧边栏名称
       collapsable,
-      children: []
+      children: ['/browser/dom/事件']
     },
     {
       title: '跨域', // 侧边栏名称
       collapsable,
-      children: ['/browser/跨域/jsonp',]
+      children: ['/browser/跨域/jsonp','/browser/跨域/跨域',]
+    },
+    {
+      title: '存储', // 侧边栏名称
+      collapsable,
+      children: ['/browser/存储/存储']
     },
   ]
 }
