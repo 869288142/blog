@@ -13,3 +13,5 @@ module.exports = {
     },
   ]
 }
+
+delete require.cache[module.filename]

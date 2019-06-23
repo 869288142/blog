@@ -1,10 +1,11 @@
 const collapsable = true
+
 module.exports = {
   '/CSS/': [
     {
       title: 'CSS世界', // 侧边栏名称
       collapsable,
-      children: ['/CSS/CSS世界/世界观','/CSS/CSS世界/css3']
+      children: ['/CSS/CSS世界/世界观']
     },
     {
       title: '盒模型', // 侧边栏名称
@@ -67,3 +68,5 @@ module.exports = {
     },
   ]
 }
+
+delete require.cache[module.filename]

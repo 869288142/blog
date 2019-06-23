@@ -2,6 +2,7 @@ const httpSidebar = require('./http')
 const htmlSidebar = require('./html')
 const cssSidebar = require('./css')
 const jsSidebar = require('./js')
+
 const vueSidebar = require('./vue')
 const collapsable = true
 let browserSidebar = {
