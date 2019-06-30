@@ -1,6 +1,9 @@
 # Vue
 
-## 命令式
+## 命令式的巅峰-JQuery
+
+我们看一下以前的王者JQuery**如何处理数据和视图之前的联系**
+
 ```js
 // 当前用户名的值
 let curUsername = "cj"
@@ -10,7 +13,9 @@ let username = $(".username")
 username.val(curUsername)
 ```
 
-**如果更新多次呢**
+从上面代码来看，JQuery的思路是很直观，符合我们的常规思维的，寻找对应的DOM，然后更新attr
+
+## JQuery复用视图逻辑
 
 **包裹成函数**
 
@@ -23,6 +28,18 @@ function updateUsername(username) {
 let curUsername = "cj"
 updateUsername(curUsername)
 ```
+
+我们可以把一个常规而且常用的逻辑封装成一个函数，从而获得良好的扩展性和可维护性，**个人觉得，JQuery之所以容易出现面条式代码,一个重大原因就是它太符合常规逻辑了，找到DOM，修改值，导致这些逻辑大量重复出现在代码这种，而且JQuery严重依赖视图，难以维护，插件和函数虽然解决了一部分问题，但是最核心的视图更新，却没能彻底解决**
+
+
+## 从MVC过渡到MVVM
+
+MVC到MVVM的最大转变，就是视图和viewmodel(在MVC中称为controller)
+
+
+
+
+
 ## 命令式缺陷
 
 **可以想象，虽然我们可以为每个操作定义一个函数，然后代码会变为一堆每个DOM对应的操作函数，而且很多代码都是特点场景下的不可复用**
