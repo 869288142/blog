@@ -8,7 +8,7 @@
 
 [HTML](/HTML/)
 
-[CSS](/browser/)
+[CSS](/CSS/)
 
 [JS](/JS/)
 

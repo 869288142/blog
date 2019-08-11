@@ -32,6 +32,12 @@ let browserSidebar = {
       collapsable,
       children: ['/browser/存储/存储']
     },
+    {
+      title: '开发者工具', // 侧边栏名称
+      collapsable,
+      children: ['/browser/调试技巧/开发者工具']
+    },
+    
   ]
 }
 let config = {
