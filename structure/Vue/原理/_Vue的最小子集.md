@@ -1,55 +1,53 @@
 # Vue
 
-## 命令式的巅峰-JQuery
-
-我们看一下以前的王者JQuery**如何处理数据和视图之前的联系**
+## 命令式-JQuery 为例
 
 ```js
 // 当前用户名的值
-let curUsername = "cj"
+let curUsername = 'cj'
 // 找到类名为username的元素
-let username = $(".username")
+let username = $('.username')
 // 设置username为cj
 username.val(curUsername)
 ```
 
-从上面代码来看，JQuery的思路是很直观，符合我们的常规思维的，寻找对应的DOM，然后更新attr
+**如果多次调用呢**
 
-## JQuery复用视图逻辑
-
-**包裹成函数**
+包裹成函数也许是个不错的选择
 
 ```js
 function updateUsername(username) {
-  let usernameInput = $(".username")
+  let usernameInput = $('.username')
   usernameInput.val(username)
 }
 
-let curUsername = "cj"
+let curUsername = 'cj'
 updateUsername(curUsername)
 ```
 
-我们可以把一个常规而且常用的逻辑封装成一个函数，从而获得良好的扩展性和可维护性，**个人觉得，JQuery之所以容易出现面条式代码,一个重大原因就是它太符合常规逻辑了，找到DOM，修改值，导致这些逻辑大量重复出现在代码这种，而且JQuery严重依赖视图，难以维护，插件和函数虽然解决了一部分问题，但是最核心的视图更新，却没能彻底解决**
-
-
-## 从MVC过渡到MVVM
-
-MVC到MVVM的最大转变，就是视图和viewmodel(在MVC中称为controller)
-
-
-
-
-
 ## 命令式缺陷
 
-**可以想象，虽然我们可以为每个操作定义一个函数，然后代码会变为一堆每个DOM对应的操作函数，而且很多代码都是特点场景下的不可复用**
+**可以想象，虽然我们可以为每个操作定义一个函数，然后代码会变为一堆每个 DOM 对应的操作函数，而且很多代码都是特点场景下的不可复用，函数的粒度难以掌控,诸如以下代码**
 
-## 声明式
 ```js
-let username = "cj"
-// 使用赋值语句就能更新视图
-username = "ll"
+updateUsername()
+
+updatexxx1()
+
+updatexxx2()
 ```
+
+## 声明式-Vue 为例
+
+```js
+let username = 'cj'
+// 使用赋值语句就能更新视图
+username = 'll'
+```
+
+## 声明式的本质
+
+**不去关心怎么做，而是告诉程序应该做什么，至于怎么做，隐藏到程序之中去，可以极大的提高代码的维护性和可读性**。
 
 ## 声明式的好处
 
@@ -59,27 +57,34 @@ username = "ll"
 
 ## 声明式实现
 
-### 核心
+### 监测变化
+
+**如何检测 value 变化**
 
 ```js
-let username = "cj"
+let username = 'cj'
 // 使用赋值语句就能更新视图
-username = "ll"
+username = 'll'
 ```
-要想实现上述效果，我们可以监听username的赋值操作，代码如下：
+
+要想实现上述效果，我们可以监听 username 的赋值操作，代码如下：
 
 ```js
 let data = {
-  username: "cj"
+  username: 'cj'
 }
-Object.defineProperty(data, "username", {
+Object.defineProperty(data, 'username', {
   set() {
-    console.log("username变化了")
+    console.log('username变化了')
   }
 })
-data.username  = " ll" // "username变化了"
+data.username = ' ll' // "username变化了"
 ```
-通过Object.defineProperty我们可以**检测到属性的赋值行为，在这里我们可以触发视图更新**
+
+### 视图更新-理解版
+
+通过 Object.defineProperty 我们可以**检测到属性的赋值行为，在这里我们可以触发视图更新**
+
 ```js
 let person = {
   data: {
@@ -88,27 +93,29 @@ let person = {
   }
 }
 function binding(obj) {
-    for (let key in obj.data) {
-      Object.defineProperty(obj, key, {
-        get() {
-          console.log('getter')
-          return obj.data.key
-        },
-        // 在赋值的时候更新key对应的DOM的value值
-        set(value) {
-          console.log('setter: ' + value)
-          let dom = document.querySelector(`#${key}`)
-          dom.value = value
-          console.log('dom.value: ' + dom.value)
-          obj.data.key = value
-          console.log('obj.data.key: ' + obj.data.key)
-        }
-      })
-    }
+  for (let key in obj.data) {
+    Object.defineProperty(obj, key, {
+      get() {
+        console.log('getter')
+        return obj.data.key
+      },
+      // 在赋值的时候更新key对应的DOM的value值
+      set(value) {
+        console.log('setter: ' + value)
+        let dom = document.querySelector(`#${key}`)
+        dom.value = value
+        console.log('dom.value: ' + dom.value)
+        obj.data.key = value
+        console.log('obj.data.key: ' + obj.data.key)
+      }
+    })
   }
+}
 binding(person)
 ```
+
 **完整的例子**
+
 ```html
 <!DOCTYPE html>
 
@@ -166,91 +173,175 @@ binding(person)
     binding(person)
   </script>
 </html>
-
 ```
 
-### 问题 
+### 问题
 
-核心代码中，虽然可以使用对person的data直接赋值改变DOM的值，但是将key对于到DOM的id属性来操作指定DOM，不利于维护
+核心代码中，虽然可以使用对 person 的 data 直接赋值改变 DOM 的值，但是将 key 对于到 DOM 的 id 属性来操作指定 DOM，不利于维护，我们需要收集引用此 key 对应的 DOM
 
+## 如何找到 key 对应的 DOM
 
-## 引入观察者模式
+### 思路整理
 
-### 必要性 
+思考一下我们怎么把数据放到 DOM 上的，emmm
 
-在前面我们已经实现了整个响应式系统最关键的一部分了，下面我们**如何处理数据更新时通知对应的DOM，怎么对应呢，需要一个对应关系，key和DOM的id对应，处理起有点麻烦**，那么**换个关联关系，我们把在模板解析时里面引用这个数据的DOM，全部收集起来，让这个数据记住谁引用了它，然后在数据更新时，通知这些引用者更新，就可以了,而这些数据的引用者在观察者模式中成为观察者，这个机制，称之为观察者模式**
-
-### 观察者模式定义
-
-**观察者将自己注册到被观察者的容器中时，被观察者变化时，通知观察者们更新**
-
-### 观察者实现
-```js
-class Subject{
-  constructor(){
-    this.subs = [];
-  }
-  addSub(sub){
-    this.subs.push(sub);
-  }
-  notify(){
-    this.subs.forEach(sub=> {
-      sub.update();
-    });
-  }
-}
-
- class Observer {
-  constructor(key) {
-    this.key = key
-  }
-  update() {
-    console.log(this.key, "update")
-  }
-}
-
-let subject = new Subject();
-let ob = new Observer();
-//目标添加观察者了
-subject.addSub(ob);
-//目标发布消息调用观察者的更新方法了
-subject.notify();   //update
+```html
+<h1>{{name}}</h1>
 ```
 
-### 观察者模式与数据监听结合
+嗯，我们将值填入到 DOM 中使用了{{k}}语法，其中的 k 为属性名称，为什么使用一个语法呢，我们思考一下，等会**我们要把{{k}},替换成具体的值，所以需要一个标记来记录它是特别的**
+
+### 遍历 DOM 树
+
+DOM 属于多叉树，由于这里没有特殊要求，我们采用深度优先遍历方式来遍历指定的 DOM 树
 
 ```js
-function binding(obj) {
-  for (let key in obj.data) {
-    // 为当前key创建被观察者
-    let subject  = new Subject()
-    // 手动创建一个观察者
-    let ob = new Observer(key)
-    subject.addSub(ob)
-    Object.defineProperty(obj, key, {
-      get() {
-        return obj.data.key
-      },
-      set(value) {
-        obj.data.key = value
-        subject.notify()
-        let dom = document.querySelector(`#${key}`)
-        dom.value = value
+// 深度遍历DOM
+function compile(node) {
+  ;[].forEach.call(node.childNodes, child => {
+    if (child.childNodes) {
+      ;[].forEach.call(child.childNodes, compile)
+    }
+  })
+}
+```
+
+### DOM 节点
+
+我们在遍历 DOM 节点的时候，收集我们标记的节点即可
+
+```html
+<body>
+  <div id="app">
+    <h1>{{a}}</h1>
+    <span>{{name}}</span>
+  </div>
+</body>
+<script>
+  function compile(node) {
+    ;[].forEach.call(node.childNodes, child => {
+      if (/\{\{(.*)\}\}/.test(child.innerHTML)) {
+        // 获取正则中(.*)捕获的内容，即{{key}}中的key
+        let key = RegExp.$1.trim()
+        console.log('key', key)
+      }
+      if (child.childNodes) {
+        ;[].forEach.call(child.childNodes, compile)
       }
     })
   }
+</script>
+```
+
+**我们通过深度优先的方式遍历了 DOM 树，并且可以辨认特殊节点，取得使用的 key，那么我们的数据从哪里来，DOM 保存到哪里**
+
+### 问题 1-视图初始化
+
+毫无疑问，页面初始化时，我们需要把数据填充到 DOM 里面去，而数据存在于 data 对象中，我们尝试完成这一步
+
+```js
+let data = {
+  a: '1',
+  name: 'cj'
+}
+function compile(node) {
+  ;[].forEach.call(node.childNodes, child => {
+    if (/\{\{(.*)\}\}/.test(child.innerHTML)) {
+      // 获取正则中(.*)捕获的内容，即{{key}}中的key
+      let key = RegExp.$1.trim()
+      child.innerHTML = child.innerHTML.replace(
+        new RegExp('\\{\\{' + key + '\\}\\}', 'g'),
+        data[key]
+      )
+    }
+    if (child.childNodes) {
+      ;[].forEach.call(child.childNodes, compile)
+    }
+  })
 }
 ```
-**在为每个属性定义属性拦截器时，我们为其创建一个被观察者**，让其可以**在某个时机收集观察者**，关于某个时机，下面会讲，这里我们手动新建一个观察者，尝试更新person.age，可以看到输出 age update,说明我们的结合思路没错，**剩下的就是怎么收集观察者**
+
+好的，我们成功使用了了正则将{{key}}替换成了 data 里面的具体值，**那么如何在下次数据更新时再次更新 DOM 呢，嗯，重新编译整个模板是个办法，但是我们不是知道了使用 key 对应的 DOM 了吗，那么我们收集起来，在对应 key 变化后，通知这些 DOM 更新不就行了。**
+
+### 收集 DOM 节点
+
+怎么收集 DOM 节点呢，嗯，Vue 采用了一种很聪明的方法，嗯，就是在取得 key 对应的值的时候，触发对应 key 的 getter 来保存此 DOM 节点,为了能在 getter 中获取到 DOM 节点，将触发的 getter 对应的 DOM 保存到 Dep.target 上去，然后在 getter 保存其到此 key 对应的 dep(依赖对象中去)
+
+```js
+let data = {
+  a: '1',
+  name: 'cj'
+}
+function compile(node) {
+  ;[].forEach.call(node.childNodes, child => {
+    if (/\{\{(.*)\}\}/.test(child.innerHTML)) {
+      // 获取正则中(.*)捕获的内容，即{{key}}中的key
+      let key = RegExp.$1.trim()
+      // 使用data[key]触发了key对应的getter,然后将此节点保存到Dep.target上去
+      Dep.target = child
+      child.innerHTML = child.innerHTML.replace(
+        new RegExp('\\{\\{' + key + '\\}\\}', 'g'),
+        data[key]
+      )
+      Dep.target = null
+    }
+    if (child.childNodes) {
+      ;[].forEach.call(child.childNodes, compile)
+    }
+  })
+}
 
 
-### 收集观察者的时机
+Object.defineProperty(obj, key, {
+  let dep = new Dep()
+  // 触发getter的时候
+  get() {
+    Dep.target && dep.addSubNode(Dep.target)
+    return obj.data.key
+  },
+  set(value) {
 
-**现在我们可以在对数据赋值的时候，更新数据，同时为每个数据增加了一个被观察者，更新数据，被观察者会通知它的观察者们更新，那么我们如何获取数据的观察者呢**
-
-
-```html
-<span :name ="name"> </span>
+  }
+})
 ```
 
-看到以上代码
+### 回到触发视图更新
+
+在这个时候，我们已经收集了属性对应的正确 DOM，然后接下来我们怎么在属性更新时，更新 DOM 的内容呢，在一开始我们提及了 Object.defineProperty 可以检测属性的赋值操作，那么我们现在来尝试一下
+
+```js
+observe(data) {
+Object.keys(data).forEach(key => {
+  let dep = new Dep()
+  data['_' + key] = data[key]
+  // 通过 getter setter 暴露 for 循环中作用域下的 dep，闭包产生
+  Object.defineProperty(data, key, {
+    get() {
+      Dep.target && dep.addSubNode(Dep.target)
+      return data['_' + key]
+    },
+    set(newVal) {
+      // 通知对应key的dep进行更新
+      dep.update(newVal)
+      // 更新data
+      data['_' + key] = newVal
+    }
+  })
+})
+
+```
+
+在下面这个片段
+
+```js
+set(newVal) {
+    // 通知对应key的dep进行更新
+    dep.update(newVal)
+    // 更新data
+    data['_' + key] = newVal
+  }
+```
+当Object.defineProperty检测到属性的赋值操作时，同时dep队列依据此次更新的值更新DOM,同时更新data中的值，完成一个一次数据赋值的响应式操作
+
+
+### Vue核心流程图
