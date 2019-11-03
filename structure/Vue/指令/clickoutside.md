@@ -1,4 +1,4 @@
-# 实现一个可复用的点击区域之外方法
+# 探索clickout指令
 
 随着3大框架的风靡，我们从以前的layer等UI库迁移到了更加强大的UI库，比如vue的好伙伴element,组件库的作用是封装一些常用的功能，将HTML、CSS、JS作为一个功能单元封装为一个整体，向外界暴露合理的接口，它极大地提升了我们的开发效率，最近遇到一个要自己写一个select(选择器)场景，以下的场景一下子让我懵了
 
@@ -143,6 +143,7 @@ nodeList.push({
 
 ## v-clickout指令实现
 
+这部分本来想着自己写的，然后突然想到element可能实现了，借助Vue的指令，我们能更方便的管理DOM的生命周期，轻松添加、销毁callback,下面是element的clickout指令源码，思路大致相同，只是基于vue实现
 
 ```js
 const on = (function() {
