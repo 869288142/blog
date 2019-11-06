@@ -4,6 +4,42 @@
 
 ## JSON语法
 
+### 对象、数组
+
+* 属性名必须用双引号包括
+
+* **最后一个属性不能有逗号**
+
+### 数值
+
+* 禁止出现前导0
+
+* 小数点后必须有数字
+
+* 允许指数
+
+### 布尔值
+
+### null
+
+### 字符串
+
+* 允许多余空格
+
+* 不能包含 " \  U+0000 到 U+001F
+
+* 不能包含以下转义字符 十六进制
+
+```js
+\" or \/ or \\ or \b or \f or \n or \r or \t or \u
+```
+
+### 注释
+
+**不允许注释**
+
+
+
 ## JSON与JavaScript
 
 在很多资料都会看到JSON是基于ECMAScript草案，很多人会以为JSON是JavaScript子集，其实不是
@@ -29,6 +65,6 @@ eval(code); // 报错
 
 
 
-JSON格式  JSON容错解析
+JSON容错解析 JSON和JQueryJSON区别
 
 https://github.com/douglascrockford/JSON-js/pulls
