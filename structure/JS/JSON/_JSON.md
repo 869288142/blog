@@ -64,7 +64,37 @@ eval(code); // 报错
 将JSON字符串反序列化为JavaScript数据
 
 
+## JQuery的parseJSON
 
-JSON容错解析 JSON和JQueryJSON区别
+```js
+function parseJSON ( data ) {
+  // 如果是假值或者非字符串直接返回null,因为JSON规定为字符串，原生JSON.parse传入boolean  Number null 会直接返回这些值
+  if ( !data || typeof data !== "string") {
+    return null;
+  }
 
-https://github.com/douglascrockford/JSON-js/pulls
+  // 去除首尾多余的空格
+  data = jQuery.trim( data );
+
+  // 优先使用原生API
+  if ( window.JSON && window.JSON.parse ) {
+    return window.JSON.parse( data );
+  }
+
+  // 不存在原生API才使用模拟代码
+  // 验证JSON字符串     算法来自http://json.org/json2.js
+  if ( rvalidchars.test( data.replace( rvalidescape, "@" )
+    .replace( rvalidtokens, "]" )
+    .replace( rvalidbraces, "")) ) {
+    
+    // 使用new Function 动态解析JSON,与eval一致原理
+    return ( new Function( "return " + data ) )();
+
+  }
+  // 非法提示
+  jQuery.error( "Invalid JSON: " + data );
+},
+```
+
+
+
