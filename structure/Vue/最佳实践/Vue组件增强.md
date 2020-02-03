@@ -2,7 +2,7 @@
 
 ## 场景
 
-有时候我们会**对现存组件进行增强，或者将一些基础组件进行封装**，这称为**组件的二次封装**，这个过程涉及到一些Vue的内部细节，以下按照分类来解决封装组件中存在的问题：
+有时候我们会**对现存组件进行增强，或者将一些基础组件进行封装**，这称为**组件的二次封装**，这个过程涉及到一些Vue的内部细节，下面逐步分析存在的问题：
 
 这里我们基于一个最简单的例子进行分析，将ant-design-vue中的button组件封装：
 
@@ -184,49 +184,470 @@ props可以使用如下方式访问
 // 2.2以上
 this.$props
 ```
+**示例**
+
+```js
+Vue.component('customButton', {
+  props: {
+    // 这里声明需要的props
+  }
+  render(h) {
+    return h("a-button", {
+      style: {
+        'line-height': 'normal'
+      },
+      attrs: this.$attrs // 这里将attrs传递给封装组件
+      props:this.$props
+    })
+  },
+})
+```
+
+### 传递prop到被封装组件的原理
+
+直觉上，我们会想这样把props传递给子组件
+
+```js
+Vue.component('customButton', {
+  props: {
+    // 这里声明与被封装组件一直的propsOption
+  }
+  render(h) {
+    return h("a-button", {
+      // 将接收到的props传递给子组件
+      props:this.$props
+    })
+  },
+})
+```
+
+实际上只需要这样
+
+```js
+Vue.component('customButton', {
+  props: {
+    // 这里只声明你需要在此组件处理的props
+  }
+  render(h) {
+    return h("a-button", {
+      // 将接收到的props传递给子组件
+      props: this.$props,
+      // 不作为的Props会作为attrs传递给子组件
+      attrs: this.$attrs
+    })
+  },
+})
+```
+
+我们只需要声明需要处理的props，比如你需要对value做处理
+
+```js
+Vue.component('customButton', {
+  props: {
+    // 这里只声明你需要在此组件处理的props
+    value: {
+      
+    }
+  }
+  render(h) {
+    return h("a-button", {
+      // 将处理后的value以props形式传递给子组件
+      props: Object.assign(this.$props,{
+        value: this.value
+      })
+      // 其余属性以attrs传递给子组件
+      attrs: this.$attrs
+    })
+  },
+})
+```
+
+**原因**
+
+```js
+<custom-button :data-custom-text="text" type="primary">Primary</custom-button>
+```
+
+**组件上的属性其实未处理前都是可以被认为是attrs**，只是在**后续处理的时候，按照PropsDef将两者区分处理**，也就是我们**将attrs传递给组件，组件内部会自动区分attrs和props**
+
+### 依赖Vue内部区分props和attrs的陷阱
+
+**实例**
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ant-design-vue@1.4.10/dist/antd.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <jz-fa-date-picker show-time>
+        <!-- <div slot="renderExtraFooter">33s</div> -->
+      </jz-fa-date-picker>
+    </div>
+  </body>
+  <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ant-design-vue@1.4.10/dist/antd.js"></script>
+  <script>
+    Vue.component('jz-fa-date-picker', {
+      name: 'jzFaDatePicker',
+      model: {
+        prop: 'value',
+        event: 'change'
+      },
+      data() {
+        return {
+          adapterValue: moment(this.value.valueOf())
+        }
+      },
+      methods: {
+        moment
+      },
+      props: ['value'],
+      render(h) {
+        const self = this
+        return h(
+          'a-date-picker',
+          {
+            on: Object.assign({}, this.$listeners),
+            // props: this.$props,
+            props: Object.assign({
+              ...this.$props,
+              value: this.adapterValue
+            }),
+            // 透传 scopedSlots
+            scopedSlots: Object.assign(this.$scopedSlots, {
+              renderExtraFooter: () => {
+                return h('a', {
+                  class: {
+                    'calendar-reset': true
+                  },
+                  domProps: {
+                    innerHTML: '重置'
+                  },
+                  on: {
+                    click() {
+                      self.adapterValue = moment(1579166125694)
+                    }
+                  }
+                })
+              }
+            }),
+            attrs: {
+              ...this.$attrs
+            }
+          },
+          this.$slots
+        )
+      },
+      watch: {
+        value(val) {
+          this.adapterValue = val
+        }
+      },
+      mounted() {
+        window.cpp = this
+        console.log(this.$attrs)
+      }
+    })
+    var app = new Vue({
+      data() {
+        return {
+          text: 'button',
+          checked: true
+        }
+      },
+      methods: {
+        click() {
+          console.log('click btn')
+        }
+      },
+      el: '#app'
+    })
+  </script>
+</html>
+
+```
+
+`show-time`是**a-date-picker**开启选择时间的选项，开启后如下：
+
+![1Nzxjf.png](https://s2.ax1x.com/2020/02/03/1Nzxjf.png)
+
+底部会出现**select  time**的按钮，这时候**点击重置按钮**，然后**改变传入组件的value值，重新渲染a-date-picker组件**，结果如下：
+
+![1USh5j.png](https://s2.ax1x.com/2020/02/03/1USh5j.png)
+
+可以看到selectTime按钮消失，使用devTool查看组件数据，发现showTime属性变成了默认的，这里简单说一下原因：
+
+```js
+// render传递给a-date-picker数据
+{
+  attrs: this.$attrs
+}
+```
+
+`attrs`传递给`a-date-picker`之后，组件内部会自动识别props和attrs，实质上伪代码如下：
+
+* 所有的属性以attrs传入组件
+
+* 按照声明了PropsOptions将属于props的key移动至props对象上，并且从attrs删除
+
+**组件更新时，会获取传入的attrs重新渲染**
+
+丢失过程分析
+
+* 所有的属性以attrs传入组件
+
+* 按照声明了PropsOptions将属于props的key移动至props对象上，并且从attrs删除
+
+* 组件更新时，会重新获取父组件的attrs
+
+按照上述步骤 **$attrs的showTime在渲a-date-picker组件渲染时，已经被删除**了，在**重新渲染去获取attrs时，自然为空**，解决方案自然很简单了，这是属于使用不当导致的问题
+
+```js
+// 拷贝副本给子组件操作，而不是传递父组件的attrs来处理
+{
+  attrs: {... this.$attrs}
+}
+```
 
 ## DOM
 
-### slot、scopedSlots
-
 `slot`和`scopedSlots`都必须传递给被封装组件
 
-```js
-// 2.6之前
-$slots、$scopedSlots
+### scopedSlots
 
-// 2.6以后作用域插槽合并了默认插槽，统一作为函数暴露
-$scopedSlots = $slots + $scopedSlots
+```js
+// h是createElement别名
+h(
+  tag,
+  {
+    scopedSlots: this.$scopedSlots, // 这样传递scopedSlots就可以了
+  },
+
+)
 ```
 
-在**2.6之前slot和scopedSlots是分开的**，**2.6之后，slot被合并到scopedSlots，也就是scopedSlots包括了以前的slot，下面是兼容逻辑处理**
+### slots
+
+slot传递比较复杂，Vue提供了this.$slots来获取slots，但是这与createElement的参数不一致
 
 ```js
-// 2.6之前，当然这可以作为一个兼容逻辑
-render(h) {
-  const slots = this.$slots
-  const scopedSlots = this.$scopedSlots
+// h是createElement别名
+h(
+  tag,
+  {
+    scopedSlots: this.$scopedSlots, // 这样传递scopedSlots就可以了
+  },
+  this.$slots // slot是以children传递给组件的，但是需要一个数组
+)
+```
 
-  for(let [name, vNodes] of Object.entries(slots)) {
-    if(!(name in scopedSlots)) {
-      scopedSlots[name] = function () {
-        return vNodes
+**实例**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ant-design-vue@1.4.10/dist/antd.css"
+      type="text/css"
+    />
+  </head>
+ <body>
+    <div id="app">
+      <jz-fa-date-picker show-time>
+        <div>33s</div>
+      </jz-fa-date-picker>
+    </div>
+  </body>
+  <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.js"></script>
+  <!-- <script src="./vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ant-design-vue@1.4.10/dist/antd.js"></script>
+ 
+  <script>
+    Vue.component("jz-fa-date-picker", {
+      name: "jzFaDatePicker",
+      render(h) {
+        console.log(this.$slots);
+        const slots = Object.keys(this.$slots)
+          .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+        return h(
+          "a-date-picker",
+          {
+            scopedSlots: this.$scopedSlots,
+            attrs: this.$attrs
+          },
+          slots
+        );
+      },
+      mounted() {
+        window.cpp = this;
+      }
+    });
+    // 定义一份全局数据
+    app = new Vue({
+      el: "#app",
+    });
+  </script>
+</html>
+
+```
+
+`this.$slots`打印结果如下：
+
+![1d7YcD.png](https://s2.ax1x.com/2020/02/03/1d7YcD.png)
+
+可以看到 **this.$slots**是一个**对象**，我们**需要转换为数组**，尝试一下传递slots给组件
+
+```js
+// 将this.$slots转换为vnode数组
+const slots = Object.keys(this.$slots)
+  .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+```
+
+**默认插槽尝试**
+
+``` html
+<jz-fa-date-picker show-time>
+  <div>33s</div> // 这里是默认插槽
+</jz-fa-date-picker>
+```
+
+**结果**
+
+![1dHrZ9.png](https://s2.ax1x.com/2020/02/03/1dHrZ9.png)
+
+`a-date-picker`的默认**插槽效果就是像上图一样定制触发按钮的样式，默认插槽渲染成功**
+
+**具名插槽尝试**
+
+首先看一下`a-date-picker`的`renderExtraFooter`插槽效果，是在选择面板上增加一个底部的slots
+
+![1dHXQS.png](https://s2.ax1x.com/2020/02/03/1dHXQS.png)
+
+**尝试封装后的组件**
+
+![1dbiWV.png](https://s2.ax1x.com/2020/02/03/1dbiWV.png)
+
+**具名插槽渲染成功**了，但是**具名插槽同时被渲染到了默认插槽中**去了，这里的调试过程略过，直接说一下核心原因：
+
+* Vue内部识别具名slot时，会有以下核心语句
+
+```js
+// resolveSlots函数
+
+function resolveSlots (
+    children,
+    context
+  ) {
+    var slots = {};
+
+    for (var i = 0, l = children.length; i < l; i++) {
+
+      var child = children[i];
+      var data = child.data;
+
+      // named slots should only be respected if the vnode was rendered in the
+      // same context.
+
+      // 仅当在相同上下文中呈现vnode时，才应使用命名插槽。
+      if ((child.context === context || child.fnContext === context) &&
+        data && data.slot != null
+      ) {
+        var name = data.slot;
+        var slot = (slots[name] || (slots[name] = []));
+        if (child.tag === 'template') {
+          slot.push.apply(slot, child.children || []);
+        } else {
+          slot.push(child);
+        }
+      } else {
+        (slots.default || (slots.default = [])).push(child);
       }
     }
-  }
 
-  return h("custom-component", {
-    scopedSlots
-  })
-}
-// 2.6之后
-render(h) {
-  const scopedSlots = this.$scopedSlots
-  return h("custom-component", {
-    scopedSlots
-  })
-}
+    return slots
+  }
 ```
+
+我们查看到`resolveSlots`函数有一句注释，**仅当在相同上下文中呈现vnode时，才应使用命名插槽**，这里的context是指此组件实例
+
+```js
+ Vue.component("jz-fa-date-picker", {
+      name: "jzFaDatePicker",
+      render(h) {
+        const slots = Object.keys(this.$slots)
+          .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+          
+        return h(
+          "a-date-picker",
+          {
+            scopedSlots: this.$scopedSlots,
+            attrs: this.$attrs
+          },
+          slots
+        );
+      },
+      mounted() {
+        window.cpp = this;
+      }
+    });
+```
+
+打印一下
+
+![1wsEgx.png](https://s2.ax1x.com/2020/02/03/1wsEgx.png)
+
+可以看到context不是我们的jzFaDatePicker实例，而是根实例，这里修复方案很简单，将vnode的context指向jzFaDatePicker实例即可
+
+```js
+const slots = Object.keys(this.$slots)
+  .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+  .map(vnode => {
+    // 这里将context修正为this
+    vnode.context = this
+    return vnode;
+  });
+```
+
+尝试一下这个代码，仍然没有解决问题，打印一下this
+
+![1wWYfe.png](https://s2.ax1x.com/2020/02/03/1wWYfe.png)
+
+从上图中看到this不是我们看到的实例，而是一个Proxy，**Proxy代理一个对象的行为，然后返回一个代理对象**, **这个对象自然不能满足我们context === child.context，我们需要获取原对象**，所幸，**Vue保存了原实例对象为this._self**,我们可以这样处理
+
+```js
+const slots = Object.keys(this.$slots)
+  .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+  .map(vnode => {
+    // 这里将context修正为this._self，这才是组件真正的实例
+    vnode.context = this._self
+    return vnode;
+  });
+```
+
+**结果**
+
+![1wOpNj.png](https://s2.ax1x.com/2020/02/03/1wOpNj.png)
+
+经过上述处理，我们的具名插槽也行为正常
 
 ### directives
 
@@ -328,26 +749,19 @@ Vue.component('base-checkbox', {
     },
     render(h) {
       // 兼容2.6以前的逻辑
-      const slots = this.$slots
-      const scopedSlots = this.$scopedSlots
-      for(let [name, vNodes] of Object.entries(slots)) {
-        if(!(name in scopedSlots)) {
-          scopedSlots[name] = function () {
-            return vNodes
-          }
-        }
-      }
+      const slots = Object.keys(this.$slots)
+          .reduce((arr, key) => arr.concat(this.$slots[key]), [])
 
       return h("a-button", {
-        // 透传attrs
-        attrs: this.$attrs,
+        // 透传attrs,需要浅拷贝第一次层
+        attrs: {...this.$attrs},
         // 透传props
         props: this.$props, 
         // 透传自定义事件
         on: this.$listeners,
         // 透传slots和scopedSlots
         scopedSlots
-      })
+      }，slots)
     },
   })
   var app = new Vue({
