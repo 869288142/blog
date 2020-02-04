@@ -6,7 +6,34 @@
 ## 机制
 Object.assign 方法只会**拷贝源对象自身的并且可枚举的属性到目标对象**。
 
-使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter 同名会被后面的源对象覆盖,浅拷贝
+使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter 同名会被后面的源对象覆盖,浅拷贝，而...运算符不会触发setter
+
+```js
+
+let obj = {
+  a: 3,
+  c: 1
+}
+
+console.log("spread", {  
+  get c () {
+    return 4
+  },
+  set c(c) {
+    console.log(set);
+  },
+  ...obj }
+);
+console.log("assign", Object.assign({
+  get c () {
+    return 4
+  },
+  set c(c) {
+    // 触发
+    console.log(`set${c}`);
+  },
+}, obj));
+```
 
 ## 语法
 ```js
