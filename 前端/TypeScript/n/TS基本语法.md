@@ -1,17 +1,22 @@
-核心思想
+# TS基本语法
 
-    在代码静态分析时尽量暴露错误，并且可以由AST得到一些api的参数
+
+## TS好处
 
 TS为我们带来了什么：
 
-    1.静态类型检查(提升代码质量，提前发现错误)
-    2.类型推断(减少查阅api的时间)
-    3.more
+* 静态类型检查(提升代码质量，在运行前发现错误)
+* 类型推断(减少查阅api的时间)
+* 自文档化，代码就是文档
+
+详细看这里 https://juejin.im/post/59c46bc86fb9a00a4636f939
 
 
+## TS成本
 
-##类型系统
-###变量
+* TS的所有好处都建立在其类型系统上，我们需要对其类型系统非常熟悉才行
+
+## 变量
 let/const v :type
 type
 ```ts
@@ -77,10 +82,15 @@ function infiniteLoop(): never {
 
     let strLength: number = (<string>someValue).length;
 ```
-###结构
 
-接口  实现接口类型检查  也可以使用implements作为真正的接口
-用于抽象一些通用规范让实现者强制执行这些规范
+
+**上面介绍了基本类型和数组的类型定义，那么对象呢，下面开始介绍**
+
+## 接口  
+
+**在java中，接口用于描述行为契约，而在TS中，接口更加偏向类型契约**
+
+
 语法：
 interface iName {
     pName:type... 
@@ -164,7 +174,7 @@ square.sideLength = 10;
 square.penWidth = 5.0;
 ```
 
-类:
+## 类:
 ```ts
 // 只是变量和函数加上了类的权限，其定义完全与普通的一致
 public 公有 默认值
@@ -195,8 +205,52 @@ classname.var
 
 // abstract 抽象类，允许类存在实现和抽象，是类和接口的折中
 ```
-函数:
+## 函数:
 ```ts
+// 函数类型，包括参数类型和返回值类型
+
+let myAdd: (baseValue: number, increment: number) => number =
+    function(x: number, y: number): number { return x + y; };
+
+// 可选参数 ?
+
+function buildName(firstName: string, lastName?: string) {
+    if (lastName)
+        return firstName + " " + lastName;
+    else
+        return firstName;
+}
+
+let result1 = buildName("Bob");  // works correctly now
+let result2 = buildName("Bob", "Adams", "Sr.");  // error, too many parameters
+let result3 = buildName("Bob", "Adams");  // ah, just right
+
+// 默认参数
+function buildName(firstName: string, lastName = "Smith") {
+    return firstName + " " + lastName;
+}
+
+let result1 = buildName("Bob");                  // works correctly now, returns "Bob Smith"
+let result2 = buildName("Bob", undefined);       // still works, also returns "Bob Smith"
+let result3 = buildName("Bob", "Adams", "Sr.");  // error, too many parameters
+let result4 = buildName("Bob", "Adams");         // ah, just right
+
+// 剩余参数
+
+function buildName(firstName: string, ...restOfName: string[]) {
+  return firstName + " " + restOfName.join(" ");
+}
+
+let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
+
+// this,让TS识别函数this
+
+function f(this: void) {
+    // make sure `this` is unusable in this standalone function
+}
+
+
+
 // 函数重载
 let suits = ["hearts", "spades", "clubs", "diamonds"];
 
@@ -224,32 +278,7 @@ let pickedCard2 = pickCard(15);
 alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
 ```
 
-联合类型(或)
-    type|type
-
-交叉类型(且)
-    type&type
-
-类型推导(根据初始化) 发生在初始化变量和成员 设置默认参数值和决定函数返回值
-```ts
-// 注意类型推导中类型取自候选类型列表
-// (Rhino | Elephant | Snake)[] 类型推导结果
-let zoo = [new Rhino(), new Elephant(), new Snake()];
-// 我们需要其类型为共同父类 Animal
-let zoo: Animal[] = [new Rhino(), new Elephant(), new Snake()];
-```
-上下文推导(例如事件)  上下文归类会在很多情况下使用到。通常包含函数的参数，赋值表达式的右边，类型断言，对象成员和数组字面量和返回值语句。 上下文类型也会做为最佳通用类型的候选类型  从左边赋值变量推测右边值的类型
-```ts
-window.onmousedown = function(mouseEvent) {
-    console.log(mouseEvent.button);  //<- Error mouseEvent上meiyoubutton属性
-};
-```
-
-
-
-
-
-模块
+## 模块
 ```ts
     内部模块 命名空间(编写非TS文件的声明文件.d.ts)
     外部模块  模块(Node默认且推荐的方式)
@@ -290,6 +319,333 @@ window.onmousedown = function(mouseEvent) {
 ```
 
 
+## 类型兼容
+
+### 基本规则
+
+**如果x要兼容y，那么y至少具有与x相同的属性**
+
+```js
+interface Named {
+    name: string;
+}
+
+let x: Named;
+// y's inferred type is { name: string; location: string; }
+let y = { name: 'Alice', location: 'Seattle' };
+x = y;
+```
+
+### 函数兼容
+
+假设x是源函数，y是目标函数，有以下规则
+
+* **要在y中依次找到x的所有类型，允许忽略参数**，比如下面
+
+```js
+let x = (a: number) => 0;
+let y = (b: number, s: string) => 0;
+
+y = x; // OK
+x = y; // Error
+```
+
+* x的返回值必须是y的子类型
+
+```js
+let x = () => ({name: 'Alice'});
+let y = () => ({name: 'Alice', location: 'Seattle'});
+
+x = y; // OK
+y = x; // Error, because x() lacks a location property
+```
+
+### 类兼容
+
+比较两个类类型的对象时，只有实例的成员会被比较。**静态成员和构造函数不在比较的范围内**
+
+```js
+class Animal {
+    feet: number;
+    constructor(name: string, numFeet: number) { }
+}
+
+class Size {
+    feet: number;
+    constructor(numFeet: number) { }
+}
+
+let a: Animal;
+let s: Size;
+
+a = s;  // OK
+s = a;  // OK
+```
+
+## 类型推导
+
+###  基础
+
+```js
+let x = 3; // x被推导为number
+```
+
+### 最佳通用类型
+
+```js
+// 这里想被推导为Animal[]类型，但是推导类型不包括此类型，结果为 (Rhino | Elephant | Snake)[]
+let zoo = [new Rhino(), new Elephant(), new Snake()];
+
+// 手动指定类型为Animal[]
+let zoo: Animal[] = [new Rhino(), new Elephant(), new Snake()];
+```
+
+
+### 上下文归类
+
+```js
+// window.onmousedown推导mouseEvent为event事件，没有button，所以报错
+window.onmousedown = function(mouseEvent) {
+    console.log(mouseEvent.button);  //<- Error
+};
+```
+
+## 声明合并
+
+```js
+// 接口合并，如果同名属性类型不同会报错
+interface Box {
+    height: number;
+    width: number;
+}
+
+interface Box {
+    scale: number;
+}
+
+// 等同于
+interface Box {
+    height: number;
+    width: number;
+     scale: number;
+}
+let box: Box = {height: 5, width: 6, scale: 10};
+
+// 命名空间合并
+namespace Animals {
+    export class Zebra { }
+}
+
+namespace Animals {
+    export interface Legged { numberOfLegs: number; }
+    export class Dog { }
+}
+
+// 等同于
+namespace Animals {
+    export interface Legged { numberOfLegs: number; }
+
+    export class Zebra { }
+    export class Dog { }
+}
+```
+
+## 高级类型
+
+
+### 交叉类型
+
+**交叉类型是将多个类型合并为一个类型**,这在典型的面对对象模型不适合的情况下很有用
+
+```js
+function extend<T, U>(first: T, second: U): T & U {
+    let result = <T & U>{};
+    for (let id in first) {
+        (<any>result)[id] = (<any>first)[id];
+    }
+    for (let id in second) {
+        if (!result.hasOwnProperty(id)) {
+            (<any>result)[id] = (<any>second)[id];
+        }
+    }
+    return result;
+}
+
+class Person {
+    constructor(public name: string) { }
+}
+interface Loggable {
+    log(): void;
+}
+class ConsoleLogger implements Loggable {
+    log() {
+        // ...
+    }
+}
+var jim = extend(new Person("Jim"), new ConsoleLogger());
+var n = jim.name;
+jim.log();
+```
+
+### 联合类型
+
+**联合类型是将多个类型合并为一个类型集合，可以使集合里类型之一**
+
+```js
+function padLeft(value: string, padding: string | number) {
+    // ...
+}
+
+let indentedString = padLeft("Hello world", true); // errors during compilation
+```
+
+## 类型运算符
+
+### typeof
+
+**获取类型**
+
+```js
+const a: number = 3
+
+// 相当于: const b: number = 4
+const b: typeof a = 4
+```
+### keyof
+
+```js
+const colors = {
+  red: 'red',
+  blue: 'blue'
+};
+
+type Colors = keyof typeof colors;
+
+let color: Colors; // color 的类型是 'red' | 'blue'
+color = 'red'; // ok
+color = 'blue'; // ok
+color = 'anythingElse'; // Error
+```
+
+### infer
+
+```js
+// 获取函数返回值类型
+type ReturnType<T> = T extends (...args: any[]) => infer P ? P : any;
+
+type Func = () => User;
+type Test = ReturnType<Func>; // Test = User
+```
+
+
+
+## 映射类型
+
+**对类型做一些映射，产生新的类型**
+
+```js
+
+// 将属性变为可选的
+interface PersonPartial {
+    name: string;
+    age: number;
+}
+// Partial
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+}
+
+type PersonPartial = Partial<Person>; // 属性可选
+
+// Required
+type Required<T> = {
+  [P in keyof T]-?: T[P];
+};
+
+type PersonRequired = Required<Person>; // 属性必须
+
+// Exclude
+type Exclude<T, U> = T extends U ? never : T;
+
+// 相当于: type A = 'a'
+type A = Exclude<'x' | 'a', 'x' | 'y' | 'z'>
+
+// Omit
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+
+interface User {
+  id: number;
+  age: number;
+  name: string;
+};
+
+// 相当于: type PickUser = { age: number; name: string; }
+type OmitUser = Omit<User, "id">
+
+```
+
+## 条件类型
+
+```js
+// 用于动态生成类型
+T extends U ? X : Y
+
+type t = isTrue<number>
+
+// 相当于 type t = false
+type t1 = isTrue<false>
+```
+
+## 泛型
+
+### 函数
+
+```js
+function identity<T>(arg: T): T {
+    return arg;
+}
+```
+
+### 接口
+
+```js
+interface GenericIdentityFn {
+    <T>(arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn = identity;
+```
+
+### 类
+
+```js
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+```
+
+
+### 泛型约束
+
+```js
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);  // Now we know it has a .length property, so no more error
+    return arg;
+}
+```
 
 
 
@@ -306,12 +662,4 @@ window.onmousedown = function(mouseEvent) {
 
 
 
-装饰器 不侵入代码实现扩展 
-作用对象 类 方法 访问符 属性 参数
-开启方式
-tsconfig.json
-"experimentalDecorators": true,       
-"emitDecoratorMetadata": true
-npm i -D reflect-metadata
-安装npm 装饰器  rou
 
