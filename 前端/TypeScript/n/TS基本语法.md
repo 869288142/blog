@@ -564,6 +564,11 @@ type Required<T> = {
 
 type PersonRequired = Required<Person>; // 属性必须
 
+// 只读
+type Readonly<T> = {
+    readonly [P in keyof T]: T[P];
+};
+
 // Exclude
 type Exclude<T, U> = T extends U ? never : T;
 
@@ -582,6 +587,28 @@ interface User {
 // 相当于: type PickUser = { age: number; name: string; }
 type OmitUser = Omit<User, "id">
 
+// 删除空
+type NonNullable<T> = T extends null | undefined ? never : T;
+
+// 获取函数返回值类型
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+
+interface SquareProps {
+  onClick: () => void
+}
+// void
+type onClickReturnType = ReturnType<SquareProps["onClick"]>; // 属性
+
+// 获取函数参数类型
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+
+
+interface SquareProps {
+  onClick: () => void
+}
+
+// []
+type onClickParameters = Parameters<SquareProps["onClick"]>; // 属性
 ```
 
 ## 条件类型
