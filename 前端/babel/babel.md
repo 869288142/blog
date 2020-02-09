@@ -24,7 +24,7 @@ AST  -> code 生成
 
 所以，**新语法都是有对应的插件的**
 
-这个时候我脑子想起来es6语法那么多，总不可能一个一个配置吧，放心，babel官方也想到了这个问题，开启了一系列的探索
+这个时候我脑子想起来es6语法那么多，总不可能一个一个配置吧，放心，babel官方也想到了这个问题，开启了一系列的探索，要记住**presets只是一些常用plugin的集合**
 
 **.babelrc是babel的配置文件，语法需要配置presets选项**
 
@@ -72,7 +72,7 @@ npm install --save-dev @babel/plugin-transform-arrow-functions
 
 缺点：
 
-由于使用了非规范确定的语法，一旦语法提案发生重大改变，代码会受到重大影响
+**由于使用了非规范确定的语法，一旦语法提案发生重大改变，代码会受到重大影响**
 
 使用方法
 
@@ -85,7 +85,7 @@ npm install --save-dev @babel/preset-stage-0
 ```
 ### 3.es201x
 
-这个是每年更新一次，包括了标准规范的语法
+这个是每年更新一次，包括了标准规范的语法,每年新增的稳定提案都会有一个单独的包
 
 优点：
 
@@ -93,7 +93,13 @@ npm install --save-dev @babel/preset-stage-0
 
 缺点：
 
-配置不够灵活，每年需要更换
+**配置不够灵活，每年需要新增当年的包，就像下面，好奇为什么的，可以看一下下面的包的package.json里面的依赖只有当年新增的稳定填**
+
+```js
+babel-preset-es2015
+------ 依次安装这些
+babel-preset-es2020
+```
 
 使用
 
@@ -107,6 +113,8 @@ npm install --save-dev babel-preset-es2015
 
 ### 4.env
 
+**经过上面的stage-x和esxxxx的尝试，最终babel提出了env的预设，更新会自动包含所有的稳定提案，不稳定提案让用户作为插件自己去去使用，从而减少用户的配置**
+
 优点：
 
 1.配置简单
@@ -116,6 +124,10 @@ npm install --save-dev babel-preset-es2015
 3.持续更新
 
 **4.更强大、灵活的配置方法**
+
+**注意点**
+
+
 
 使用方法
 
@@ -130,6 +142,7 @@ npm install --save-dev @babel/preset-env
   ]
 }
 ```
+
 
 ## API编译
 
