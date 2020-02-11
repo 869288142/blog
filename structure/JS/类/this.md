@@ -1,6 +1,6 @@
 # this 
 ## 特性 
-**调用时绑定 类似动态作用域** 
+**调用时绑定 类似动态作用域，this永远指向其调用者** 
 
 
 1.一个常见且有趣的场景，js一些对象的实例方法可以被其它对象使用，有一个很有趣的比喻，我们家没有锅，去借别人家的，但是出来的效果是一致的
@@ -13,6 +13,9 @@
 
 
 ## 默认绑定
+
+此时调用者是window,所以this就是window
+
 **this非严格模式下指向全局对象，严格模式下为undefined**
 ```js
 function foo() {
@@ -23,6 +26,9 @@ foo(); // 2
 ```
 
 ## 隐式绑定  只有最后一层会影响调用位置
+
+此时调用者是方法前的对象,this指向调用其的对象
+
 **this指向调用其的对象**
 ```js
 function foo() {
@@ -39,9 +45,12 @@ obj2: obj2
 obj1.obj2.foo(); // 42
 ```
 ## 显式绑定
+
+js中有一些方法可以指定调用者，此时this指向指定的调用者
+
 **this指向call、apply、bind第一个参数**
 ```js
-// 简单的辅助绑定函数
+// 简单的辅助绑定函数 bind有一个特点，就是bind一次的函数无法再改变this,箭头函数与其效果一致
 function bind(fn, obj) {
 return function() {
 return fn.apply( obj, arguments );
@@ -54,8 +63,13 @@ var bar = bind( foo, obj );
 var b = bar( 3 ); // 2 3
 console.log( b ); // 5
 ```
+
+
 ## new绑定
 
+## 箭头函数
+
+箭头函数的this是词法作用域，写在那里就是那里的this
 
 ## 绑定优先级
 
