@@ -1,6 +1,25 @@
 # props、attrs差异
 
-我们都知道**props会被传递给组件，而attrs会附加到DOM元素上**,最近在封装组件过程中，遇到了attrs传递在刷新时丢失的情况，所以详细看一下Vue内部如何处理两者的
+## 设计理念
+
+* 根据props定义分割入参为props与attrs
+
+* attrs默认被作用于节点
+
+### 优点：
+
+* 使用者无需知道props和attrs区别，实际上，这交由开发者来处理，非常友好
+
+* 对于开发者而言，attrs被传递给根节点，这在处理DOM属性时很方便
+
+### 缺点：
+
+* 最终的属性是经过Vue内部识别的结果，多了一层封装，这在**大多数情况下没问题，少部分情况封装还是带来了不便**
+
+* attrs默认被传递给根节点，这是默认情况，**开发者不总是传递attrs到根节点**，所以2.4开放了**inheritAttrs选项，将attrs可选为开发者控制**
+
+* 可能的性能损失，**使用者可能没注意，导致多余的attrs被作用到根节点上**，不过这一点无伤大雅
+
 
 ## props
 
@@ -95,8 +114,7 @@ initProps
   // 等等....
 }
 ```
-
-下面我们**重点分析initProps函数**，其具体实现如下
+### initProps
 
 ```js
   function initProps (vm, propsOptions) {
@@ -147,7 +165,7 @@ initProps依次做了以下事情：
 
 * 将`_props`处理好的属性代理到组件实例(this)上
 
-弄清楚这个过程后，一个问题摆到我们面前**propsData**是怎么得到的
+### propsData处理
 
 搜索源代码`PropsData`,找到以下代码
 
@@ -219,7 +237,28 @@ function checkProp (
 
   * 将`attrs`按照合并到`propData`,并且从**attrs删除此key**
 
-按照上述步骤，就能**将attrs分离成渲染时的attrs和props**
+### 小结
+
+经过我们阅读源码，得到了以下几点
+
+* 除了使用render函数显式传递props,其余传入到组件的都是attrs，组件内部会进行一次筛选，分成attrs和Props，其伪代码如下：
+
+```js
+// data是指模板编译后的静态render函数或者render渲染函数的data数据，这里先略过Vue编译过程
+const attrs = data.attrs
+const props = data.props
+
+// 将传入的attrs和props对组件定义的Props进行验证，解析出最终的props
+vm._props = attrs.checkProps + props.checkProps
+
+// 将_Props的key都代理到vm上，实现this.key -> this._props.key
+proxy(vm, "_props", key);
+
+// 暴露_props公共接口
+
+vm.$props = vm._props
+```
+
 
 
 ## attrs
@@ -247,9 +286,5 @@ with(this){return _c('div',{attrs:{"id":"app"}},[_c('jz-fa-date-picker',{attrs:{
 }"
 ```
 
-* **data.attrs实际上就是模板上的attrs**
-
-
-## attrs、props更新差异
 
 
