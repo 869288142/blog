@@ -52,7 +52,8 @@ module.exports = {
         '/JS/语法/深拷贝与浅拷贝',
         '/JS/语法/类数组转数组',
         '/JS/语法/迭代器Iterator',
-        '/JS/语法/防篡改对象'
+        '/JS/语法/防篡改对象',
+        '/JS/语法/可选运算符和空值合并运算符'
       ]
     },
     {
@@ -63,12 +64,19 @@ module.exports = {
     {
       title: '函数', // 侧边栏名称
       collapsable,
-      children: ['/JS/函数/函数调用']
+      children: [
+        '/JS/函数/函数调用',
+        '/JS/函数/借用函数',
+        '/JS/函数/惰性函数'
+      ]
     },
     {
       title: '对象', // 侧边栏名称
       collapsable,
-      children: ['/JS/对象/获取属性']
+      children: [
+        '/JS/对象/获取属性',
+        '/JS/对象/判断对象',
+      ]
     },
     {
       title: '类', // 侧边栏名称
@@ -99,7 +107,8 @@ module.exports = {
       children: [
         '/JS/异步/异步概念',
         '/JS/异步/promise',
-        '/JS/异步/async、await'
+        '/JS/异步/async、await',
+        '/JS/异步/Promise模式'
       ]
     },
     {
@@ -110,8 +119,23 @@ module.exports = {
     {
       title: '错误处理', // 侧边栏名称
       collapsable,
-      children: ['/JS/错误处理/错误', '/JS/错误处理/思考']
-    }
+      children: ['/JS/错误处理/错误处理规范', '/JS/错误处理/思考']
+    },
+    {
+      title: '代码规范', // 侧边栏名称
+      collapsable,
+      children: ['/JS/代码规范/基本风格', '/JS/代码规范/语言风格']
+    },
+    {
+      title: '设计模式', // 侧边栏名称
+      collapsable,
+      children: ['/JS/设计模式/发布订阅模式']
+    },
+    {
+      title: '优化', // 侧边栏名称
+      collapsable,
+      children: ['/JS/优化/条件优化']
+    },
   ]
 }
 delete require.cache[module.filename]

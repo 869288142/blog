@@ -1,4 +1,5 @@
 const collapsable = true
+
 module.exports = {
   '/HTML/': [
     {

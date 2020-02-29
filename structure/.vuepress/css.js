@@ -23,6 +23,7 @@ module.exports = {
       title: '流', // 侧边栏名称
       collapsable,
       children: [
+        '/CSS/流/基线规则',
         '/CSS/流/重新认识bolck和inline-block',
         '/CSS/流/内联元素',
         '/CSS/流/内联元素并列',
