@@ -1,42 +1,5 @@
 # Vue
 
-## 命令式-JQuery 为例
-
-```js
-// 当前用户名的值
-let curUsername = 'cj'
-// 找到类名为username的元素
-let username = $('.username')
-// 设置username为cj
-username.val(curUsername)
-```
-
-**如果多次调用呢**
-
-包裹成函数也许是个不错的选择
-
-```js
-function updateUsername(username) {
-  let usernameInput = $('.username')
-  usernameInput.val(username)
-}
-
-let curUsername = 'cj'
-updateUsername(curUsername)
-```
-
-## 命令式缺陷
-
-**可以想象，虽然我们可以为每个操作定义一个函数，然后代码会变为一堆每个 DOM 对应的操作函数，而且很多代码都是特点场景下的不可复用，函数的粒度难以掌控,诸如以下代码**
-
-```js
-updateUsername()
-
-updatexxx1()
-
-updatexxx2()
-```
-
 ## 声明式-Vue 为例
 
 ```js
