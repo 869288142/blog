@@ -1,6 +1,6 @@
 # pointer-event
 
-最近在一个组件发现button禁用时，不只是单纯显示禁用的样式，比如灰色和禁选图标,而且点击时事件也不会触发
+最近比较频繁使用到了pointer-event这个属性，总结一下
 
 ## 定义
 
@@ -12,7 +12,6 @@ pointer-events 指定元素对鼠标事件的处理方式
 
 pointer-events: auto;
 pointer-events: none;
-
 
 ### auto
 
