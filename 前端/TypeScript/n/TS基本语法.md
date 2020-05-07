@@ -73,6 +73,10 @@ function infiniteLoop(): never {
     while (true) {
     }
 }
+
+// any类型保护 unknown
+// unknown 类型只能被赋值给 any 类型和 unknown 类型本身
+
 ```
 
 类型断言(忽略系统的类型检查)
