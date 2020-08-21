@@ -29,6 +29,9 @@ let isDone: boolean = false
 // 字符串
 let name: string = 'cj'
 
+// symbol
+let symbolKey: symbol = Symbol()
+
 // 数组 同一类型元素集合
 let arr: number[] = [1, 2, 3]
 
@@ -75,7 +78,7 @@ function infiniteLoop(): never {
 }
 
 // any类型保护 unknown
-// unknown 类型只能被赋值给 any 类型和 unknown 类型本身
+// unknown 类型只能被赋值给 any 类型和 unknown 类型本身，unknown能一定的检查能力，2而any就完全丧失了，强制使用类型收缩来执行代码
 
 ```
 
@@ -130,7 +133,7 @@ function createSquare(config: SquareConfig): {color: string; area: number} {
 
 let mySquare = createSquare({color: "black"});
 
-// 索引签名
+// 索引签名,用于放松对接口的属性操作
 interface SquareConfig {
     color?: string;
     width?: number;
@@ -192,7 +195,12 @@ protected 保护  特别地在子类中可以访问
 // 参数属性 可以在构造函数参数里定义变量映射到类实例属性去
 class Octopus {
  
+    numberOfLegs: number = 8;
+
+    // 只读属性
     readonly numberOfLegs: number = 8;
+    // 静态属性
+    static config: string = '33';
 
     constructor(readonly name: string) {
     }
@@ -202,10 +210,6 @@ class Octopus {
 
     }
 }
-// 静态属性 被类的所有实例共享
-static var = value
-// 访问
-classname.var
 
 // abstract 抽象类，允许类存在实现和抽象，是类和接口的折中
 ```
@@ -435,7 +439,7 @@ interface Box {
 }
 let box: Box = {height: 5, width: 6, scale: 10};
 
-// 命名空间合并
+// 命名空间合并，非导出成员在合并的其他命名空间不可见
 namespace Animals {
     export class Zebra { }
 }
