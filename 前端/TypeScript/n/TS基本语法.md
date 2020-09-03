@@ -507,6 +507,129 @@ function padLeft(value: string, padding: string | number) {
 let indentedString = padLeft("Hello world", true); // errors during compilation
 ```
 
+## 类型保护
+
+联合类型下，如何获取精准的类型
+
+```ts
+let pet = getSmallPet();
+
+// 每一个成员访问都会报错
+if (pet.swim) {
+    pet.swim();
+}
+else if (pet.fly) {
+    pet.fly();
+}
+```
+
+**使用类型断言**
+
+```ts
+let pet = getSmallPet();
+
+if ((<Fish>pet).swim) {
+    (<Fish>pet).swim();
+}
+else {
+    (<Bird>pet).fly();
+}
+```
+
+如果使用类型断言，所有需要缩减类型的地方都需要加上类型断言，比较繁琐
+
+### 用户谓词
+
+```ts
+function isFish(pet: Fish | Bird): pet is Fish {
+    return (<Fish>pet).swim !== undefined;
+}
+
+
+if (isFish(pet)) {
+    pet.swim();
+}
+else {
+    pet.fly();
+}
+```
+
+### in
+
+```ts
+function move(pet: Fish | Bird) {
+  if ("swim" in pet) {
+    return pet.swim();
+  }
+  return pet.fly();
+}
+```
+
+### typeof 
+
+上面的类型保护
+
+```ts
+function isNumber(x: any): x is number {
+  return typeof x === "number";
+}
+
+function isString(x: any): x is string {
+  return typeof x === "string";
+}
+
+function padLeft(value: string, padding: string | number) {
+  if (isNumber(padding)) {
+    return Array(padding + 1).join(" ") + value;
+  }
+  if (isString(padding)) {
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${padding}'.`);
+}
+```
+
+但是每个都要写类型保护，过于繁琐，TypeScript默认`typeof v === "typename"` `typeof v !== "typename"` typename为**number", "string", "boolean", or "symbol** 时，可以默认实现类型保护
+
+### isntanceof保护
+
+```ts
+interface Padder {
+    getPaddingString(): string;
+}
+
+class SpaceRepeatingPadder implements Padder {
+    constructor(private numSpaces: number) {}
+    getPaddingString() {
+        return Array(this.numSpaces + 1).join(' ');
+    }
+}
+
+class StringPadder implements Padder {
+    constructor(private value: string) {}
+    getPaddingString() {
+        return this.value;
+    }
+}
+
+function getRandomPadder() {
+    return Math.random() < 0.5
+        ? new SpaceRepeatingPadder(4)
+        : new StringPadder('  ');
+}
+
+// 类型为SpaceRepeatingPadder | StringPadder
+const padder: Padder = getRandomPadder();
+
+if (padder instanceof SpaceRepeatingPadder) {
+    padder.; // 类型细化为'SpaceRepeatingPadder'
+}
+if (padder instanceof StringPadder) {
+    padder; // 类型细化为'StringPadder'
+}
+
+```
+
 ## 类型运算符
 
 ### typeof
@@ -617,6 +740,33 @@ interface SquareProps {
 
 // []
 type onClickParameters = Parameters<SquareProps["onClick"]>; // 属性
+
+// 实例类型
+class C {
+  x = 0;
+  y = 0;
+}
+
+type T0 = InstanceType<typeof C>;
+
+// 函数this类型
+function toHex(this: Number) {
+  return this.toString(16);
+}
+
+function numberToString(n: ThisParameterType<typeof toHex>) {
+  return toHex.apply(n);
+}
+
+// 移除this类型
+function toHex(this: number) {
+    return this.toString(16);
+}
+
+const fiveToHex: OmitThisParameter<typeof toHex> = toHex.bind(5);
+
+console.log(fiveToHex());
+
 ```
 
 ## 条件类型
