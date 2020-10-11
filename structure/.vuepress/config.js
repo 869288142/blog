@@ -2,8 +2,8 @@ const httpSidebar = require('./http')
 const htmlSidebar = require('./html')
 const cssSidebar = require('./css')
 const jsSidebar = require('./js')
-
 const vueSidebar = require('./vue')
+const nodeSidebar = require('./node')
 const collapsable = true
 let browserSidebar = {
   '/browser/': [
@@ -51,7 +51,8 @@ let config = {
           { text: 'HTML', link: '/HTML/' },
           { text: 'CSS', link: '/CSS/' },
           { text: 'JS', link: '/JS/' },
-          { text: 'Vue', link: '/Vue/' }
+          { text: 'Vue', link: '/Vue/' },
+          { text: 'node', link: '/node/' }
         ]
       }
     ],
@@ -61,10 +62,11 @@ let config = {
       ...jsSidebar,
       ...vueSidebar,
       ...httpSidebar,
-      ...browserSidebar
+      ...browserSidebar,
+      ...nodeSidebar
     }
   },
-  sidebarDepth: 2,
+  sidebarDepth: 3,
   base: "/blog/",
   dest: "./docs"
 }
