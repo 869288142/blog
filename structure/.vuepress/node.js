@@ -5,7 +5,11 @@ module.exports = {
     {
       title: 'package Manager', // 侧边栏名称
       collapsable,
-      children: ['/node/包管理器/pm','/node/包管理器/npm还是yarn']
+      children: [
+        '/node/包管理器/pm',
+        '/node/包管理器/npm还是yarn',
+        '/node/包管理器/npm版本知识',
+      ]
     },
   ]
 }
