@@ -9,6 +9,7 @@ module.exports = {
         '/HTTP/get和post区别',
         '/HTTP/base64编码',
         '/HTTP/URL编码',
+        '/HTTP/缓存',
       ]
     },
   ]
