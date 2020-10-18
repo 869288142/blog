@@ -1,26 +1,35 @@
 # AST
 
-AST全称抽象语法树，是将代码用一棵树的形式表现出来的一种方式，个人觉得，是为了我们操作代码，毕竟操作文本要麻烦的多，目前前端很多工具都使用到了AST来做一些转换，今天来了解一下
+AST全称**抽象语法树**，`AST`整体内容归属于**编译原理**
+
 
 ## 编译流程
 
-code 解析成 AST  parse
+1. `code` 解析成 `AST`  属于`parse`阶段
 
-modify AST  修改
+2. 修改 `AST`  
 
-AST 生成 code  generator
+3. `AST` 生成 `code`  属于`generator`阶段
 
-编译主要就是上面三步，我们的关注点在认识一颗抽象语法树的结构，如何去操作
+一般而言，编译原理要做的基本也是上面3步，不过对于一般场景来说，**`parse`和`generator`我们不需要关注**，库会帮我们处理，**我们需要关注的是，如何将AST转换成我们想要的AST**
 
 
-## 编译工具
+## AST应用场景
+
+* 预编译语言`sass`、`jsx`、`es6+`、`TypeScript`
+
+* `lint`和`formate`
+
+可以说基本前端目前绝大数工具都离不开`AST`，可见`AST`的重要性
+
+## AST操作库
 
 本次基于babel使用的编译器
 
 ### 解析
 
 ```js
-let parser = require("@babel/parser")
+let { parse } = require("@babel/parser")
 
 const code = `let a = 1`
 
@@ -29,11 +38,24 @@ const ast = parser.parse(code);
 console.log(ast);
 ```
 
+### 生成
+
+```js
+let { parse } = require("@babel/parser")
+
+let generate = require("@babel/generator").default
+
+const code = 'class Example {}';
+const ast = parse(code);
+
+const output = generate(ast, { /* options */ });
+```
+
 ### 转换
 
 ```js
-import * as parser from "@babel/parser";
-import traverse from "@babel/traverse";
+let { parse } = require("@babel/parser")
+const traverse = require("@babel/traverse").default;
 
 const code = `function square(n) {
   return n * n;
@@ -50,99 +72,46 @@ traverse(ast, {
 });
 ```
 
-### 生成
-
-```js
-mport {parse} from '@babel/parser';
-import generate from '@babel/generator';
-
-const code = 'class Example {}';
-const ast = parse(code);
-
-const output = generate(ast, { /* options */ }, code);
-```
-
 我们把上述三个过程组合一下
 
 ```js
-let parser = require("@babel/parser") 
-
-let traverse = require("@babel/traverse").default
+let { parse } = require("@babel/parser")
 
 let generate = require("@babel/generator").default
 
+const traverse = require("@babel/traverse").default;
 
-exports.transform = function(path, options) {
+const code = `function square(n) {
+    return n * n;
+  }`;
 
-// fs读取文件
-const fs = require("fs")
-let  code = fs.readFileSync(path, {
-  encoding: "utf8"
-})
-  
-//解析成AST 
-const ast = parser.parse(code);
+const ast = parse(code);
 
-// 对AST进行修改
+// 修改AST
 
 traverse(ast, {
-  ...options
-})
-
-
-// 生成代码
-const output = generate(ast, { /* options */ }, code);
-
-// 输出代码
-console.log(output);
-
-}
-
-```
-
-这个函数接受一个文件路径和一个修改的options
-
-```js
-// code.js
-
-let a = () => {
-  
-}
-```
-
-```js
-// index.js
-
-let t = require("@babel/types")
-let { transform } = require("./transform")
-
-let options = {
-
-  ArrowFunctionExpression(path){
-    let node = path.node;
-    let params = node.params;
-    let body = node.body;
-    if(!t.isBlockStatement(body)){
-        let returnStatement = t.returnStatement(body);
-        body = t.blockStatement([returnStatement]);
+    enter(path) {
+      if (path.isIdentifier({ name: "n" })) {
+        path.node.name = "x";
+      }
     }
-    let funcs = t.functionExpression(null, params, body, false, false);
-    path.replaceWith(funcs);
-  }
+  });
 
-}
+const output = generate(ast, { /* options */ });
 
-transform("./code.js", options)
-
-
+console.log(output);
 ```
-![uWSVt1.png](https://s2.ax1x.com/2019/10/07/uWSVt1.png)
 
-我们成功把箭头函数转换成了普通函数
+### 转换函数使用注意点
 
-## AST工程关注点-节点修改
+* traverse使用的是深度遍历树的实现
 
-**babel修改AST时，会采用深度遍历整颗节点数**，我们需要做的是，对AST树转换为我们想要的，比如上面匹配到箭头函数就替换成普通函数一样
+### AST对比工具
 
-### 节点
+[AST可视化](https://astexplorer.net/)
 
+## 实践Codemod
+
+## 可读性
+
+## 多实践
