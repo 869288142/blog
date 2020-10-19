@@ -110,8 +110,44 @@ console.log(output);
 
 [AST可视化](https://astexplorer.net/)
 
-## 实践Codemod
+## recast
 
-## 可读性
+`recast`能够生成`diff`更友好的源码,其整体使用如下：
 
-## 多实践
+```js
+const { parse, print,visit } = require('recast')
+
+module.exports = function visitor(code, visitor) {
+    // code -> ast
+    const ast = parse(code)
+    visit(ast, visitor)
+    // ast -> code
+    return print(ast).code
+}
+
+
+const visitor = require('./core')
+const recast = require('recast')
+const t = recast.types.namedTypes
+const { arrowFunctionExpression, blockStatement,variableDeclaration,variableDeclarator } =  recast.types.builders
+const code = `function a (a, b) {
+    return a + b
+}`
+const result =  visitor(code, {
+  visitFunctionDeclaration(path) {
+    // 参数
+    const { params, body, id }  = path.node
+
+    const exp = variableDeclaration('const', [
+      variableDeclarator(id,arrowFunctionExpression(params, body))
+    ])
+
+    path.replace(exp) 
+    
+    return false
+  }
+})
+console.log(result)
+
+```
+
