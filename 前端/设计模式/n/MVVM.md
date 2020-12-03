@@ -87,3 +87,16 @@
 * 代码复杂性增大
 
 
+## 参考资料
+
+https://www.jianshu.com/p/be63c37b02cb
+
+https://juejin.cn/post/6844903696837378061
+
+https://juejin.cn/post/6844903938873901064
+
+https://segmentfault.com/a/1190000021158929
+
+https://segmentfault.com/a/1190000023325805
+
+https://draveness.me/mvx/
