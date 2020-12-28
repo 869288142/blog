@@ -78,7 +78,7 @@ function infiniteLoop(): never {
 }
 
 // any类型保护 unknown
-// unknown 类型只能被赋值给 any 类型和 unknown 类型本身，unknown能一定的检查能力，2而any就完全丧失了，强制使用类型收缩来执行代码
+// unknown 类型只能被赋值给 any 类型和 unknown 类型本身，unknown能一定的检查能力，而any就完全丧失了，强制使用类型收缩来执行代码
 
 ```
 
@@ -767,6 +767,19 @@ const fiveToHex: OmitThisParameter<typeof toHex> = toHex.bind(5);
 
 console.log(fiveToHex());
 
+// 映射类型别名
+
+type Getters<T> = {
+    [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K]
+};
+
+interface Person {
+    name: string;
+    age: number;
+    location: string;
+}
+
+type LazyPerson = Getters<Person>;
 ```
 
 ## 条件类型
@@ -833,9 +846,31 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
 ```
 
 
+### Variadic Tuple Types 可变元祖类型
+
+* 支持泛型使用`...`
+
+* 支持`...`任意位置
+
+## 常见问题
+
+**惰性初始化**
+
+```js
+interface Foo {
+  bar: number;
+  bas: string;
+}
+
+let foo = {} as Foo;
+foo.bar = 123;
+foo.bas = 'Hello World';
+```
 
 
+Template Literal Types 有空看下
 
+目前到4.1
 
 
 
