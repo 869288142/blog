@@ -2,11 +2,17 @@
 
 ## MVC
 
+### 原始MVC
+
+`MVC`模式最早由`Trygve Reenskaug`在`1978`年提出，[论文]((http://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html))、[中文翻译](https://juejin.cn/post/6844903696837378061#heading-0)
+
+![](./origin_mvc.jpg)
+
+在论文中，**`MVC`是直接与`Controller`进行交互 然后由`Controller`来组织`View`和`Model`最终展示给用户**
+
 ### MVC概念
 
-`MVC`在提出时，细节不够完善，更多的是一种理念，下图为常见的`MVC`的实现：
-
-![](./mvc.png)
+[`MVC`在提出时，细节不够完善]，更多的是一种理念，下图为常见的`MVC`的实现：
 
 ### MVC想要解决的问题
 
@@ -100,3 +106,15 @@ https://segmentfault.com/a/1190000021158929
 https://segmentfault.com/a/1190000023325805
 
 https://draveness.me/mvx/
+
+
+
+
+https://www.wildcrest.com/Potel/Portfolio/mvp.pdf
+
+http://blog.hudongdong.com/ios/459.html/comment-page-1
+
+http://www.uml.org.cn/zjjs/2015021310.asp
+
+
+https://www.cnblogs.com/winter-cn/archive/2012/09/16/2687184.html
