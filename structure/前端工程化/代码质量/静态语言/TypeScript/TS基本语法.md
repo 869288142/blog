@@ -90,6 +90,43 @@ function infiniteLoop(): never {
     let strLength: number = (<string>someValue).length;
 ```
 
+常量断言(将字面量比如string、number、boolean、array、object指定为常量，从而使其获取更精准的类型)
+
+``` ts
+// Type '"hello"'
+const x = 'hello' as const;
+let x1 = 'hello';
+
+// Type 'readonly [10, 20]'
+const y = [10, 20] as const;
+let y1 = [10, 20];
+
+// Type '{ readonly text: "hello" }'
+const z = { text: 'hello' } as const;
+let z1 = { text: 'hello' };
+
+
+// Works with no types referenced or declared.
+// We only needed a single const assertion.
+function getShapes() {
+  const result = [
+    { kind: 'circle', radius: 100 },
+    { kind: 'square', sideLength: 50 }
+  ] as const;
+
+  return result;
+}
+
+for (const shape of getShapes()) {
+  // Narrows perfectly!
+  if (shape.kind === 'circle') {
+    console.log('Circle radius', shape.radius);
+  } else {
+    console.log('Square side length', shape.sideLength);
+  }
+}
+```
+
 
 **上面介绍了基本类型和数组的类型定义，那么对象呢，下面开始介绍**
 
