@@ -127,6 +127,71 @@ for (const shape of getShapes()) {
 }
 ```
 
+字面量类型
+
+**生成类型**
+
+``` js
+
+type PropEventSource<Type> = {
+  on<Key extends string & keyof Type>
+      (eventName: `${Key}Changed`, callback: (newValue: Type[Key]) => void): void;
+};
+
+declare function makeWatchedObject<Type>(obj: Type): Type & PropEventSource<Type>;
+
+const person = makeWatchedObject({
+firstName: 'Saoirse',
+lastName: 'Ronan',
+age: 26
+});
+
+person.on('firstNameChanged', (newName) => {
+//                            ^ = (parameter) newName: string
+  console.log(`new name is ${newName.toUpperCase()}`);
+});
+
+person.on('ageChanged', (newAge) => {
+//                      ^ = (parameter) newAge: number
+  if (newAge < 0) {
+      console.warn('warning! negative age');
+  }
+})
+// 联合类型
+type EmailLocaleIDs = "welcome_email" | "email_heading";
+type FooterLocaleIDs = "footer_title" | "footer_sendoff";
+
+type AllLocaleIDs = `${EmailLocaleIDs | FooterLocaleIDs}_id`;
+//   ^ = type AllLocaleIDs = "welcome_email_id" | "email_heading_id" | "footer_title_id" | "footer_sendoff_id"
+```
+
+**内置方法**
+
+``` ts
+Uppercase<StringType>
+Lowercase<StringType>
+Capitalize<StringType>
+Uncapitalize<StringType>
+```
+**实例**
+
+``` ts
+type PropType<T, Path extends string> =
+    (string extends Path ?
+      unknown :
+      (Path extends keyof T ?
+        T[Path] :
+          (Path extends `${infer K}.${infer R}` ?
+            (K extends keyof T ?
+              PropType<T[K], R>
+              : unknown)
+            : unknown
+          )
+      )
+    )
+
+declare function get<T, P extends string>(obj: T, path: P): PropType<T, P>;
+```
 
 **上面介绍了基本类型和数组的类型定义，那么对象呢，下面开始介绍**
 
@@ -905,12 +970,9 @@ foo.bas = 'Hello World';
 ```
 
 
-Template Literal Types 有空看下
-
-目前到4.1
 
 
-
+4.1 版本
 
 
 
