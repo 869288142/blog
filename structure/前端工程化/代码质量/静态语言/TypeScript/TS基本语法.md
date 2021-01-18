@@ -656,6 +656,25 @@ else {
 }
 ```
 
+### 断言函数
+
+``` ts
+function yell(str) {
+  assert(typeof str === 'string')
+
+  return str.toUpperCase()
+  //         ~~~~~~~~~~~
+  // error: Property 'toUppercase' does not exist on type 'string'.
+  //        Did you mean 'toUpperCase'?
+}
+
+function assert(condition: any, msg?: string): asserts condition {
+  if (!condition) {
+    throw new TypeError(msg)
+  }
+}
+``` 
+
 ### in
 
 ```ts
@@ -869,6 +888,16 @@ const fiveToHex: OmitThisParameter<typeof toHex> = toHex.bind(5);
 
 console.log(fiveToHex());
 
+// 递归别名
+
+type Json = string | number | boolean | null | JsonObject | JsonArray;
+
+interface JsonObject {
+  [property: string]: Json;
+}
+
+interface JsonArray extends Array<Json> {}
+
 // 映射类型别名
 
 type Getters<T> = {
@@ -974,6 +1003,7 @@ foo.bas = 'Hello World';
 
 4.1 版本
 
+类型别名和接口
 
 
 
