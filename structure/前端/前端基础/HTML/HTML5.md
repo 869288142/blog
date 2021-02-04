@@ -1,44 +1,56 @@
-# Html5 特性
+# HTML5 特性速览
 
 ## 强化语义标记
-header footer ...
+
+`header` `footer` ...
 
 ## 增强表单
+
 增强了表单输入类型
 新增表单元素
 
 ## 原生视频和音频支持
-audio
-video
+
+`audio`
+`video`
 
 ## 图像绘制
-canvas
-svg
+
+`canvas`
+`svg`
 
 ## 动画
-requestAnimationFrame
+
+`requestAnimationFrame`
 
 ## 拖放API
 
 ## iframe通信
-postMessage
+
+`postMessage`
 
 ## 地理定位
-Geolocation
+
+`Geolocation`
 
 ## 计算密集型支持
-web worker
+
+`web worker`
 
 ## 服务器推送
-websocket
+
+`websocket`
 
 ## 浏览器存储
-Web storage localStorage sessionStorage
+
+`localStorage` `sessionStorage`
 
 ## 离线储存
-manifest 
+
+`manifest`
 
 ## 历史状态管理
-history
+
+`history`
 
 
