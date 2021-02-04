@@ -1,13 +1,8 @@
 # margin
-## 元素尺寸概念
-
-1. 元素尺寸 border-box DOM指offsetWidth|Height
-2. 元素内部尺寸(可视尺寸) padding-box DOM 指 clientWidth|Height
-3. 元素外部尺寸 margin-box DOM 没有API
-
-
 ## margin与padding-box
-元素设定了width和保持包裹性时，margin对尺寸没有影响，只有元素为“充分利用可用空间时”例外
+
+元素设定了width和保持包裹性时，margin对尺寸没有影响，只有元素为**充分利用可用空间**时例外
+
 ```css
 <div class="father">
   <div class="son"></div>
@@ -30,23 +25,6 @@ ul > li {
 ```
 这里使用-margin来增加容器避免最后的间隙。
 
-## margin 与元素的外部尺寸
-**padding兼容**
-
-滚动条底部padding留白兼容问题，可以使用margin代替
-
-**等高布局**
-
-使用margin负值实现
-```css
-.column-box {
-  overflow: hidden;
-}
-.column-left,.column-right {
-  margin-bottom: -9999px;
-  padding-bottom: 9999px;
-}
-```
 ## margin的百分比值
 百分比值相对于宽度计算，但是价值不大。
 
@@ -64,7 +42,8 @@ margin: auto是为了填充失去流动性元素的闲置尺寸设计的,本质�
 绝对定位，同时设置四个方位为0，设置宽度即可居中    
 
 ## margin合并
-只发生在垂直方向的块级元素上
+
+**只发生在垂直方向的块级元素上**
 
 块级元素的上外边距和下外边距有时候会被合并为单个边距
 
@@ -111,14 +90,21 @@ margin: auto是为了填充失去流动性元素的闲置尺寸设计的,本质�
 // 如果没有自身合并margin的话，就会中间空很多行
 ```
 ### 合并计算规则
+
 1. 正正取大值
 2. 正负值相加
 3. 负负最负值
 
 ## margin无效情况
-1. inline 非替换元素的垂直margin无效 1
-2. margin出现合并时，可能出现无效 1
-3. 绝对定位的非定位方位margin无效，实质上是不影响周围元素。 1
-4. 定高 margin-bottom 定宽margin-right 失效 1
-5. float和 overflow 特殊情况
-6. 内联特性导致margin失效 1
+
+1. `inline` 非替换元素的垂直`margin`无效 
+
+2. `margin`出现合并时，可能出现无效 
+
+3. 绝对定位的非定位方位`margin`无效，实质上是不影响周围元素。 
+
+4. 定高 `margin-bottom` 定宽`margin-right` 失效
+
+5. `float`和 `overflow` 特殊情况
+
+6. 内联特性导致`margin`失效 

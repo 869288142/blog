@@ -1,10 +1,13 @@
 # border
 
 ## border-width不支持百分比
+
 1. 语义上，边框不应该根据包裹的物体大小变化
+
 2. 没有使用场景
 
 ## border-width关键字
+
 thin 1px
 medium 3px
 thick 4px
@@ -22,6 +25,7 @@ dotted IE8实现原点
 double
 
 **实现三道杠**
+
 ```css
 width: 120px;
 height: 20px;
@@ -30,7 +34,8 @@ border-bottom: 20px solid;
 ```
 
 ## border-color 
-默认值 color
+
+默认值 `color`
 
 ## border技巧
 
