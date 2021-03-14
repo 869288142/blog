@@ -12,6 +12,14 @@ text-overflow: ellipsis
 overflow: hidden
 ```
 
+``` css
+overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
 ## overflow定义
 
 CSS uses the term overflow to describe the contents of a box that extend outside one of that box’s edges (i.e., its content edge, padding edge, border edge, or margin edge)
