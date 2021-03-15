@@ -179,8 +179,11 @@
 * 异步
     * 理论
         * eventloop
-    * 实现方案        
+    * 实现方案    \
 
+* 环境
+    * [setInterval和setTimeout](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/259 )
+   
 
 ## 浏览器
 
