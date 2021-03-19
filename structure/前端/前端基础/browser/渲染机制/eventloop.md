@@ -51,8 +51,12 @@ promise2;
 
 [使用promise.resolve代替newPromise以提升await性能](https://github.com/tc39/ecma262/pull/1250)
 
+
+
 [详细场景分析](https://mp.weixin.qq.com/s/E-HKpdpV_rSX21kHHq-Fxg)
 
+
+[辅助理解资料](https://segmentfault.com/a/1190000017954500)
 
 ## 常见分析
 
