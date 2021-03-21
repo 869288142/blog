@@ -1,5 +1,20 @@
 # 社区模块规范: 
 
+- [ ] 模块
+    - [x] 问题
+      - [x] 命名冲突
+      - [x] 依赖管理
+    - [x] 规范
+      - [x] CommonJS - 服务端 Node
+      - [x] Amd - require.js
+      - [x] CMD - SeaJS  
+      - [x] es module
+    - [x] 注意点
+      - [ ]  es module 和 CommonJS 区别
+        - [ ] 同步加载、异步加载
+        - [ ] 值拷贝
+        - [ ] 循环引用
+ 
 ## CommonJS规范 
 规范实现者：
 **NodeJS 服务端**  

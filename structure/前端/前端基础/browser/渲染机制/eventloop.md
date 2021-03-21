@@ -58,9 +58,46 @@ promise2;
 
 [辅助理解资料](https://segmentfault.com/a/1190000017954500)
 
+## 常见问题
+
+- [ ] [eventloop](https://html.spec.whatwg.org/#event-loop)
+
+  - [ ] 任务队列`eventloop`
+
+    - [x] 类别
+
+      - [x] 宏任务`task`
+
+      - [x] 微任务`microtask` 
+
+    - [x] 运行过程 - **每运行一次宏任务就清空微任务队列,接下来可能会渲染UI**  
+
+    - [x] 应用
+
+      - [x] 合并批量任务 - **Vue的nextTick**
+      - [x] 保持任务顺序的一致性
+
+    - [x] 内置方法
+
+      - [x] 微任务
+
+        - [x] `queueMicrotask`
+
+      - [x] 优化
+
+        - [x] `requestAnimationFrame`
+
+        - [x] `requestIdleCallback`
+ 
 ## 常见分析
 
 https://juejin.im/post/6844903808200343559
+
+
+promise顺序问题
+
+Promise.resolve对比new Promise(r => r(v))
+
 
 
 ## 特殊例子
