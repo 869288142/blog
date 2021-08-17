@@ -1,7 +1,14 @@
 # vue3
 
+## 优化
 
-## 性能优化
+### 体积
+
+* api全部支持tree-shaking,按需加载
+
+### 性能
+
+* 响应式性能提升
 
 * 模板动静分离diff
 
@@ -13,16 +20,13 @@
 
 ## composition-api
 
-
 ## 特性
 
-### css-bind
+`watchEffect`
 
-sugar
+## hook本质
 
-### suspense
+* **内置框架更新能力**
 
+* **聚合**
 
-响应式API
-
-为什么混合调用拿不到provide
