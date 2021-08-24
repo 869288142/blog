@@ -293,6 +293,8 @@ protected 保护  特别地在子类中可以访问
 
 // readonly 必须
 
+// override 实现父类方法会检测是否有其方法
+
 
 // 参数属性 可以在构造函数参数里定义变量映射到类实例属性去
 class Octopus {
@@ -854,6 +856,8 @@ type onClickReturnType = ReturnType<SquareProps["onClick"]>; // 属性
 // 获取函数参数类型
 type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 
+// 获取构造函数参数类型
+ConstructorParameters
 
 interface SquareProps {
   onClick: () => void
