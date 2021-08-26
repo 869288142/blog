@@ -1,0 +1,19 @@
+target // 编译到的环境
+module // 配置使用的模块类型
+moduleResolution // 解析模块策略 node
+lib// 配置需要加载的声明
+skipLibCheck // 不检测库引用的声明
+
+
+allowUnusedLabels
+noFallthroughCasesInSwitch
+noImplicitOverride  
+noImplicitReturns
+noUnusedLocals
+noUnusedParameters
+allowUnreachableCode
+noPropertyAccessFromIndexSignature
+noUncheckedIndexedAccess
+exactOptionalPropertyTypes
+
+strict

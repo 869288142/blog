@@ -20,6 +20,12 @@ TS为我们带来了什么：
 let/const v :type
 type
 ```ts
+
+// Null 和 Undefined
+// 默认情况下可以把null和undefined赋值给所有类型,开启strictNullChecks之后，就只能赋值给void和它们各自
+let u: undefined = undefined;
+let n: null = null;
+
 // 数字
 let n: number = 666
 
@@ -32,6 +38,11 @@ let name: string = 'cj'
 // symbol
 let symbolKey: symbol = Symbol()
 
+// bigint
+const oneHundred: bigint = BigInt(100);
+const anotherHundred: bigint = 100n;
+
+
 // 数组 同一类型元素集合
 let arr: number[] = [1, 2, 3]
 
@@ -42,6 +53,11 @@ x  = ['hello', 10]
 // error
 x = [10, 'hello']
 x = [10, 20]
+
+
+
+
+
 
 // 枚举 一系列常量的管理器
 enum Color {Red, Green, Blue}
@@ -60,10 +76,7 @@ function f (): void {
 
 }
 
-// Null 和 Undefined
-// 默认情况下可以把null和undefined赋值给所有类型,开启strictNullChecks之后，就只能赋值给void和它们各自
-let u: undefined = undefined;
-let n: null = null;
+
 
 // Never 
 // 与Void意义类似，但特用于抛出异常的或者根本没有返回值的函数返回值类型
@@ -201,9 +214,17 @@ declare function get<T, P extends string>(obj: T, path: P): PropType<T, P>;
 
 
 语法：
+``` ts
+
 interface iName {
-    pName:type... 
+  // 属性声明
+  [readonly] pName[?]: type
+  // 索引签名 
+  [index: type]: type
 }
+
+```
+
 ```ts
 interface LabelledValue {
   label: string;
@@ -291,31 +312,40 @@ public 公有 默认值
 private 私有  类外部无法访问
 protected 保护  特别地在子类中可以访问
 
-// readonly 必须
 
 // override 实现父类方法会检测是否有其方法
 
 
 // 参数属性 可以在构造函数参数里定义变量映射到类实例属性去
-class Octopus {
- 
+[abstract] class Octopus {
+
+    // 类属性语法
+   [public | private  | protect] [static] [readonly] name[?]: type = value
+
     numberOfLegs: number = 8;
+    // 可选属性
+    numberOfLegs?: number = 8;
 
     // 只读属性
     readonly numberOfLegs: number = 8;
+
     // 静态属性
     static config: string = '33';
 
-    constructor(readonly name: string) {
-    }
-    // 等同于
-    readonly name:string
+    
     constructor(name: string){
 
     }
+
+    // 方法语法
+
+    [public |  private |  protect] [static] funName(funParamType):funReturnType
+
+    // 方法
+    methods(): void {
+    }
 }
 
-// abstract 抽象类，允许类存在实现和抽象，是类和接口的折中
 ```
 ## 函数:
 ```ts
@@ -820,14 +850,25 @@ type PersonRequired = Required<Person>; // 属性必须
 
 // 只读
 type Readonly<T> = {
-    readonly [P in keyof T]: T[P];
+    -readonly [P in keyof T]: T[P];
 };
 
-// Exclude
-type Exclude<T, U> = T extends U ? never : T;
+// 集合运算
+// Pick
 
-// 相当于: type A = 'a'
-type A = Exclude<'x' | 'a', 'x' | 'y' | 'z'>
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+};
+
+
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+ 
+type TodoPreview = Pick<Todo, "title" | "completed">;
+
 
 // Omit
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
@@ -841,32 +882,37 @@ interface User {
 // 相当于: type PickUser = { age: number; name: string; }
 type OmitUser = Omit<User, "id">
 
+
+// Exclude
+type Exclude<T, U> = T extends U ? never : T;
+
+// 相当于: type A = 'a'
+
+type A = Exclude<'x' | 'a', 'x' | 'y' | 'z'>
+
+
+
 // 删除空
 type NonNullable<T> = T extends null | undefined ? never : T;
 
-// 获取函数返回值类型
+
+
+// 获取普通函数函数签名
 type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 
-interface SquareProps {
-  onClick: () => void
-}
-// void
-type onClickReturnType = ReturnType<SquareProps["onClick"]>; // 属性
 
-// 获取函数参数类型
-type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+// 获取构造函数函数签名
+type ConstructorParameters<T extends abstract new (...args: any) => any> = T extends abstract new (...args: infer P) => any ? P : never;
 
-// 获取构造函数参数类型
-ConstructorParameters
 
-interface SquareProps {
-  onClick: () => void
-}
 
-// []
-type onClickParameters = Parameters<SquareProps["onClick"]>; // 属性
+// 获取函数返回值
+type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+
 
 // 实例类型
+type InstanceType<T extends abstract new (...args: any) => any> = T extends abstract new (...args: any) => infer R ? R : any;
+
 class C {
   x = 0;
   y = 0;
@@ -874,7 +920,10 @@ class C {
 
 type T0 = InstanceType<typeof C>;
 
-// 函数this类型
+// 获取函数this类型
+type ThisParameterType<T> = T extends (this: infer U, ...args: any[]) => any ? U : unknown;
+
+
 function toHex(this: Number) {
   return this.toString(16);
 }
@@ -1008,7 +1057,6 @@ foo.bas = 'Hello World';
 4.1 版本
 
 类型别名和接口
-
 
 
 
