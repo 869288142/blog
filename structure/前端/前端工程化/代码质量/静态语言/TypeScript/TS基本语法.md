@@ -54,6 +54,12 @@ x  = ['hello', 10]
 x = [10, 'hello']
 x = [10, 20]
 
+// 固定长度元祖
+interface NumStrTuple extends Array<number | string> {
+  0: number;
+  1: string;
+  length: 2; 
+}
 
 
 
@@ -1057,7 +1063,6 @@ foo.bas = 'Hello World';
 4.1 版本
 
 类型别名和接口
-
 
 
 

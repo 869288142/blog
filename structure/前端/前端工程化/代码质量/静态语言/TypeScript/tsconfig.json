@@ -3,7 +3,7 @@ module // 配置使用的模块类型
 moduleResolution // 解析模块策略 node
 lib// 配置需要加载的声明
 skipLibCheck // 不检测库引用的声明
-
+esModuleInterop // 兼容commonJS默认的ESM导入
 
 allowUnusedLabels
 noFallthroughCasesInSwitch
