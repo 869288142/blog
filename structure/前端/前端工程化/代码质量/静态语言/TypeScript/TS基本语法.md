@@ -61,7 +61,30 @@ interface NumStrTuple extends Array<number | string> {
   length: 2; 
 }
 
-
+//Variadic Tuple Types 可变元祖类型
+// 可变元祖
+function tail<T extends any[]>(arr: readonly [any, ...T]) {
+  const [_ignored, ...rest] = arr;
+  return rest;
+}
+// 任意位置剩余
+function partialCall<T extends Arr, U extends Arr, R>(
+  f: (...args: [...T, ...U]) => R,
+  ...headArgs: T
+) {
+  return (...tailArgs: U) => f(...headArgs, ...tailArgs);
+}
+// 元祖标签
+function foo(x: [first: string, second: number]) {
+    // ...
+ 
+    // note: we didn't need to name these 'first' and 'second'
+    const [a, b] = x;
+   
+    const a: string
+      
+    const b: number
+}
 
 
 
@@ -71,11 +94,18 @@ enum Color {Red, Green, Blue}
 // eg
 //enum Color {Red 0, Green 1, Blue 2}
 
-// Any 不确定的类型
+// any类型 IMP
 let noSure :any = 4
 
+
+// any类型，用来更提供更安全的类型检查
+let unknown: unknown = 4
+
+
 // Void 没有类型  通常用于函数返回值
-// 变量
+
+// 
+
 let unusable: void = undefined or null
 // 函数
 function f (): void {
@@ -96,8 +126,7 @@ function infiniteLoop(): never {
     }
 }
 
-// any类型保护 unknown
-// unknown 类型只能被赋值给 any 类型和 unknown 类型本身，unknown能一定的检查能力，而any就完全丧失了，强制使用类型收缩来执行代码
+
 
 ```
 
@@ -424,9 +453,25 @@ alert("card: " + pickedCard1.card + " of " + pickedCard1.suit);
 
 let pickedCard2 = pickCard(15);
 alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+
+// 描述函数属性
+
+type DescribableFunction = {
+  description: string;
+  (someArg: number): boolean;
+};
+function doSomething(fn: DescribableFunction) {
+  console.log(fn.description + " returned " + fn(6));
+}
 ```
 
 ## 模块
+``` ts
+// es导入其他模块
+import fs = require("fs");
+```
+
+
 ```ts
     内部模块 命名空间(编写非TS文件的声明文件.d.ts)
     外部模块  模块(Node默认且推荐的方式)
@@ -1036,11 +1081,7 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
 ```
 
 
-### Variadic Tuple Types 可变元祖类型
 
-* 支持泛型使用`...`
-
-* 支持`...`任意位置
 
 ## 常见问题
 
@@ -1057,12 +1098,6 @@ foo.bar = 123;
 foo.bas = 'Hello World';
 ```
 
-
-
-
-4.1 版本
-
-类型别名和接口
 
 
 
