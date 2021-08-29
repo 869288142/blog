@@ -159,3 +159,9 @@ new URL("./image.png", import.meta.url) (new way)
 
 ## 内置 Progress
 
+缓存指南
+  contenthash
+  runtimeChunk
+  合理拆包
+
+拆包
