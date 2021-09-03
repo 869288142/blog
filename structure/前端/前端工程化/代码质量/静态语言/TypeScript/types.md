@@ -1,4 +1,4 @@
-# 第三方js类型补充
+# 扩充第三方模块类型
 
 typescript自带类型系统，但是目前社区很多库都是JavaScript实现的，如何让这些库与typescript兼容是一个难题，经过微软多次尝试，提出了xx.d.ts方案
 
@@ -52,50 +52,6 @@ namespace Validation {
 
 ```js
 /// <reference types="node" />
-```
-
-
-
-
-## 命名空间与模块
-
-### module
-
-这里的module是指es6的module,比如你在TypeScript导入
-
-```js
-// TS会告诉你它不认识这个模块
-import './App.png';
-```
-
-需要这样简单处理
-
-```js
-declare module '*.png' {
-  
-}
-```
-
-**还可以导入其他模块的声明到此模块**
-
-```js
-// node的http模块就导入了events模块
-declare module "http" {
-    import * as events from "events";
-}
-```
-
-**导出模块变量**
-
-```js
-declare module "http" {
-    // 从其他模块导入
-    import * as events from "events";
-    // 此模块的导出
-    export interface IncomingHttpStatusHeader {
-        ":status"?: number;
-    }
-}
 ```
 
 ## 全局库
@@ -155,12 +111,48 @@ declare namespace myLib {
 }
 ```
 
-## 第三方库
+## 扩充全局库
 
-很多第三方库都有比较好的声明文件，我们可以先从@types这个仓库查看是否已经存在了类库的声明
+``` ts
+declare global {
+    // 扩展String类型的方法
+    interface String {
+      fancyFormat(opts: StringFormatOptions): string;
+    }
+}
 
-```js
-npm install @types/jquery -save
+export {}
 ```
 
+## 编写环境模块
 
+比如常见的资源模块
+https://www.typescriptlang.org/docs/handbook/modules.html#ambient-modules
+
+``` ts
+declare module "*!text" {
+  const content: string;
+  export default content;
+}
+// Some do it the other way around.
+declare module "json!*" {
+  const value: any;
+  export default value;
+}
+```
+
+## 扩展第三方库
+https://www.typescriptlang.org/docs/handbook/declaration-files/templates/module-plugin-d-ts.html
+``` ts
+import { greeter } from "super-greeter";
+/*~ Here, declare the same module as the one you imported above
+ *~ then we expand the existing declaration of the greeter function
+ */
+export module "super-greeter" {
+  export interface GreeterFunction {
+    /** Greets even better! */
+    hyperGreet(): void;
+  }
+}
+        
+```
