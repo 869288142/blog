@@ -8,7 +8,7 @@ sideEffects
 usedExports
 innerGraph
 
-concatenateModules
+
 
 
 
@@ -16,17 +16,11 @@ concatenateModules
 cache
 
 hosting
+    concatenateModules
 tree-shaking
 
 code split
 
 bundle split
 
-DefinePlugin
-providePlugin
-
 hot
-
-
-clean
-copy-webpack-plugin
