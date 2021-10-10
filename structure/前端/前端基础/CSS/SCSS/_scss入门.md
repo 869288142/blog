@@ -1,56 +1,19 @@
-变量
-$开头 小写并由中划线分割
+# scss基本语法
+## 变量
 
-块级作用域(定义在嵌套规则以内的变量) -> !global 全局变量
+`$开头 小写并由中划线分割,默认为块级作用域，使用global声明为全局作用域`
 
-数据类型
-数字，1, 2, 13, 10px  纯数字或者加上单位
-布尔型，true, false
-字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
-空值，null
+``` scss
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
 
-颜色，blue, #04a3f9, rgba(255,0,0,0.5)
-
-数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
-一维数组 
-二维数组 1px 2px, 5px 6px  (1px 2px) (5px 6px)
-
-
-maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
-
-
-运算
-
-数字
-SassScript 支持数字的加减乘除、取整等运算 (+, -, *, /, %) 会转换单位
-关系运算 <, >, <=, >= 也可用于数字运算，
-
-相等运算 ==, != 可用于所有数据类型。
-
-颜色值运算
-p {
-  color: #010203 + #040506;
+.alert {
+  border: 1px solid $border-dark;
 }
-计算 01 + 04 = 05 02 + 05 = 07 03 + 06 = 09，然后编译为
+```
 
-p {
-  color: #050709; }
-
-字符串运算
-
-+ 可用于连接字符串
-
-p {
-  cursor: e + -resize;
-}
-编译为
-
-p {
-  cursor: e-resize; }
-
-
-函数
-
+## 函数
+``` scss
 $grid-width: 40px;
 $gutter-width: 10px;
 
@@ -64,36 +27,137 @@ $gutter-width: 10px;
 p {
   color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
 }
+``` 
 
-插值语句
-通过 #{} 插值语句可以在选择器或属性名中使用变量：
 
-流程控制
+## 流程控制
 
-p {
-  @if 1 + 1 == 2 { border: 1px solid; }
-  @if 5 < 3 { border: 2px dotted; }
-  @if null  { border: 3px double; }
+### if
+
+``` scss
+@use "sass:math";
+
+@mixin triangle($size, $color, $direction) {
+  height: 0;
+  width: 0;
+
+  border-color: transparent;
+  border-style: solid;
+  border-width: math.div($size, 2);
+
+  @if $direction == up {
+    border-bottom-color: $color;
+  } @else if $direction == right {
+    border-left-color: $color;
+  } @else if $direction == down {
+    border-top-color: $color;
+  } @else if $direction == left {
+    border-right-color: $color;
+  } @else {
+    @error "Unknown direction #{$direction}.";
+  }
 }
 
-@for
-
-@for $var from <start> through <end>，或者 @for $var from <start> to <end>，区别在于 through 与 to 的含义：当使用 through 时，条件范围包含 <start> 与 <end> 的值，而使用 to 时条件范围只包含 <start> 的值不包含 <end> 的值。另外，$var 可以是任何变量，比如 $i；<start> 和 <end> 必须是整数值
-
-迭代数组
-@each 指令的格式是 $var in <list>, $var 可以是任何变量名，比如 $length 或者 $name，而 <list> 是一连串的值，也就是值列表。
+.next {
+  @include triangle(5px, black, right);
+}
+```
 
 
+###  for
 
-选择器嵌套
+``` scss
+$base-color: #036;
 
-属性嵌套
-font-size 
-font:{
-  size
+@for $i from 1 through 3 {
+  ul:nth-child(3n + #{$i}) {
+    background-color: lighten($base-color, $i * 5%);
+  }
+}
+```
+### while
+
+``` scss
+@use "sass:math";
+
+/// Divides `$value` by `$ratio` until it's below `$base`.
+@function scale-below($value, $base, $ratio: 1.618) {
+  @while $value > $base {
+    $value: math.div($value, $ratio);
+  }
+  @return $value;
 }
 
-混入
+$normal-font-size: 16px;
+sup {
+  font-size: scale-below(20px, 16px);
+}
+```
 
-继承
+### each
+
+``` scss
+$sizes: 40px, 50px, 80px;
+
+@each $size in $sizes {
+  .icon-#{$size} {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+}
+```
+
+## mixin
+
+``` scss
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin horizontal-list {
+  @include reset-list;
+
+  li {
+    display: inline-block;
+    margin: {
+      left: -2px;
+      right: 2em;
+    }
+  }
+}
+
+nav ul {
+  @include horizontal-list;
+}
+```
+## extend
+
+``` scss
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+
+  &--serious {
+    @extend .error;
+    border-width: 3px;
+  }
+}
+```
+
+``` css
+.error, .error--serious {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error--serious {
+  border-width: 3px;
+}
+```
+
+
+
+
 
