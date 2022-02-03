@@ -76,5 +76,7 @@ git reflog 查找你的动作
 ``` shell
 git merge-base --all master t
 ```
-    
+
+git config pull.rebase true
+git config rebase.autoStash true
 
