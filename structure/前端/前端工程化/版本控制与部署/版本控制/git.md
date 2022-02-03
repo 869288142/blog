@@ -52,5 +52,29 @@ git pull origin master
 ```
 
 分支策略
+
+修正commit 信息
+
+``` shell
+git commit --amend 修改未提交的commit信息
+```
+
+提取commit 
+
+``` shell
+git cherry-pick
+```
+
+查看最近改动
+
+``` shell
+git reflog 查找你的动作
+```
+
+查看公共节点
+
+``` shell
+git merge-base --all master t
+```
     
 
