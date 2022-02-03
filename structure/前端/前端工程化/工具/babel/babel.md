@@ -16,7 +16,7 @@ modifyAST  修改
 AST  -> code 生成
 ```
 
-原理由于是暂时入门，知道思想即可，以后再实践操作
+
 
 ## 语法编译
 
@@ -26,94 +26,10 @@ AST  -> code 生成
 
 这个时候我脑子想起来es6语法那么多，总不可能一个一个配置吧，放心，babel官方也想到了这个问题，开启了一系列的探索，要记住**presets只是一些常用plugin的集合**
 
-**.babelrc是babel的配置文件，语法需要配置presets选项**
 
-### 1.单个引入插件
+### env
 
-优点：无
-
-缺点：
-
-* 配置繁琐
-
-使用方法
-
-```js
-// 安装
-npm install --save-dev @babel/plugin-transform-arrow-functions
-
-// 配置
-
-{
-  "plugins": ["@babel/plugin-transform-arrow-functions"]
-}
-```
-### 2.stage-x
-
-这是根据ES目前提案的进展来安装一系列插件的
-
-
-    Stage 0 - 稻草人: 只是一个想法，经过 TC39 成员提出即可。
-    
-    Stage 1 - 提案: 初步尝试。
-    
-    Stage 2 - 初稿: 完成初步规范。
-    
-    Stage 3 - 候选: 完成规范和浏览器初步实现。
-    
-    Stage 4 - 完成: 将被添加到下一年度发布
-
-
-低级的会包裹高级的
-
-优点：
-
-配置方便
-
-缺点：
-
-**由于使用了非规范确定的语法，一旦语法提案发生重大改变，代码会受到重大影响**
-
-使用方法
-
-```js
-npm install --save-dev @babel/preset-stage-0
-
-{
-  "presets": ["stage-0"]
-}
-```
-### 3.es201x
-
-这个是每年更新一次，包括了标准规范的语法,每年新增的稳定提案都会有一个单独的包
-
-优点：
-
-配置少，风险少
-
-缺点：
-
-**配置不够灵活，每年需要新增当年的包，就像下面，好奇为什么的，可以看一下下面的包的package.json里面的依赖只有当年新增的稳定填**
-
-```js
-babel-preset-es2015
------- 依次安装这些
-babel-preset-es2020
-```
-
-使用
-
-```js
-npm install --save-dev babel-preset-es2015
-
-{
-  "presets": ["es2015"]
-}
-```
-
-### 4.env
-
-**经过上面的stage-x和esxxxx的尝试，最终babel提出了env的预设，更新会自动包含所有的稳定提案，不稳定提案让用户作为插件自己去去使用，从而减少用户的配置**
+**经过stage-x和esxxxx的尝试，最终babel提出了env的预设，更新会自动包含所有的稳定提案，不稳定提案让用户作为插件自己去去使用，从而减少用户的配置**
 
 优点：
 
@@ -150,7 +66,7 @@ npm install --save-dev @babel/preset-env
 
 **useBuiltIns**
 
-**此选项要在代码入口顶层引入"@babel/polyfill**
+**此选项要在代码入口顶层引入@babel/polyfill**
 
 **useBuiltIns: 'entry'**
 
@@ -195,82 +111,26 @@ import "@babel/polyfill";
 
 ![u2EH4H.png](https://s2.ax1x.com/2019/10/07/u2EH4H.png)
 
-## babel用法
+## 优化
 
-### 原型开发
+### 提取helper
 
-适合实时查看babel一些转译方案
+``` js
 
-https://babeljs.io/repl
+plugins: [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "absoluteRuntime": false,
+                // 禁用polyfill注入，其他地方已经注入了
+                "corejs": false,
+                // 开启helper 提取，从每个文件注入变成集中从模块引入
+                "helpers": true,
+                // 禁用 await async helper regenerator，jzfrontend已经注入了
+                "regenerator": false,
+            }
+        ]
+    ]
+]
 
-### 浏览器纯编译
-
-```html
-<div id="output"></div>
-<!-- Load Babel -->
-<!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<!-- Your custom script here -->
-<script type="text/babel">
-const getMessage = () => "Hello World";
-document.getElementById('output').innerHTML = getMessage();
-</script>
 ```
-
-### node纯编译
-
-**require-hook**
-
-
-原理
-
-拦截require行为，在require时对文件进行实时编译
-
-用法
-
-在应用入口
-
-require("babel-register");
-
-import "babel-register";
-
-**babel-cli**
-
-用法
-
-```js
-npm install --save-dev @babel/core @babel/cli
-
-增加npm脚本
-"scripts": {
-  "build": "babel src -d lib"
-}
-```
-
-### 搭配webpack或者gulp构建工具
-
-这部分查看官方文档即可
-
-**gulp**
-
-```js
-var gulp = require("gulp");
-var babel = require("gulp-babel");
-
-gulp.task("default", function () {
-  return gulp.src("src/app.js")
-    .pipe(babel())
-    .pipe(gulp.dest("dist"));
-});
-```
-
-**webpack**
-
-```js
-module: {
-  rules: [
-    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-  ]
-}
-```
-
