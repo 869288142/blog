@@ -24,9 +24,14 @@
 
 `watchEffect`
 
+`effectScope`
+
 ## hook本质
 
 * **内置框架更新能力**
 
 * **聚合**
+
+
+effectScope
 
