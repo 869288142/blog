@@ -22,9 +22,36 @@
 
 ## 特性
 
-`watchEffect`
 
 `effectScope`
+
+**能够做到hook共享**
+
+``` js
+function createSharedComposable(composable) {
+  let subscribers = 0
+  let state, scope
+
+  const dispose = () => {
+    if (scope && --subscribers <= 0) {
+      scope.stop()
+      state = scope = null
+    }
+  }
+
+  return (...args) => {
+    subscribers++
+    if (!state) {
+      // 创建effectScope
+      scope = effectScope(true)
+      // 
+      state = scope.run(() => composable(...args))
+    }
+    onScopeDispose(dispose)
+    return state
+  }
+}
+```
 
 ## hook本质
 
@@ -32,6 +59,38 @@
 
 * **聚合**
 
+## ref vs reactive
+``` js
+const count = ref(1)
+count.value
 
-effectScope
+
+const obj = reactive({ count })
+obj.count
+// add key is reactive
+obj.unknow = 1
+// delete is reactive
+delete obj.unknow 
+```
+
+##  watch  
+
+### watch vs watchEffect
+
+* 惰性地执行副作用
+* 更具体地说明应触发侦听器重新运行的状态
+* 访问被侦听状态的先前值和当前值
+
+### flush选项
+
+``` js
+  // 原先watch 只是在组件渲染前调用，现在可以调整到组件渲染后调用
+  watchEffect(
+      () => {
+      },
+      {
+        flush: 'pre' // TODO: post | sync
+      }
+    )
+```
 
