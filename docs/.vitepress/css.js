@@ -3,12 +3,12 @@ const collapsable = true
 module.exports = {
   '/CSS/': [
     {
-      title: 'CSS世界', // 侧边栏名称
+      text: 'CSS世界', // 侧边栏名称
       collapsable,
       children: ['/CSS/CSS世界/世界观']
     },
     {
-      title: '盒模型', // 侧边栏名称
+      text: '盒模型', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/盒模型/width',
@@ -20,7 +20,7 @@ module.exports = {
       ]
     },
     {
-      title: '流', // 侧边栏名称
+      text: '流', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/流/基线规则',
@@ -34,7 +34,7 @@ module.exports = {
       ]
     },
     {
-      title: '选择器', // 侧边栏名称
+      text: '选择器', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/选择器/first-child、last-child误解',
@@ -42,7 +42,7 @@ module.exports = {
       ]
     },
     {
-      title: '常见布局', // 侧边栏名称
+      text: '常见布局', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/常见布局/居中方案',
@@ -53,14 +53,14 @@ module.exports = {
       ]
     },
     {
-      title: '文本', // 侧边栏名称
+      text: '文本', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/文本/文本',
       ]
     },
     {
-      title: '装饰与美化', // 侧边栏名称
+      text: '装饰与美化', // 侧边栏名称
       collapsable,
       children: [
         '/CSS/装饰与美化/装饰与美化',

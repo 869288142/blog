@@ -2,12 +2,12 @@ const collapsable = true
 module.exports = {
   '/JS/': [
     {
-      title: '环境', // 侧边栏名称
+      text: '环境', // 侧边栏名称
       collapsable,
       children: ['/JS/环境/环境']
     },
     {
-      title: '类型', // 侧边栏名称
+      text: '类型', // 侧边栏名称
       collapsable,
       children: [
         '/JS/类型/开篇',
@@ -22,17 +22,17 @@ module.exports = {
       ]
     },
     {
-      title: '类型转换', // 侧边栏名称
+      text: '类型转换', // 侧边栏名称
       collapsable,
       children: ['/JS/类型转换/显式强制转换', '/JS/类型转换/隐式强制转换']
     },
     {
-      title: '变量', // 侧边栏名称
+      text: '变量', // 侧边栏名称
       collapsable,
       children: ['/JS/变量/变量提升', '/JS/变量/变量声明', '/JS/变量/变量赋值']
     },
     {
-      title: '词法', // 侧边栏名称
+      text: '词法', // 侧边栏名称
       collapsable,
       children: [
         '/JS/词法/语法',
@@ -42,7 +42,7 @@ module.exports = {
       ]
     },
     {
-      title: '语法', // 侧边栏名称
+      text: '语法', // 侧边栏名称
       collapsable,
       children: [
         '/JS/语法/new',
@@ -57,12 +57,12 @@ module.exports = {
       ]
     },
     {
-      title: '作用域', // 侧边栏名称
+      text: '作用域', // 侧边栏名称
       collapsable,
       children: ['/JS/作用域/VO', '/JS/作用域/作用域', '/JS/作用域/闭包']
     },
     {
-      title: '函数', // 侧边栏名称
+      text: '函数', // 侧边栏名称
       collapsable,
       children: [
         '/JS/函数/函数调用',
@@ -71,7 +71,7 @@ module.exports = {
       ]
     },
     {
-      title: '对象', // 侧边栏名称
+      text: '对象', // 侧边栏名称
       collapsable,
       children: [
         '/JS/对象/获取属性',
@@ -79,7 +79,7 @@ module.exports = {
       ]
     },
     {
-      title: '类', // 侧边栏名称
+      text: '类', // 侧边栏名称
       collapsable,
       children: [
         '/JS/类/对象创建',
@@ -94,7 +94,7 @@ module.exports = {
       ]
     },
     {
-      title: '模块', // 侧边栏名称
+      text: '模块', // 侧边栏名称
       collapsable,
       children: [
         '/JS/模块/import导入细节',
@@ -102,7 +102,7 @@ module.exports = {
       ]
     },
     {
-      title: '异步', // 侧边栏名称
+      text: '异步', // 侧边栏名称
       collapsable,
       children: [
         '/JS/异步/异步概念',
@@ -112,27 +112,27 @@ module.exports = {
       ]
     },
     {
-      title: '正则表达式', // 侧边栏名称
+      text: '正则表达式', // 侧边栏名称
       collapsable,
       children: ['/JS/正则表达式/正则表达式']
     },
     {
-      title: '错误处理', // 侧边栏名称
+      text: '错误处理', // 侧边栏名称
       collapsable,
       children: ['/JS/错误处理/错误处理规范', '/JS/错误处理/思考']
     },
     {
-      title: '代码规范', // 侧边栏名称
+      text: '代码规范', // 侧边栏名称
       collapsable,
       children: ['/JS/代码规范/基本风格', '/JS/代码规范/语言风格']
     },
     {
-      title: '设计模式', // 侧边栏名称
+      text: '设计模式', // 侧边栏名称
       collapsable,
       children: ['/JS/设计模式/发布订阅模式']
     },
     {
-      title: '优化', // 侧边栏名称
+      text: '优化', // 侧边栏名称
       collapsable,
       children: ['/JS/优化/条件优化']
     },

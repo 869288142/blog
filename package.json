@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev structure",
-    "docs:build": "vuepress build structure"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^0.14.11"
+    "vitepress": "^0.22.4"
   }
 }

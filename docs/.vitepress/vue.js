@@ -2,7 +2,7 @@ const collapsable = true
 module.exports =  {
   '/Vue/': [
     {
-      title: '思想', // 侧边栏名称
+      text: '思想', // 侧边栏名称
       collapsable,
       children: [
         '/Vue/思想/复用', 
@@ -11,12 +11,12 @@ module.exports =  {
       ]
     },
     {
-      title: '原理', // 侧边栏名称
+      text: '原理', // 侧边栏名称
       collapsable,
       children: ['/Vue/原理/响应式']
     },
     {
-      title: '组件', // 侧边栏名称
+      text: '组件', // 侧边栏名称
       collapsable,
       children: [
         '/Vue/组件/模板',
@@ -25,12 +25,12 @@ module.exports =  {
       ]
     },
     {
-      title: '路由', // 侧边栏名称
+      text: '路由', // 侧边栏名称
       collapsable,
       children: ['/Vue/路由/路由原理','/Vue/路由/拦截登录',]
     },
     {
-      title: '脚手架', // 侧边栏名称
+      text: '脚手架', // 侧边栏名称
       collapsable,
       children: [
         '/Vue/脚手架/3.0',
@@ -41,14 +41,14 @@ module.exports =  {
       ]
     },
     {
-      title: '最佳实践', // 侧边栏名称
+      text: '最佳实践', // 侧边栏名称
       collapsable,
       children: [
         '/Vue/最佳实践/Vue组件增强',
       ]
     },
     {
-      title: '源码分析', // 侧边栏名称
+      text: '源码分析', // 侧边栏名称
       collapsable,
       children: [
         '/Vue/源码分析/组件/数据/props、attrs差异',

@@ -1,14 +1,14 @@
 const collapsable = true
 
 module.exports = {
-  '/HTML/': [
+  '/前端/前端基础/HTML/': [
     {
-      title: 'html', // 侧边栏名称
+      text: 'html', // 侧边栏名称
       collapsable,
-      children: ['/HTML/html/html']
+      children: ['/前端/前端基础/HTML/HTML']
     },
     {
-      title: 'html5', // 侧边栏名称
+      text: 'html5', // 侧边栏名称
       collapsable,
       children: ['/HTML/html5/特性速览']
     },
