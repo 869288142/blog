@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as p,a as s}from"./app.a3c81315.js";const _='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u57FA\u7840/\u7F16\u7A0B\u8303\u5F0F/FP/ramda.md"}',n={},a=s("",92),r=[a];function o(i,u,c,l,g,d){return p(),t("div",null,r)}var f=e(n,[["render",o]]);export{_ as __pageData,f as default};

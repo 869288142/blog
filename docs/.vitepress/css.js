@@ -1,73 +1,132 @@
-const collapsable = true
+const collapsable = true;
 
-module.exports = {
-  '/CSS/': [
+export default {
+  "/前端/前端基础/css/": [
     {
-      text: 'CSS世界', // 侧边栏名称
-      collapsable,
-      children: ['/CSS/CSS世界/世界观']
-    },
-    {
-      text: '盒模型', // 侧边栏名称
-      collapsable,
+      text: "盒模型",
+      collapsable: true,
       children: [
-        '/CSS/盒模型/width',
-        '/CSS/盒模型/height',
-        '/CSS/盒模型/content',
-        '/CSS/盒模型/padding',
-        '/CSS/盒模型/border',
-        '/CSS/盒模型/margin'
-      ]
+        {
+          text: "width",
+          link: "/前端/前端基础/css/盒模型/width",
+        },
+        {
+          text: "height",
+          link: "/前端/前端基础/css/盒模型/height",
+        },
+        {
+          text: "content",
+          link: "/前端/前端基础/css/盒模型/content",
+        },
+        {
+          text: "padding",
+          link: "/前端/前端基础/css/盒模型/padding",
+        },
+        {
+          text: "border",
+          link: "/前端/前端基础/css/盒模型/border",
+        },
+        {
+          text: "margin",
+          link: "/前端/前端基础/css/盒模型/margin",
+        },
+      ],
     },
     {
-      text: '流', // 侧边栏名称
-      collapsable,
+      text: "选择器",
+      collapsable: true,
       children: [
-        '/CSS/流/基线规则',
-        '/CSS/流/重新认识bolck和inline-block',
-        '/CSS/流/内联元素',
-        '/CSS/流/内联元素并列',
-        '/CSS/流/内联元素垂直居中',
-        '/CSS/流/破坏流',
-        '/CSS/流/定位',
-        '/CSS/流/层叠',
-      ]
+        {
+          text: "选择器类型",
+          link: "/前端/前端基础/css/选择器/选择器类型",
+        },
+      ],
     },
     {
-      text: '选择器', // 侧边栏名称
-      collapsable,
+      text: "流",
+      collapsable: true,
       children: [
-        '/CSS/选择器/first-child、last-child误解',
-        '/CSS/选择器/选择器整理',
-      ]
+        {
+          text: "基线规则",
+          link: "/前端/前端基础/css/流/基线规则",
+        },
+        {
+          text: "内联元素",
+          link: "/前端/前端基础/css/流/内联元素",
+        },
+        {
+          text: "内联元素垂直居中",
+          link: "/前端/前端基础/css/流/内联元素垂直居中",
+        },
+        {
+          text: "破坏流",
+          link: "/前端/前端基础/css/流/破坏流",
+        },
+        {
+          text: "定位",
+          link: "/前端/前端基础/css/流/定位",
+        },
+        {
+          text: "层叠",
+          link: "/前端/前端基础/css/流/层叠",
+        },
+      ],
+    },
+  
+    {
+      text: "常见布局",
+      collapsable: true,
+      children: [
+        {
+          text: "居中方案",
+          link: "/前端/前端基础/css/常见布局/居中方案",
+        },
+        {
+          text: "单栏布局",
+          link: "/前端/前端基础/css/常见布局/单栏布局",
+        },
+        {
+          text: "两栏布局",
+          link: "/前端/前端基础/css/常见布局/两栏布局",
+        },
+        {
+          text: "三栏布局",
+          link: "/前端/前端基础/css/常见布局/三栏布局",
+        },
+        {
+          text: "flex",
+          link: "/前端/前端基础/css/常见布局/flex",
+        },
+        {
+          text: "响应式布局",
+          link: "/前端/前端基础/css/常见布局/响应式布局",
+        },
+      ],
     },
     {
-      text: '常见布局', // 侧边栏名称
-      collapsable,
+      text: "文本",
+      collapsable: true,
       children: [
-        '/CSS/常见布局/居中方案',
-        '/CSS/常见布局/单栏布局',
-        '/CSS/常见布局/两栏布局',
-        '/CSS/常见布局/三栏布局',
-        '/CSS/常见布局/flex',
-      ]
+        {
+          text: "文本",
+          link: "/前端/前端基础/css/文本/文本",
+        },
+      ],
     },
     {
-      text: '文本', // 侧边栏名称
-      collapsable,
+      text: "装饰与美化",
+      collapsable: true,
       children: [
-        '/CSS/文本/文本',
-      ]
+        {
+          text: "装饰与美化",
+          link: "/前端/前端基础/css/装饰与美化/装饰与美化",
+        },
+        {
+          text: "元素的显示与隐藏",
+          link: "/前端/前端基础/css/装饰与美化/元素的显示与隐藏",
+        },
+      ],
     },
-    {
-      text: '装饰与美化', // 侧边栏名称
-      collapsable,
-      children: [
-        '/CSS/装饰与美化/装饰与美化',
-        '/CSS/装饰与美化/元素的显示与隐藏',
-      ]
-    },
-  ]
-}
+  ],
+};
 
-delete require.cache[module.filename]

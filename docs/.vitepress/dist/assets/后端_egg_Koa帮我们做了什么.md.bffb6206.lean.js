@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.a3c81315.js";const y='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u540E\u7AEF/egg/Koa\u5E2E\u6211\u4EEC\u505A\u4E86\u4EC0\u4E48.md"}',p={},o=t("",11),e=[o];function c(u,l,k,r,i,d){return a(),s("div",null,e)}var g=n(p,[["render",c]]);export{y as __pageData,g as default};

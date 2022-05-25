@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as t}from"./app.a3c81315.js";const m='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u57FA\u7840/\u7F16\u7A0B\u8303\u5F0F/FP/js\u7684\u4E0D\u53EF\u53D8\u6027.md"}',e={},o=t("",5),p=[o];function c(_,r,l,d,i,k){return a(),n("div",null,p)}var f=s(e,[["render",c]]);export{m as __pageData,f as default};

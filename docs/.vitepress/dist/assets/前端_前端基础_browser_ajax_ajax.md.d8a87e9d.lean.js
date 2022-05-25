@@ -1,0 +1,1 @@
+import{_ as e,c as a,o,a as c}from"./app.a3c81315.js";const l='{"title":"ajax","description":"","frontmatter":{},"headers":[],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/browser/ajax/ajax.md"}',t={},d=c("",2),r=[d];function _(s,n,i,p,h,x){return o(),a("div",null,r)}var f=e(t,[["render",_]]);export{l as __pageData,f as default};

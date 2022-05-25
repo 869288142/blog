@@ -18,7 +18,7 @@
 
 ### browserslist支持
 
-**<span style="color:red">不支持<span>**
+**不支持**
 
 ## api转译
 

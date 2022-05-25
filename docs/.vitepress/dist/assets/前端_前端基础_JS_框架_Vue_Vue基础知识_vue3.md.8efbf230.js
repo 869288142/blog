@@ -1,0 +1,42 @@
+import{_ as n,c as a,o as s,a as t}from"./app.a3c81315.js";const f='{"title":"vue3","description":"","frontmatter":{},"headers":[{"level":2,"title":"\u4F18\u5316","slug":"\u4F18\u5316"},{"level":3,"title":"\u4F53\u79EF","slug":"\u4F53\u79EF"},{"level":3,"title":"\u6027\u80FD","slug":"\u6027\u80FD"},{"level":2,"title":"composition-api","slug":"composition-api"},{"level":2,"title":"\u7279\u6027","slug":"\u7279\u6027"},{"level":2,"title":"hook\u672C\u8D28","slug":"hook\u672C\u8D28"},{"level":2,"title":"ref vs reactive","slug":"ref-vs-reactive"},{"level":2,"title":"watch","slug":"watch"},{"level":3,"title":"watch vs watchEffect","slug":"watch-vs-watcheffect"},{"level":3,"title":"flush\u9009\u9879","slug":"flush\u9009\u9879"}],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/JS/\u6846\u67B6/Vue/Vue\u57FA\u7840\u77E5\u8BC6/vue3.md"}',e={},p=t(`<h1 id="vue3" tabindex="-1">vue3 <a class="header-anchor" href="#vue3" aria-hidden="true">#</a></h1><h2 id="\u4F18\u5316" tabindex="-1">\u4F18\u5316 <a class="header-anchor" href="#\u4F18\u5316" aria-hidden="true">#</a></h2><h3 id="\u4F53\u79EF" tabindex="-1">\u4F53\u79EF <a class="header-anchor" href="#\u4F53\u79EF" aria-hidden="true">#</a></h3><ul><li>api\u5168\u90E8\u652F\u6301tree-shaking,\u6309\u9700\u52A0\u8F7D</li></ul><h3 id="\u6027\u80FD" tabindex="-1">\u6027\u80FD <a class="header-anchor" href="#\u6027\u80FD" aria-hidden="true">#</a></h3><ul><li><p>\u54CD\u5E94\u5F0F\u6027\u80FD\u63D0\u5347</p></li><li><p>\u6A21\u677F\u52A8\u9759\u5206\u79BBdiff</p></li><li><p>\u53D8\u91CF\u63D0\u5347\uFF0C\u5C06\u4E0D\u53D8\u7684\u63D0\u5347</p></li><li><p>\u4E8B\u4EF6\u7F13\u5B58</p></li><li><p>SSR\u4EE3\u7801\u76F4\u51FA</p></li></ul><h2 id="composition-api" tabindex="-1">composition-api <a class="header-anchor" href="#composition-api" aria-hidden="true">#</a></h2><h2 id="\u7279\u6027" tabindex="-1">\u7279\u6027 <a class="header-anchor" href="#\u7279\u6027" aria-hidden="true">#</a></h2><p><code>effectScope</code></p><p><strong>\u80FD\u591F\u505A\u5230hook\u5171\u4EAB</strong></p><div class="language-js"><pre><code><span class="token keyword">function</span> <span class="token function">createSharedComposable</span><span class="token punctuation">(</span><span class="token parameter">composable</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> subscribers <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token keyword">let</span> state<span class="token punctuation">,</span> scope
+
+  <span class="token keyword">const</span> <span class="token function-variable function">dispose</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>scope <span class="token operator">&amp;&amp;</span> <span class="token operator">--</span>subscribers <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      scope<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      state <span class="token operator">=</span> scope <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    subscribers<span class="token operator">++</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// \u521B\u5EFAeffectScope</span>
+      scope <span class="token operator">=</span> <span class="token function">effectScope</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+      <span class="token comment">// </span>
+      state <span class="token operator">=</span> scope<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">composable</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">onScopeDispose</span><span class="token punctuation">(</span>dispose<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> state
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="hook\u672C\u8D28" tabindex="-1">hook\u672C\u8D28 <a class="header-anchor" href="#hook\u672C\u8D28" aria-hidden="true">#</a></h2><ul><li><p><strong>\u5185\u7F6E\u6846\u67B6\u66F4\u65B0\u80FD\u529B</strong></p></li><li><p><strong>\u805A\u5408</strong></p></li></ul><h2 id="ref-vs-reactive" tabindex="-1">ref vs reactive <a class="header-anchor" href="#ref-vs-reactive" aria-hidden="true">#</a></h2><div class="language-js"><pre><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+count<span class="token punctuation">.</span>value
+
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> count <span class="token punctuation">}</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>count
+<span class="token comment">// add key is reactive</span>
+obj<span class="token punctuation">.</span>unknow <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment">// delete is reactive</span>
+<span class="token keyword">delete</span> obj<span class="token punctuation">.</span>unknow 
+</code></pre></div><h2 id="watch" tabindex="-1">watch <a class="header-anchor" href="#watch" aria-hidden="true">#</a></h2><h3 id="watch-vs-watcheffect" tabindex="-1">watch vs watchEffect <a class="header-anchor" href="#watch-vs-watcheffect" aria-hidden="true">#</a></h3><ul><li>\u60F0\u6027\u5730\u6267\u884C\u526F\u4F5C\u7528</li><li>\u66F4\u5177\u4F53\u5730\u8BF4\u660E\u5E94\u89E6\u53D1\u4FA6\u542C\u5668\u91CD\u65B0\u8FD0\u884C\u7684\u72B6\u6001</li><li>\u8BBF\u95EE\u88AB\u4FA6\u542C\u72B6\u6001\u7684\u5148\u524D\u503C\u548C\u5F53\u524D\u503C</li></ul><h3 id="flush\u9009\u9879" tabindex="-1">flush\u9009\u9879 <a class="header-anchor" href="#flush\u9009\u9879" aria-hidden="true">#</a></h3><div class="language-js"><pre><code>  <span class="token comment">// \u539F\u5148watch \u53EA\u662F\u5728\u7EC4\u4EF6\u6E32\u67D3\u524D\u8C03\u7528\uFF0C\u73B0\u5728\u53EF\u4EE5\u8C03\u6574\u5230\u7EC4\u4EF6\u6E32\u67D3\u540E\u8C03\u7528</span>
+  <span class="token function">watchEffect</span><span class="token punctuation">(</span>
+      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">flush</span><span class="token operator">:</span> <span class="token string">&#39;pre&#39;</span> <span class="token comment">// TODO: post | sync</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+</code></pre></div>`,20),o=[p];function c(l,i,u,r,k,h){return s(),a("div",null,o)}var v=n(e,[["render",c]]);export{f as __pageData,v as default};

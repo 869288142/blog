@@ -6,7 +6,7 @@
 
 `npm`包 中的模块版本都需要遵循 `SemVer`规范——由 `Github` 起草的一个具有指导意义的，统一的版本号表示规则。实际上就是 `Semantic Version`（语义化版本）的缩写。
 
-[SemVer规范官网](semver.org/)
+[SemVer规范官网](https://semver.org)
 
 ### 标准版本
 

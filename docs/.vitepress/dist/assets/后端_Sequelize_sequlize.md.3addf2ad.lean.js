@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.a3c81315.js";const m='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u540E\u7AEF/Sequelize/sequlize.md"}',p={},e=t("",18),o=[e];function c(l,u,i,r,k,d){return a(),s("div",null,o)}var g=n(p,[["render",c]]);export{m as __pageData,g as default};

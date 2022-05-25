@@ -1,0 +1,53 @@
+import{_ as n,c as a,o as s,a as t}from"./app.a3c81315.js";const f='{"title":"\u5217\u8868","description":"","frontmatter":{},"headers":[{"level":3,"title":"\u5217\u8868","slug":"\u5217\u8868"}],"relativePath":"\u57FA\u7840/\u7F16\u7A0B\u8303\u5F0F/FP/\u7B2C\u4E94\u7AE0-\u5217\u8868\u64CD\u4F5C.md"}',p={},o=t(`<h3 id="\u5217\u8868" tabindex="-1">\u5217\u8868 <a class="header-anchor" href="#\u5217\u8868" aria-hidden="true">#</a></h3><h4 id="map" tabindex="-1">map <a class="header-anchor" href="#map" aria-hidden="true">#</a></h4><h5 id="map-polyfill" tabindex="-1">map polyfill <a class="header-anchor" href="#map-polyfill" aria-hidden="true">#</a></h5><div class="language-js"><pre><code><span class="token keyword">function</span> <span class="token function">map</span> <span class="token punctuation">(</span><span class="token parameter">mapper<span class="token punctuation">,</span> arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">mapper</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="filter" tabindex="-1">filter <a class="header-anchor" href="#filter" aria-hidden="true">#</a></h4><h5 id="filter-polyfill" tabindex="-1">filter polyfill <a class="header-anchor" href="#filter-polyfill" aria-hidden="true">#</a></h5><div class="language-js"><pre><code><span class="token keyword">function</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">predicateFn<span class="token punctuation">,</span>arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> newList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> idx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> idx <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> idx<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicateFn</span><span class="token punctuation">(</span> arr<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">,</span> arr <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			newList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> arr<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> newList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="reduce" tabindex="-1">reduce <a class="header-anchor" href="#reduce" aria-hidden="true">#</a></h4><h5 id="reduce-polyfill" tabindex="-1">reduce polyfill <a class="header-anchor" href="#reduce-polyfill" aria-hidden="true">#</a></h5><div class="language-js"><pre><code><span class="token keyword">function</span> <span class="token function">reduce</span><span class="token punctuation">(</span><span class="token parameter">reducerFn<span class="token punctuation">,</span>initialValue<span class="token punctuation">,</span>arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> acc<span class="token punctuation">,</span> startIdx<span class="token punctuation">;</span>
+
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		acc <span class="token operator">=</span> initialValue<span class="token punctuation">;</span>
+		startIdx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		acc <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		startIdx <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span> <span class="token string">&quot;Must provide at least one value.&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> idx <span class="token operator">=</span> startIdx<span class="token punctuation">;</span> idx <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> idx<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		acc <span class="token operator">=</span> <span class="token function">reducerFn</span><span class="token punctuation">(</span> acc<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">,</span> arr <span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> acc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="\u5217\u8868\u4F18\u5316" tabindex="-1">\u5217\u8868\u4F18\u5316 <a class="header-anchor" href="#\u5217\u8868\u4F18\u5316" aria-hidden="true">#</a></h4><div class="language-js"><pre><code>someList
+<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// \u6BCF\u4E00\u6B21\u94FE\u5F0F\u8C03\u7528\u90FD\u904D\u5386\u4E86\u4E00\u6B21\u6570\u7EC4</span>
+<span class="token comment">//  \u5C06\u76F8\u90BB\u7684map\u5229\u7528pipe\u878D\u5408\u4EE5\u63D0\u9AD8\u6027\u80FD</span>
+words
+<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>
+	<span class="token function">pipe</span><span class="token punctuation">(</span> removeInvalidChars<span class="token punctuation">,</span> upper<span class="token punctuation">,</span> elide <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>`,12),c=[o];function e(u,l,i,k,r,d){return s(),a("div",null,c)}var m=n(p,[["render",e]]);export{f as __pageData,m as default};

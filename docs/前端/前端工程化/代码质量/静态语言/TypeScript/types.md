@@ -156,3 +156,53 @@ export module "super-greeter" {
 }
         
 ```
+
+
+
+## 生成声明文件
+
+### 配置
+
+**tsconfig.json**
+
+``` js
+{
+    "compilerOptions": {
+      // 生成声明文件
+      "declaration": true,
+      // 生成声明文件sourceMap
+      "declarationMap": true,
+      // 指定声明文件和声明文件sourceMap输出目录
+      "declarationDir": "./lib/types"
+    },
+  }
+
+```
+
+###  合并为一个文件
+
+#### 安装api-extractor
+
+``` shell
+npm install -g @microsoft/api-extractor
+```
+
+#### 初始化api-extractor
+
+``` shell
+api-extractor init
+```
+
+#### 设置合并入口
+
+**api-extractor.json**
+
+``` js
+"mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
+```
+
+#### 执行命令合并声明文件
+
+``` shell
+api-extractor run --local --verbose
+```

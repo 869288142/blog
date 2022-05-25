@@ -1,0 +1,1 @@
+import{_ as e,c as t,o,b as r}from"./app.a3c81315.js";const u='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/browser/index.md"}',a={},s=r("p",null,"jqFormSingl",-1),n=[s];function c(_,i,d,l,p,f){return o(),t("div",null,n)}var h=e(a,[["render",c]]);export{u as __pageData,h as default};

@@ -35,7 +35,7 @@ API支持是目前最有疑惑的，目前`API`支持分为两大类方向,一�
 
 [官方原话](https://www.babeljs.cn/docs/babel-plugin-transform-runtime#why)
 
-![](\transform-runtime.png)
+![](./transform-runtime.png)
 
 翻译一下就是使用之前的`@babel/polyfill`会改写全局属性，导致可能在多个第三库发生问题，**`@babel/plugin-transform-runtime`就是为了不污染全局环境，所以一般用于开发库**
 

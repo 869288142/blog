@@ -3,7 +3,7 @@
 ## MVC
 ### MVC概念
 
-`MVC`模式最早由`Trygve Reenskaug`在`1978`年[提出]((http://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html)),[中文翻译](https://juejin.cn/post/6844903696837378061#heading-0)
+`MVC`模式最早由`Trygve Reenskaug`在`1978`年[提出](http://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html),[中文翻译](https://juejin.cn/post/6844903696837378061#heading-0)
 
 ### MVC想要解决的问题
 

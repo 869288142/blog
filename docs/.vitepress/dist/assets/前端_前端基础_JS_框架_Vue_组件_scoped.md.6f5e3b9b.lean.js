@@ -1,0 +1,1 @@
+import{_ as n,c as a,o as s,a as t}from"./app.a3c81315.js";const v='{"title":"scoped\u5206\u6790","description":"","frontmatter":{},"headers":[],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/JS/\u6846\u67B6/Vue/\u7EC4\u4EF6/scoped.md"}',p={},o=t("",45),e=[o];function c(l,u,k,r,i,g){return s(),a("div",null,e)}var m=n(p,[["render",c]]);export{v as __pageData,m as default};

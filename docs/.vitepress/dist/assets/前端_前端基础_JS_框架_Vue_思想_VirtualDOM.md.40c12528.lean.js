@@ -1,0 +1,1 @@
+import{_ as t,c as a,o as e,a as i}from"./app.a3c81315.js";const x='{"title":"VirtualDOM","description":"","frontmatter":{},"headers":[],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/JS/\u6846\u67B6/Vue/\u601D\u60F3/VirtualDOM.md"}',l={},r=i("",2),s=[r];function _(o,c,n,u,d,p){return e(),a("div",null,s)}var f=t(l,[["render",_]]);export{x as __pageData,f as default};

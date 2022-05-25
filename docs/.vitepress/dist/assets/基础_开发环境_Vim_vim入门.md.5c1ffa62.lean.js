@@ -1,0 +1,1 @@
+import{_ as p,c as t,o as r,a as e}from"./app.a3c81315.js";const m='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"\u57FA\u7840/\u5F00\u53D1\u73AF\u5883/Vim/vim\u5165\u95E8.md"}',o={},_=e("",18),c=[_];function a(d,s,n,i,l,w){return r(),t("div",null,c)}var h=p(o,[["render",a]]);export{m as __pageData,h as default};

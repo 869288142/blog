@@ -1,0 +1,1 @@
+import{_ as l,c as e,o as t,a as r}from"./app.a3c81315.js";const _='{"title":"flex","description":"","frontmatter":{},"headers":[],"relativePath":"\u524D\u7AEF/\u524D\u7AEF\u57FA\u7840/css/\u5E38\u89C1\u5E03\u5C40/flex.md"}',i={},n=r("",34),o=[n];function p(s,a,f,g,u,x){return t(),e("div",null,o)}var d=l(i,[["render",p]]);export{_ as __pageData,d as default};
