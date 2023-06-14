@@ -10,5 +10,3 @@ https://869288142.github.io/blog
 ## JS性能检测工具
 
 https://jsperf.com/testchenjiang
-
-知识导图
